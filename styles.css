@@ -2,6 +2,10 @@
 ultramarine blue: 120A8F 
 gold FFD700
 */
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: #120A8f;
   color: white;
@@ -13,6 +17,11 @@ header {
   font-family: 'Brush Script MT';
 }
 
+main {
+  display: grid;
+  grid-template-columns: 300px 275px 275px;
+}
+
 button {
   padding: 4px;
   background-color: #FFD700;
@@ -21,10 +30,26 @@ button {
   border-radius: 2px;
 }
 
-/* .hidden {
-
+.research-button {
+  background-color: #FFD700;
+  display: block;
+  height: 60px;
+  width: 275px;
+  margin-bottom: 6px;
 }
 
-.disabled {
+.hidden {
+  display: none;
+}
+
+@media only screen and (max-width: 899px) {
+  main { grid-template-columns: 300px 300px;}
+}
+
+@media only screen and (max-width: 599px) {
+  main { grid-template-columns: 300px; }
+}
+
+/* .disabled {
   opacity: 0.6;
 } */

@@ -36,6 +36,10 @@ end game - own the whole world
 	- launch and track journeys? button to launch ship, progress bar, money is updated when it gets back
 		- could also risk shipwreck occasionally - random number generator
 - kahyalar recruited, cost to recruit new kahya, button to recruit
+	- 10k kahyalar "the shahre have"
+	- 3750 = more than in the palace
+	- 19000 = more than in the country, including the army
+	- Five altınlar would build and outfit a brand-new ship, hire and supply a crew, and fill her hold with a modest cargo for a month’s voyage out to Amariyan or Imakami (this can't be right)
 
 ### phase 3
 
@@ -47,18 +51,18 @@ end game - own the whole world
 
 ### phase 1
 
-- hire employees
+- hire employees - start at 5
 	- each employee produces 1 money per second
-	- un-hides the employees section
-- open shops
-	- each shop produces XX money per XX seconds
-	- un-hides the stores section
+	- un-hides the employees section at 3
+- open shops - start at 1000
+	- each shop produces 120 money (4 yiralar) per 5 seconds
+	- un-hides the stores section at 750
 - improve shops:
 	- renovate
 	- train employees
-	- upgrade raw materials
+	- upgrade raw materials (not sure how to multiply)
 - start a shipping fleet
-	- each ship produces XX money per XX seconds
+	- each ship produces 15000 money per 45 seconds
 	- un-hides the ship section
 - improve ships:
 	- speed up
