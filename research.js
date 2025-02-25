@@ -8,7 +8,7 @@ var research1 = {
   description: "Automate your sales - each employee generates 1 kür per second",
   trigger: function() {return balance >= 3},
   uses: 1,
-  //cost: , function returns TRUE when you can afford it (changes style)
+  cost: function() {return true},
   flag: 0,
   element: null,
   effect: function() {
@@ -30,7 +30,7 @@ var research2 = {
   description: "Sell your wares from shops - each shop generates 120 kürler (4 yiralar) every 5 seconds",
   trigger: function() {return balance >= 750},
   uses: 1,
-  //cost: , function returns TRUE when you can afford it (changes style)
+  cost: function() {return true},
   flag: 0,
   element: null,
   effect: function() {
@@ -52,7 +52,7 @@ var research3 = {
   description: "Employees generate 25% higher revenue",
   trigger: function() {return balance >= 400},
   uses: 1,
-  //cost: , function returns TRUE when you can afford it (changes style)
+  cost: function() {return balance >= 500},
   flag: 0,
   element: null,
   effect: function() {
@@ -75,7 +75,7 @@ var research4 = {
   description: "Shops generate 50% higher revenue",
   trigger: function() {return balance >= 20000},
   uses: 1,
-  //cost: , function returns TRUE when you can afford it (changes style)
+  cost: function() {return balance >= 30000},
   flag: 0,
   element: null,
   effect: function() {
@@ -98,7 +98,7 @@ var research5 = {
   description: "Doesn't affect revenue, but easier to read!",
   trigger: function() {return balance >= 500},
   uses: 1,
-  //cost: , function returns TRUE when you can afford it (changes style)
+  cost: function() {return true},
   flag: 0,
   element: null,
   effect: function() {
@@ -120,7 +120,7 @@ var research6 = {
   description: "Trade your wares across the sea - each ship generates 15,000 kürler every 45 seconds",
   trigger: function() {return balance >= 75000},
   uses: 1,
-  //cost: , function returns TRUE when you can afford it (changes style)
+  cost: function() {return true},
   flag: 0,
   element: null,
   effect: function() {
@@ -140,9 +140,9 @@ var research7 = {
   title: "New hull materials ",
   priceTag: "(200,000 kürler)",
   description: "Improves speed and durability of ships; increases revenue by 15%",
-  trigger: function() {return fleetCount >= 3},
+  trigger: function() {return ships >= 3},
   uses: 1,
-  //cost: , function returns TRUE when you can afford it (changes style)
+  cost: function() {return balance >= 200000},
   flag: 0,
   element: null,
   effect: function() {
@@ -163,9 +163,9 @@ var research8 = {
   title: "Research fluid dynamics ",
   priceTag: "(300,000 kürler)",
   description: "Ships are faster; increases revenue by 35%",
-  trigger: function() {return fleetCount >= 6},
+  trigger: function() {return ships >= 6},
   uses: 1,
-  //cost: , function returns TRUE when you can afford it (changes style)
+  cost: function() {return balance >= 300000},
   flag: 0,
   element: null,
   effect: function() {
@@ -186,15 +186,15 @@ var research9 = {
   title: "Paint hulls ",
   priceTag: "(75,000 kürler per ship)",
   description: "No impact on sailing, but our ships look better than any others on the ocean!",
-  trigger: function() {return fleetCount >= 10},
+  trigger: function() {return ships >= 10},
   uses: 1,
-  //cost: , function returns TRUE when you can afford it (changes style)
+  cost: function() {return balance >= (75000 * ships)},
   flag: 0,
   element: null,
   effect: function() {
     research9.flag = 1;
     //displayMessage("")
-    balance -= 75000 * fleetCount;
+    balance -= 75000 * ships;
     research9.element.parentNode.removeChild(research9.element);
     let index = activeResearch.indexOf(research9);
     activeResearch.splice(index, 1);
@@ -208,9 +208,9 @@ var research10 = {
   title: "Begin researching ways to sail during serpent season ",
   priceTag: "",
   description: "",
-  trigger: function() {return },
+  trigger: function() {return false},
   uses: 1,
-  //cost: , function returns TRUE when you can afford it (changes style)
+  cost: function() {return true},
   flag: 0,
   element: null,
   effect: function() {

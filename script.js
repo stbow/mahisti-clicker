@@ -104,7 +104,13 @@ function manageResearch() {
       activeResearch.push(research[i]);
     }
   }
-  //can add another for loop to change the formatting for ones you can afford
+  for(let i = 0; i < activeResearch.length; i++){
+    if (activeResearch[i].cost()){
+        activeResearch[i].element.disabled = false;
+    } else {
+        activeResearch[i].element.disabled = true;
+    }   
+  }
 }
 
 function displayResearch(project){
@@ -112,9 +118,7 @@ function displayResearch(project){
   project.element.setAttribute("id", project.id);
   
   project.element.onclick = function() {
-    if (project.cost && (balance >= project.cost)) {
-      project.effect();
-    } else if (!project.cost) {
+    if (balance >= project.cost) {
       project.effect();
     }
   };
