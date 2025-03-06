@@ -216,7 +216,7 @@ function newResearchShip() {
   balance -= nextResearchShip;
   balanceText.innerText = Math.floor(balance);
   researchFleetCount.innerText = researchShips;
-  nextResearchShip = Math.floor(360000 * Math.pow(1.07,researchFleetTotal));
+  nextResearchShip = Math.floor(72000 * Math.pow(1.06,researchFleetTotal));
   researchFleetCost.innerText = easyRead(nextResearchShip);
   updateLaunchCost();
   convertCurrency(balance);

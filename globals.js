@@ -17,7 +17,7 @@ var minesMult = 180000;
 
 var researchPoints = 0;
 var researchShips = 0;
-var nextResearchShip = 360000;
+var nextResearchShip = 72000;
 var launchCost = 0;
 var escapePlansFlag = 0;
 var researchFleetTotal = 0;
@@ -29,7 +29,7 @@ const expeditionOptionsList = [
     picker: "type",
     value: 50,
     cost: 800,
-    result: 5
+    result: 10
   },
   {
     id: "exOpt24",
@@ -37,7 +37,7 @@ const expeditionOptionsList = [
     picker: "type",
     value: 30,
     cost: 6000,
-    result: 25
+    result: 50
   },
   {
     id: "exOpt25",

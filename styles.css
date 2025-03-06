@@ -1,5 +1,6 @@
 /* hex code for 
 ultramarine blue: 120A8F 
+darker federal blue: 0a0551
 gold FFD700
 */
 * {
@@ -18,7 +19,7 @@ gold FFD700
 }
 
 body {
-  background-color: #120A8f;
+  background-color: #0a0551;
   color: white;
   font-family: 'Garamond';
 }
