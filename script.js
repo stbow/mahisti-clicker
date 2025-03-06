@@ -8,6 +8,8 @@ const currency = document.getElementById("currency");
 const altinlar = document.getElementById("altinlar");
 const yiralar = document.getElementById("yiralar");
 const kurler = document.getElementById("kurler");
+const revTrackDiv = document.getElementById("rev-track-div");
+const revTrackerElement = document.getElementById("rev-tracker");
 const researchList = document.getElementById("research-list");
 const employeesDiv = document.getElementById("employees-div");
 const employeesCount = document.getElementById("employees-count");
@@ -130,6 +132,19 @@ function easyRead(num) {
   } else {
     return `${k} \u20ad`
   }
+}
+
+function revTracker() {
+  let rps = (empMult * employees) + (shopsMult * shops) + (fleetMult * ships) + (minesMult * mines);
+  let rpsText;
+  if (rps >= 331) {
+    rpsText = `${(rps / 360).toFixed(2)} \u023a`;
+  } else if (rps >= 30) {
+    rpsText = `${(rps % 360 / 30).toFixed(2)} \u024e`;
+  } else {
+    rpsText = `${(rps % 360 % 30).toFixed(2)} \u20ad`
+  }
+  revTrackerElement.innerText = rpsText;
 }
 
 function checkButtons() {
@@ -419,6 +434,7 @@ function refresh() {
     }
     if (research32.flag === 1) escapePlans.classList.remove("hidden");
   }
+  if (research40.flag === 1) revTrackDiv.classList.remove("hidden");
 }
 
 function save() {
@@ -518,25 +534,27 @@ function startOver() {
 
 window.setInterval(function() {
   balance += empMult * employees;
+  balance += shopsMult * shops;
+  balance += fleetMult * ships;
+  balance += minesMult * mines;
   balanceText.innerText = Math.floor(balance);
   manageResearch();
   convertCurrency(balance);
   checkButtons();
+  revTracker();
+  if (balance >= 1000000000) billionaireAnnouncementDiv.classList.remove("hidden");
 }, 1000);
 
-window.setInterval(function() {
-  balance += shopsMult * shops;
+/* window.setInterval(function() {
+  
   balanceText.innerText = Math.floor(balance);
 }, 5000);
 
 window.setInterval(function() {
-  balance += fleetMult * ships;
+  
   balanceText.innerText = Math.floor(balance);
-}, 20000);
+}, 20000); */
 
 window.setInterval(function() {
-  balance += minesMult * mines;
-  balanceText.innerText = Math.floor(balance);
-  save();
-  if (balance >= 1000000000) billionaireAnnouncementDiv.classList.remove("hidden");
+  save();  
 }, 60000);

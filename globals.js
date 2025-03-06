@@ -11,9 +11,9 @@ var nextShip = 43200;
 var nextMine = 1512000;
 
 var empMult = 1;
-var shopsMult = 120;
-var fleetMult = 5040;
-var minesMult = 180000;
+var shopsMult = 24;
+var fleetMult = 252;
+var minesMult = 3000;
 
 var researchPoints = 0;
 var researchShips = 0;

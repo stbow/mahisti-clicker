@@ -4,6 +4,11 @@ Mahisti Clicker is an incremental clicker game inspired by [A Taste of Gold and 
 
 ## Change Log
 
+- v3.2
+  - added revTrack - average revenue per second
+- v3.1
+  - adjusted research values - difficult to see payoff at current rates
+  - adjusted background color to darker blue
 - v3
 	- added next phase of game
 	- updated html and buy functions to display in yiralar or altinlar instead of kurler as relevant

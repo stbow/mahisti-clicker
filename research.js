@@ -71,7 +71,7 @@ var research4 = {
   title: "Convert kürler to yiralar and alt\u0131nlar ",
   priceTag: "",
   description: "Doesn't affect revenue, but it is easier to read!",
-  trigger: function() {return balance >= 800},
+  trigger: function() {return balance >= 500},
   uses: 1,
   cost: function() {return true},
   flag: 0,
@@ -812,17 +812,17 @@ research.push(research36);
 
 var research40 = {
   id: "researchButton40",
-  title: "",
-  priceTag: "(XX alt\u0131nlar)",
-  description: "",
-  trigger: function() {return },
+  title: "Revenue Tracker ",
+  priceTag: "(6 yiralar)",
+  description: "Automatically calculates average revenue per second",
+  trigger: function() {return balance >= 100},
   uses: 1,
-  cost: function() {return },
+  cost: function() {return balance >= 180},
   flag: 0,
   element: null,
   effect: function() {
     research40.flag = 1;
-
+    revTrackDiv.classList.remove("hidden");
     research40.element.parentNode.removeChild(research40.element);
     let index = activeResearch.indexOf(research40);
     activeResearch.splice(index, 1);
