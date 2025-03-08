@@ -1,4 +1,4 @@
-var balance = 100000000;
+var balance = 0;
 
 var employees = 0;
 var shops = 0;
