@@ -147,6 +147,9 @@ select {
 }
 
 footer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
   text-align: right;
   margin: 1rem;
 }
