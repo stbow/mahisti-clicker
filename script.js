@@ -33,6 +33,7 @@ const crewPicker = document.getElementById("crew-picker");
 const equipmentPicker = document.getElementById("equipment-picker");
 const escapePlans = document.getElementById("escape-plans");
 const launchCostText = document.getElementById("launch-cost");
+const successRateText = document.getElementById("success-rate");
 const expeditionProgressBar = document.getElementById("expedition-progress-bar");
 const expeditionResultText = document.getElementById("expedition-result-text");
 const discoveredSecretAnnouncementDiv = document.getElementById("discovered-secret-announcement");
@@ -244,9 +245,10 @@ function calcProbability(prb) {
 }
 
 function calcLaunchCost() {
-  let typeValue = parseInt(typePicker.value);
-  let crewValue = parseInt(crewPicker.value);
-  let equipmentValue = parseInt(equipmentPicker.value);
+  typeValue = parseInt(typePicker.value);
+  crewValue = parseInt(crewPicker.value);
+  equipmentValue = parseInt(equipmentPicker.value);
+  successRate = typeValue + crewValue + equipmentValue + escapePlansFlag;
 
   launchCost = 0;
 
@@ -276,6 +278,7 @@ equipmentPicker.oninput = updateLaunchCost;
 function updateLaunchCost() {
   calcLaunchCost();
   launchCostText.innerText = `${Math.ceil(launchCost)} \u023a`;
+  successRateText.innerText = successRate;
 }
 
 var progress = 0;
@@ -297,9 +300,6 @@ function launchExpedition() {
   balance -= launchCost * 360;
   balanceText.innerText = Math.floor(balance);
   let currentShips = researchShips;
-  let typeValue = parseInt(typePicker.value);
-  let crewValue = parseInt(crewPicker.value);
-  let equipmentValue = parseInt(equipmentPicker.value);
   let newResearchPoints = 0;
   let time = 50; 
 
@@ -313,7 +313,6 @@ function launchExpedition() {
   checkButtons();
 
   progressDelay = setTimeout(() => { // wait for progress to finish
-    let successRate = typeValue + crewValue + equipmentValue + escapePlansFlag;
 
     if (calcProbability(successRate/100)) { //success!
       for (let i=0; i < 3; i++) { //look through TYPES
@@ -385,56 +384,56 @@ function refresh() {
   if (research4.flag === 1) currency.classList.remove("hidden");
   if (research11.flag === 1) fleetDiv.classList.remove("hidden");
   if (research17.flag === 1) minesDiv.classList.remove("hidden");
-  if (research22.flag === 1 && research34.flag === 0) {
+  if (research22.flag === 1) revTrackDiv.classList.remove("hidden");
+  if (research30.flag === 1 && research34.flag === 0) {
     expeditionsDiv.classList.remove("hidden");
-    if (research23.flag === 1) typePicker.classList.remove("hidden");
-    if (research24.flag === 1) {
+    if (research31.flag === 1) typePicker.classList.remove("hidden");
+    if (research32.flag === 1) {
       var list = document.getElementById("type-picker");
       var el = document.createElement("option");
       el.textContent = "Deep sea study";
       el.value = 30;
       list.appendChild(el);
     }
-    if (research25.flag === 1) {
+    if (research33.flag === 1) {
       var list = document.getElementById("type-picker");
       var el = document.createElement("option");
       el.textContent = "Forbidden waters expedition";
       el.value = 10;
       list.appendChild(el);
     }
-    if (research26.flag === 1) crewPicker.classList.remove("hidden");
-    if (research27.flag === 1) {
+    if (research34.flag === 1) crewPicker.classList.remove("hidden");
+    if (research35.flag === 1) {
       var list = document.getElementById("crew-picker");
       var el = document.createElement("option");
       el.textContent = "Level 2";
       el.value = 15;
       list.appendChild(el);
     }
-    if (research28.flag === 1) {
+    if (research36.flag === 1) {
       var list = document.getElementById("crew-picker");
       var el = document.createElement("option");
       el.textContent = "Level 3";
       el.value = 20;
       list.appendChild(el);
     }
-    if (research29.flag === 1) equipmentPicker.classList.remove("hidden");
-    if (research30.flag === 1) {
+    if (research37.flag === 1) equipmentPicker.classList.remove("hidden");
+    if (research38.flag === 1) {
       var list = document.getElementById("equipment-picker");
       var el = document.createElement("option");
       el.textContent = "Medium quality";
       el.value = 15;
       list.appendChild(el);
     }
-    if (research31.flag === 5) {
+    if (research39.flag === 5) {
       var list = document.getElementById("equipment-picker");
       var el = document.createElement("option");
       el.textContent = "High quality supplies";
       el.value = 20;
       list.appendChild(el);
     }
-    if (research32.flag === 1) escapePlans.classList.remove("hidden");
+    if (research40.flag === 1) escapePlans.classList.remove("hidden");
   }
-  if (research40.flag === 1) revTrackDiv.classList.remove("hidden");
 }
 
 function save() {
@@ -533,10 +532,7 @@ function startOver() {
 // TIMERS ------------------------------------
 
 window.setInterval(function() {
-  balance += empMult * employees;
-  balance += shopsMult * shops;
-  balance += fleetMult * ships;
-  balance += minesMult * mines;
+  balance += (empMult * employees) + (shopsRPS * shopsMult * shops) + (fleetRPS * fleetMult * ships) + (minesRPS * minesMult * mines);
   balanceText.innerText = Math.floor(balance);
   manageResearch();
   convertCurrency(balance);

@@ -4,6 +4,9 @@ Mahisti Clicker is an incremental clicker game inspired by [A Taste of Gold and 
 
 ## Change Log
 
+- v3.3
+  - display estimated chance of success for research expeditions
+  - fixed incorrect multiplier calculations
 - v3.2
   - added revTrack - average revenue per second
 - v3.1
