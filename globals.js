@@ -10,10 +10,14 @@ var nextShop = 1080;
 var nextShip = 43200;
 var nextMine = 1512000;
 
+var shopsRPS = 24;
+var fleetRPS = 252;
+var minesRPS = 3000;
+
 var empMult = 1;
-var shopsMult = 24;
-var fleetMult = 252;
-var minesMult = 3000;
+var shopsMult = 1;
+var fleetMult = 1;
+var minesMult = 1;
 
 var researchPoints = 0;
 var researchShips = 0;
@@ -90,3 +94,8 @@ const expeditionOptionsList = [
     cost: 10000
   }
 ]
+
+var typeValue;
+var crewValue;
+var equipmentValue;
+var successRate;

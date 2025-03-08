@@ -8,7 +8,7 @@
   </head>
   <body>
     <header>
-			<div class="title-version"><h1>MAHISTI CLICKER<span class="version">v3.2</span></h1></div>
+			<div class="title-version"><h1>MAHISTI CLICKER<span class="version">v3.3</span></h1></div>
       <div class="save-buttons">
         <button id="save-btn">Save</button>
         <button id="delete-btn">Delete Save</button>
@@ -58,7 +58,7 @@
           </div>
           <div id="discovered-secret-announcement" class="announcement hidden">
             <p id="congrats-text">Congratulations! </p>
-            <p id="secret-text">You have discovered the secret to avoiding the sea serpents. You now have a total monopoly on trade for six months every summer.</p>
+            <p id="secret-text">You have discovered the secret to avoiding the sea serpents. You now have a total monopoly on trade for six weeks every summer.</p>
           </div>
         </div>
         <div id="expeditions-div" class="hidden">
@@ -70,7 +70,7 @@
           <div id="expedition-options-engine">
             <form name="form"><select id="type-picker" autocomplete="off" class="hidden">
               <option value="0" selected disabled>Expedition type</option>
-              <option value="50">Shallow waters survey</option>
+              <option value="50">Shallow waters survey (5 sec)</option>
             </select>
             <select id="crew-picker" autocomplete="off" class="hidden">
               <option value="0" selected disabled>Crew experience</option>
@@ -81,7 +81,7 @@
               <option value="10">Low quality</option>
             </select></form>
             <p id="escape-plans" class="hidden">Advanced escape plans: active</p>
-            <p>Expedition cost: <span id="launch-cost">0 &#570;</span></p>
+            <p>Expedition cost: <span id="launch-cost">0 &#570;</span><br />Est. chance of success: <span id="success-rate">0</span>%</p>
           </div>
           <button id="launch-btn">Launch expedition</button>
           <div id="expedition-progress">
@@ -91,7 +91,9 @@
         </div>
       </div>
     </main>
-    <footer></footer>
+    <footer>
+      <p><a href="https://github.com/stbow/mahisti-clicker" target="_blank">github</a></p>
+    </footer>
     <script src="./globals.js"></script>
     <script src="./research.js"></script>
     <script src="./script.js"></script>

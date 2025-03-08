@@ -7,6 +7,14 @@ gold FFD700
   box-sizing: border-box;
 }
 
+@media only screen and (max-width: 899px) {
+  main { grid-template-columns: 300px 300px;}
+}
+
+@media only screen and (max-width: 599px) {
+  main { grid-template-columns: 300px; }
+}
+
 @font-face {
   font-family: 'UnderWorld';
   src: url('UnderWorld.eot');
@@ -98,7 +106,7 @@ select {
   font-family: 'Garamond';
   border-color: #FFEA70;
   border-radius: 2px;
-  width: 200px;
+  width: 225px;
   margin-bottom: 6px;
 }
 
@@ -138,10 +146,27 @@ select {
   font-weight: bold;
 }
 
-@media only screen and (max-width: 899px) {
-  main { grid-template-columns: 300px 300px;}
+footer {
+  text-align: right;
+  margin: 1rem;
 }
 
-@media only screen and (max-width: 599px) {
-  main { grid-template-columns: 300px; }
+footer a:link {
+  color: #FFD700;
+  text-decoration: none;
+}
+
+footer a:visited {
+  color: #e0bf00;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #FFEA70;
+  text-decoration: underline;
+}
+
+footer a:active {
+  color: #FFEA70;
+  text-decoration: underline;
 }
