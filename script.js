@@ -136,7 +136,7 @@ function easyRead(num) {
 }
 
 function revTracker() {
-  let rps = (empMult * employees) + (shopsMult * shops) + (fleetMult * ships) + (minesMult * mines);
+  let rps = (empMult * employees) + (shopsRPS * shopsMult * shops) + (fleetRPS * fleetMult * ships) + (minesRPS * minesMult * mines);
   let rpsText;
   if (rps >= 331) {
     rpsText = `${(rps / 360).toFixed(2)} \u023a`;
