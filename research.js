@@ -14,6 +14,7 @@ var research1 = {
   effect: function() {
     research1.flag = 1;
     employeesDiv.classList.remove("hidden");
+    currencyBaseAnnouncementDiv.classList.remove('hidden');
     research1.element.parentNode.removeChild(research1.element);
     let index = activeResearch.indexOf(research1);
     activeResearch.splice(index, 1);
@@ -34,9 +35,8 @@ var research2 = {
   element: null,
   effect: function() {
     research2.flag = 1;
-    currencyBaseAnnouncementDiv.classList.remove('hidden');
     balance -= 210;
-    empMult += 0.1;
+    empMult += 0.10;
     employeesRPSText.innerText = empMult;
     research2.element.parentNode.removeChild(research2.element);
     let index = activeResearch.indexOf(research2);
@@ -126,8 +126,8 @@ var research6 = {
     research6.flag = 1;
     currencyBaseAnnouncementDiv.classList.add('hidden');
     balance -= 2520;
-    empMult += 0.2;
-    shopsMult += 0.2;
+    empMult += 0.20;
+    shopsMult += 0.20;
     employeesRPSText.innerText = empMult;
     shopsRPSText.innerText = shopsMult * shopsRPS;
     research6.element.parentNode.removeChild(research6.element);
@@ -151,7 +151,7 @@ var research6b = {
   effect: function() {
     research6b.flag = 1;
     balance -= 3240;
-    empMult += 0.3;
+    empMult += 0.30;
     research6b.element.parentNode.removeChild(research6b.element);
     let index = activeResearch.indexOf(research6b);
     activeResearch.splice(index, 1);
@@ -196,7 +196,7 @@ var research8 = {
   effect: function() {
     research8.flag = 1;
     balance -= 12960;
-    shopsMult += 0.3;
+    shopsMult += 0.30;
     shopsRPSText.innerText = shopsMult * shopsRPS;
     research8.element.parentNode.removeChild(research8.element);
     let index = activeResearch.indexOf(research8);
@@ -220,7 +220,7 @@ var research9 = {
     research9.flag = 1;
     balance -= 17280;
     empMult += 0.25;
-    shopsMult += 0.4;
+    shopsMult += 0.40;
     employeesRPSText.innerText = empMult;
     shopsRPSText.innerText = shopsMult * shopsRPS;
     research9.element.parentNode.removeChild(research9.element);
@@ -244,7 +244,7 @@ var research10 = {
   effect: function() {
     research10.flag = 1;
     balance -= 3960 * shops;
-    shopsMult += 0.5;
+    shopsMult += 0.50;
     shopsRPSText.innerText = shopsMult * shopsRPS;
     research10.element.parentNode.removeChild(research10.element);
     let index = activeResearch.indexOf(research10);
@@ -288,9 +288,9 @@ var research12 = {
   effect: function() {
     research12.flag = 1;
     balance -= 75600;
-    empMult += 0.3;
-    shopsMult += 0.5;
-    fleetMult += 0.5;
+    empMult += 0.30;
+    shopsMult += 0.50;
+    fleetMult += 0.50;
     employeesRPSText.innerText = empMult;
     shopsRPSText.innerText = shopsMult * shopsRPS;
     fleetRPSText.innerText = fleetMult * fleetRPS;
@@ -315,7 +315,7 @@ var research13 = {
   effect: function() {
     research13.flag = 1;
     balance -= 99000;
-    fleetMult += 0.3;
+    fleetMult += 0.30;
     fleetRPSText.innerText = fleetMult * fleetRPS;
     research13.element.parentNode.removeChild(research13.element);
     let index = activeResearch.indexOf(research13);
@@ -338,7 +338,7 @@ var research14 = {
   effect: function() {
     research14.flag = 1;
     balance -= 153000;
-    fleetMult += 0.5;
+    fleetMult += 0.50;
     fleetRPSText.innerText = fleetMult * fleetRPS;
     research14.element.parentNode.removeChild(research14.element);
     let index = activeResearch.indexOf(research14);
@@ -361,9 +361,9 @@ var research15 = {
   effect: function() {
     research15.flag = 1;
     balance -= 208800;
-    empMult += 0.2;
-    shopsMult += 0.3;
-    fleetMult += 0.5;
+    empMult += 0.20;
+    shopsMult += 0.30;
+    fleetMult += 0.50;
     fleetRPSText.innerText = fleetMult * fleetRPS;
     employeesRPSText.innerText = empMult;
     shopsRPSText.innerText = shopsMult * shopsRPS;
@@ -431,7 +431,7 @@ var research18 = {
   effect: function() {
     research18.flag = 1;
     balance -= 972000;
-    minesMult += 0.2;
+    minesMult += 0.20;
     minesRPSText.innerText = minesMult * minesRPS;
     research18.element.parentNode.removeChild(research18.element);
     let index = activeResearch.indexOf(research18);
@@ -454,10 +454,10 @@ var research19 = {
   effect: function() {
     research19.flag = 1;
     balance -= 3600000;
-    empMult += 0.4;
-    shopsMult += 0.4;
-    fleetMult += 0.4;
-    minesMult += 0.4;
+    empMult += 0.40;
+    shopsMult += 0.40;
+    fleetMult += 0.40;
+    minesMult += 0.40;
     employeesRPSText.innerText = empMult;
     shopsRPSText.innerText = shopsMult * shopsRPS;
     fleetRPSText.innerText = fleetMult * fleetRPS;
@@ -506,7 +506,7 @@ var research21 = {
   effect: function() {
     research21.flag = 1;
     balance -= 3348000;
-    minesMult += 0.3;
+    minesMult += 0.30;
     minesRPSText.innerText = minesMult * minesRPS;
     research21.element.parentNode.removeChild(research21.element);
     let index = activeResearch.indexOf(research21);
@@ -825,10 +825,10 @@ var research45 = {
     research45.flag = 1;
     discoveredSecretAnnouncementDiv.classList.remove("hidden");
     expeditionsDiv.classList.add("hidden");
-    empMult += 0.5;
-    shopsMult += 0.5;
-    fleetMult += 0.5;
-    minesMult += 0.5;
+    empMult += 0.50;
+    shopsMult += 0.50;
+    fleetMult += 0.50;
+    minesMult += 0.50;
     employeesRPSText.innerText = empMult;
     shopsRPSText.innerText = shopsMult * shopsRPS;
     fleetRPSText.innerText = fleetMult * fleetRPS;
