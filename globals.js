@@ -8,7 +8,7 @@ var mines = 0;
 var nextEmployee = 10;
 var nextShop = 1080;
 var nextShip = 43200;
-var nextMine = 1512000;
+var nextMine = 504000;
 
 var shopsRPS = 24;
 var fleetRPS = 252;
@@ -32,7 +32,7 @@ const expeditionOptionsList = [
     title: "type1",
     picker: "type",
     value: 50,
-    cost: 800,
+    cost: 80,
     result: 10
   },
   {
@@ -40,7 +40,7 @@ const expeditionOptionsList = [
     title: "type2",
     picker: "type",
     value: 30,
-    cost: 6000,
+    cost: 600,
     result: 50
   },
   {
@@ -48,7 +48,7 @@ const expeditionOptionsList = [
     title: "type3",
     picker: "type",
     value: 10,
-    cost: 30000,
+    cost: 3000,
     result: 150
   },
   {
@@ -56,42 +56,42 @@ const expeditionOptionsList = [
     title: "crew1",
     picker: "crew",
     value: 10,
-    cost: 400
+    cost: 40
   },
   {
     id: "exOpt27",
     title: "crew2",
     picker: "crew",
     value: 15,
-    cost: 2000
+    cost: 200
   },
   {
     id: "exOpt28",
     title: "crew3",
     picker: "crew",
     value: 20,
-    cost: 10000
+    cost: 1000
   },
   {
     id: "exOpt29",
     title: "equip1",
     picker: "equip",
     value: 10,
-    cost: 300
+    cost: 30
   },
   {
     id: "exOpt30",
     title: "equip2",
     picker: "equip",
     value: 15,
-    cost: 1000
+    cost: 100
   },
   {
     id: "exOpt31",
     title: "equip3",
     picker: "equip",
     value: 20,
-    cost: 10000
+    cost: 1000
   }
 ]
 

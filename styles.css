@@ -66,6 +66,7 @@ p {
 button {
   padding: 4px;
   background-color: #FFD700;
+  color: black;
   font-family: 'Garamond';
   border-color: #FFEA70;
   border-radius: 2px;
@@ -74,6 +75,10 @@ button {
 
 button:disabled {
   opacity: 0.8;
+}
+
+.small {
+  font-size: small;
 }
 
 #expeditions-div {
@@ -95,7 +100,7 @@ button:disabled {
 select {
   padding: 4px;
   background-color: #FFD700;
-  font-family: 'Garamond';
+  font-family: 'Garamond', serif;
   border-color: #FFEA70;
   border-radius: 2px;
   width: 225px;
@@ -166,7 +171,7 @@ footer a:active {
   text-decoration: underline;
 } */
 
-@media only screen and (max-width: 899px) {
+@media only screen and (max-width: 950px) {
   main { grid-template-columns: 300px 300px;}
 }
 

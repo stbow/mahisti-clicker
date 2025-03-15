@@ -8,7 +8,7 @@
   </head>
   <body>
     <header>
-			<div class="title-version"><h1>MAHISTI CLICKER<span class="version">v3.3</span></h1></div>
+			<div class="title-version"><h1>MAHISTI CLICKER<span class="version">v3.4</span></h1></div>
       <div class="save-buttons">
         <button id="save-btn">Save</button>
         <button id="delete-btn">Delete Save</button>
@@ -24,23 +24,23 @@
         </div>
         <div id="employees-div" class="hidden">
           <h3>BUsiness</h3>
-          <p>Employees: <span id="employees-count">0</span></p>
+          <p>Employees: <span id="employees-count">0</span><br /><span id="employees-rps-element" class="small">(<span id="employees-rps">1</span> per employee per sec)</span></p>
           <p>New employee: <span id="employee-cost">10 &#8365;</span></p>
           <button id="hire">Hire an employee</button>
         </div>
         <div id="shops-div" class="hidden">
-          <p>Shops: <span id="shops-count">0</span></p>
+          <p>Shops: <span id="shops-count">0</span><br /><span id="shops-rps-element" class="small">(<span id="shops-rps">24</span> per shop per sec)</span></p>
           <p>New shop: <span id="shop-cost">3 &#570;</span></p>
           <button id="buy-shop">Open a shop</button>
         </div>
         <div id="fleet-div" class="hidden">
-          <p>Fleet: <span id="fleet-count">0</span> ships</p>
+          <p>Fleet: <span id="fleet-count">0</span> ships<br /><span id="fleet-rps-element" class="small">(<span id="fleet-rps">252</span> per ship per sec)</span></p>
           <p>New ship: <span id="fleet-cost">120 &#570;</span></p>
           <button id="buy-ship">Buy a ship</button>
         </div>
         <div id="mines-div" class="hidden">
-          <p>Mines: <span id="mines-count">0</span></p>
-          <p>New mine: <span id="mines-cost">4200 &#570;</span></p>
+          <p>Mines: <span id="mines-count">0</span><br /><span id="mines-rps-element" class="small">(<span id="mines-rps">3000</span> per mine per sec)</span></p>
+          <p>New mine: <span id="mines-cost">1400 &#570;</span></p>
           <button id="buy-mine">Open a gold mine</button>
         </div>
       </div>
@@ -51,6 +51,9 @@
       </div>
       <div id="col3">
         <div id="announcements-list">
+          <div id="currency-base-announcement" class="announcement-small hidden">
+            <p id="currency-base-text">One yira (&#590;) is equivalent to 30 k&#252;rler (&#8365;).<br />One alt&#305;n (&#570;) is equivalent to 12 yiralar or 360 k&#252;rler.</p>
+          </div>
           <div id="billionaire-announcement" class="announcement hidden">
             <p id="congrats-text">Congratulations! You won capitalism!</p>
             <p id="billionaire-text">You have accumulated one billion k&#252;rler. Your family will rule Ara&#351;t for generations to come and will go down in history as <del>those Ara&#351;ti bastards</del> the ruling family of Ara&#351;t.</p>
@@ -81,7 +84,7 @@
               <option value="10">Low quality</option>
             </select></form>
             <p id="escape-plans" class="hidden">Advanced escape plans: active</p>
-            <p>Expedition cost: <span id="launch-cost">0 &#570;</span><br />Est. chance of success: <span id="success-rate">0</span>%</p>
+            <p>Expedition cost: <span id="launch-cost">0 &#570;</span><br /><span class="small">(Est. chance of success: <span id="success-rate">0</span>%)</span></p>
           </div>
           <button id="launch-btn">Launch expedition</button>
           <div id="expedition-progress">

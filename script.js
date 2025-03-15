@@ -13,15 +13,19 @@ const revTrackerElement = document.getElementById("rev-tracker");
 const researchList = document.getElementById("research-list");
 const employeesDiv = document.getElementById("employees-div");
 const employeesCount = document.getElementById("employees-count");
+const employeesRPSText = document.getElementById("employees-rps");
 const employeeCost = document.getElementById("employee-cost");
 const shopsDiv = document.getElementById("shops-div");
 const shopsCount = document.getElementById("shops-count");
+const shopsRPSText = document.getElementById("shops-rps");
 const shopCost = document.getElementById("shop-cost");
 const fleetDiv = document.getElementById("fleet-div");
 const fleetCount = document.getElementById("fleet-count");
+const fleetRPSText = document.getElementById("fleet-rps");
 const fleetCost = document.getElementById("fleet-cost");
 const minesDiv = document.getElementById("mines-div");
 const minesCount = document.getElementById("mines-count");
+const minesRPSText = document.getElementById("mines-rps");
 const minesCost = document.getElementById("mines-cost");
 const expeditionsDiv = document.getElementById("expeditions-div");
 const pointsCount = document.getElementById("points-count");
@@ -36,6 +40,7 @@ const launchCostText = document.getElementById("launch-cost");
 const successRateText = document.getElementById("success-rate");
 const expeditionProgressBar = document.getElementById("expedition-progress-bar");
 const expeditionResultText = document.getElementById("expedition-result-text");
+const currencyBaseAnnouncementDiv = document.getElementById("currency-base-announcement");
 const discoveredSecretAnnouncementDiv = document.getElementById("discovered-secret-announcement");
 const billionaireAnnouncementDiv = document.getElementById("billionaire-announcement");
 const sell = document.getElementById("sell");
@@ -108,7 +113,7 @@ function newMine() {
   balance -= nextMine;
   balanceText.innerText = Math.floor(balance);
   minesCount.innerText = mines;
-  nextMine = Math.floor(1512000 * Math.pow(1.1,mines));
+  nextMine = Math.floor(504000 * Math.pow(1.1,mines));
   minesCost.innerText = easyRead(nextMine);
   convertCurrency(balance);
   checkButtons();
@@ -385,7 +390,7 @@ function refresh() {
   if (research11.flag === 1) fleetDiv.classList.remove("hidden");
   if (research17.flag === 1) minesDiv.classList.remove("hidden");
   if (research22.flag === 1) revTrackDiv.classList.remove("hidden");
-  if (research30.flag === 1 && research34.flag === 0) {
+  if (research30.flag === 1 && research45.flag === 0) {
     expeditionsDiv.classList.remove("hidden");
     if (research31.flag === 1) typePicker.classList.remove("hidden");
     if (research32.flag === 1) {
@@ -539,17 +544,7 @@ window.setInterval(function() {
   checkButtons();
   revTracker();
   if (balance >= 1000000000) billionaireAnnouncementDiv.classList.remove("hidden");
-}, 1000);
-
-/* window.setInterval(function() {
-  
-  balanceText.innerText = Math.floor(balance);
-}, 5000);
-
-window.setInterval(function() {
-  
-  balanceText.innerText = Math.floor(balance);
-}, 20000); */
+}, 1000); //LIVE is 1000
 
 window.setInterval(function() {
   save();  

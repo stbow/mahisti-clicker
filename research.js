@@ -6,7 +6,7 @@ var research1 = {
   title: "Hire employees",
   priceTag: "",
   description: "Automate your sales - each employee generates 1 kür per second",
-  trigger: function() {return balance >= 3},
+  trigger: function() {return balance >= 5},
   uses: 1,
   cost: function() {return true},
   flag: 0,
@@ -34,8 +34,10 @@ var research2 = {
   element: null,
   effect: function() {
     research2.flag = 1;
+    currencyBaseAnnouncementDiv.classList.remove('hidden');
     balance -= 210;
     empMult += 0.1;
+    employeesRPSText.innerText = empMult;
     research2.element.parentNode.removeChild(research2.element);
     let index = activeResearch.indexOf(research2);
     activeResearch.splice(index, 1);
@@ -58,6 +60,7 @@ var research3 = {
     research3.flag = 1;
     balance -= 720;
     empMult += 0.25;
+    employeesRPSText.innerText = empMult;
     research3.element.parentNode.removeChild(research3.element);
     let index = activeResearch.indexOf(research3);
     activeResearch.splice(index, 1);
@@ -121,9 +124,12 @@ var research6 = {
   element: null,
   effect: function() {
     research6.flag = 1;
+    currencyBaseAnnouncementDiv.classList.add('hidden');
     balance -= 2520;
     empMult += 0.2;
     shopsMult += 0.2;
+    employeesRPSText.innerText = empMult;
+    shopsRPSText.innerText = shopsMult * shopsRPS;
     research6.element.parentNode.removeChild(research6.element);
     let index = activeResearch.indexOf(research6);
     activeResearch.splice(index, 1);
@@ -131,6 +137,28 @@ var research6 = {
 }
   
 research.push(research6);
+
+var research6b = {
+  id: "researchButton6b",
+  title: "Health care coverage ",
+  priceTag: "(9 alt\u0131nlar)",
+  description: "Implement a health care policy for all employees",
+  trigger: function() {return research6.flag === 1},
+  uses: 1,
+  cost: function() {return balance >= 3240},
+  flag: 0,
+  element: null,
+  effect: function() {
+    research6b.flag = 1;
+    balance -= 3240;
+    empMult += 0.3;
+    research6b.element.parentNode.removeChild(research6b.element);
+    let index = activeResearch.indexOf(research6b);
+    activeResearch.splice(index, 1);
+  }
+}
+
+research.push(research6b);
 
 var research7 = {
   id: "researchButton7",
@@ -146,6 +174,7 @@ var research7 = {
     research7.flag = 1;
     balance -= 6480;
     shopsMult += 0.15;
+    shopsRPSText.innerText = shopsMult * shopsRPS;
     research7.element.parentNode.removeChild(research7.element);
     let index = activeResearch.indexOf(research7);
     activeResearch.splice(index, 1);
@@ -168,6 +197,7 @@ var research8 = {
     research8.flag = 1;
     balance -= 12960;
     shopsMult += 0.3;
+    shopsRPSText.innerText = shopsMult * shopsRPS;
     research8.element.parentNode.removeChild(research8.element);
     let index = activeResearch.indexOf(research8);
     activeResearch.splice(index, 1);
@@ -191,6 +221,8 @@ var research9 = {
     balance -= 17280;
     empMult += 0.25;
     shopsMult += 0.4;
+    employeesRPSText.innerText = empMult;
+    shopsRPSText.innerText = shopsMult * shopsRPS;
     research9.element.parentNode.removeChild(research9.element);
     let index = activeResearch.indexOf(research9);
     activeResearch.splice(index, 1);
@@ -213,6 +245,7 @@ var research10 = {
     research10.flag = 1;
     balance -= 3960 * shops;
     shopsMult += 0.5;
+    shopsRPSText.innerText = shopsMult * shopsRPS;
     research10.element.parentNode.removeChild(research10.element);
     let index = activeResearch.indexOf(research10);
     activeResearch.splice(index, 1);
@@ -258,6 +291,9 @@ var research12 = {
     empMult += 0.3;
     shopsMult += 0.5;
     fleetMult += 0.5;
+    employeesRPSText.innerText = empMult;
+    shopsRPSText.innerText = shopsMult * shopsRPS;
+    fleetRPSText.innerText = fleetMult * fleetRPS;
     research12.element.parentNode.removeChild(research12.element);
     let index = activeResearch.indexOf(research12);
     activeResearch.splice(index, 1);
@@ -280,6 +316,7 @@ var research13 = {
     research13.flag = 1;
     balance -= 99000;
     fleetMult += 0.3;
+    fleetRPSText.innerText = fleetMult * fleetRPS;
     research13.element.parentNode.removeChild(research13.element);
     let index = activeResearch.indexOf(research13);
     activeResearch.splice(index, 1);
@@ -302,6 +339,7 @@ var research14 = {
     research14.flag = 1;
     balance -= 153000;
     fleetMult += 0.5;
+    fleetRPSText.innerText = fleetMult * fleetRPS;
     research14.element.parentNode.removeChild(research14.element);
     let index = activeResearch.indexOf(research14);
     activeResearch.splice(index, 1);
@@ -326,6 +364,9 @@ var research15 = {
     empMult += 0.2;
     shopsMult += 0.3;
     fleetMult += 0.5;
+    fleetRPSText.innerText = fleetMult * fleetRPS;
+    employeesRPSText.innerText = empMult;
+    shopsRPSText.innerText = shopsMult * shopsRPS;
     research15.element.parentNode.removeChild(research15.element);
     let index = activeResearch.indexOf(research15);
     activeResearch.splice(index, 1);
@@ -361,7 +402,7 @@ var research17 = {
   title: "Open gold mines ",
   priceTag: "",
   description: "Invest in gold by opening your own gold mines",
-  trigger: function() {return balance >= 1000000},
+  trigger: function() {return balance >= 400000},
   uses: 1,
   cost: function() {return true},
   flag: 0,
@@ -384,13 +425,14 @@ var research18 = {
   description: "Extracts 20% more gold per cycle",
   trigger: function() {return mines >= 2},
   uses: 1,
-  cost: function() {return balance >= 2016000},
+  cost: function() {return balance >= 972000},
   flag: 0,
   element: null,
   effect: function() {
     research18.flag = 1;
-    balance -= 2016000;
+    balance -= 972000;
     minesMult += 0.2;
+    minesRPSText.innerText = minesMult * minesRPS;
     research18.element.parentNode.removeChild(research18.element);
     let index = activeResearch.indexOf(research18);
     activeResearch.splice(index, 1);
@@ -402,20 +444,24 @@ research.push(research18);
 var research19 = {
   id: "researchButton19",
   title: "Famed merchant dynasty ",
-  priceTag: "(12,000 alt\u0131nlar)",
+  priceTag: "(10,000 alt\u0131nlar)",
   description: "The Mahisti name carries weight, increasing all trade profits",
   trigger: function() {return balance >= 3000000 && mines >= 1},
   uses: 1,
-  cost: function() {return balance >= 4320000},
+  cost: function() {return balance >= 3600000},
   flag: 0,
   element: null,
   effect: function() {
     research19.flag = 1;
-    balance -= 4320000;
+    balance -= 3600000;
     empMult += 0.4;
     shopsMult += 0.4;
     fleetMult += 0.4;
     minesMult += 0.4;
+    employeesRPSText.innerText = empMult;
+    shopsRPSText.innerText = shopsMult * shopsRPS;
+    fleetRPSText.innerText = fleetMult * fleetRPS;
+    minesRPSText.innerText = minesMult * minesRPS;
     research19.element.parentNode.removeChild(research19.element);
     let index = activeResearch.indexOf(research19);
     activeResearch.splice(index, 1);
@@ -427,17 +473,18 @@ research.push(research19);
 var research20 = {
   id: "researchButton20",
   title: "Gold purification ",
-  priceTag: "(24,000 alt\u0131nlar)",
+  priceTag: "(4,900 alt\u0131nlar)",
   description: "Increases the value of gold ore",
   trigger: function() {return research18.flag === 1},
   uses: 1,
-  cost: function() {return balance >= 8640000},
+  cost: function() {return balance >= 1764000},
   flag: 0,
   element: null,
   effect: function() {
     research20.flag = 1;
-    balance -= 8640000;
+    balance -= 1764000;
     minesMult += 0.25;
+    minesRPSText.innerText = minesMult * minesRPS;
     research20.element.parentNode.removeChild(research20.element);
     let index = activeResearch.indexOf(research20);
     activeResearch.splice(index, 1);
@@ -449,17 +496,18 @@ research.push(research20);
 var research21 = {
   id: "researchButton21",
   title: "Underground tunnels ",
-  priceTag: "(80,000 alt\u0131nlar)",
+  priceTag: "(9,300 alt\u0131nlar)",
   description: "Expands mining operations, unlocking more gold reserves",
   trigger: function() {return research20.flag === 1},
   uses: 1,
-  cost: function() {return balance >= 28800000},
+  cost: function() {return balance >= 3348000},
   flag: 0,
   element: null,
   effect: function() {
     research21.flag = 1;
-    balance -= 28800000;
+    balance -= 3348000;
     minesMult += 0.3;
+    minesRPSText.innerText = minesMult * minesRPS;
     research21.element.parentNode.removeChild(research21.element);
     let index = activeResearch.indexOf(research21);
     activeResearch.splice(index, 1);
@@ -492,17 +540,17 @@ research.push(research22);
 var research30 = {
   id: "researchButton30",
   title: "Begin researching sea serpents ",
-  priceTag: "(125,000 \u023a)",
+  priceTag: "(15,000 \u023a)",
   description: "Launch research expeditions to learn more about the sea serpents",
   trigger: function() {return research19.flag === 1},
   uses: 1,
-  cost: function() {return balance >= 45000000},
+  cost: function() {return balance >= 5400000},
   flag: 0,
   element: null,
   effect: function() {
     research30.flag = 1;
     expeditionsDiv.classList.remove("hidden");
-    balance -= 45000000;
+    balance -= 5400000;
     research30.element.parentNode.removeChild(research30.element);
     let index = activeResearch.indexOf(research30);
     activeResearch.splice(index, 1);
@@ -743,16 +791,16 @@ research.push(research39);
 var research40 = {
   id: "researchButton40",
   title: "Advanced escape plans ",
-  priceTag: "(300,000 alt\u0131nlar)",
+  priceTag: "(50,000 alt\u0131nlar)",
   description: "Invest in diversion tactics to improve expedition success rates",
-  trigger: function() {return balance >= 50000000 && research33.flag === 1},
+  trigger: function() {return balance >= 10000000 && research33.flag === 1},
   uses: 1,
-  cost: function() {return balance >= 108000000},
+  cost: function() {return balance >= 18000000},
   flag: 0,
   element: null,
   effect: function() {
     research40.flag = 1;
-    balance -= 108000000;
+    balance -= 18000000;
     escapePlans.classList.remove("hidden");
     escapePlansFlag = 5;
     research40.element.parentNode.removeChild(research40.element);
@@ -781,6 +829,10 @@ var research45 = {
     shopsMult += 0.5;
     fleetMult += 0.5;
     minesMult += 0.5;
+    employeesRPSText.innerText = empMult;
+    shopsRPSText.innerText = shopsMult * shopsRPS;
+    fleetRPSText.innerText = fleetMult * fleetRPS;
+    minesRPSText.innerText = minesMult * minesRPS;
     research45.element.parentNode.removeChild(research45.element);
     let index = activeResearch.indexOf(research45);
     activeResearch.splice(index, 1);
