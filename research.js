@@ -421,7 +421,7 @@ research.push(research17);
 var research18 = {
   id: "researchButton18",
   title: "Deeper drilling ",
-  priceTag: "(5,600 alt\u0131nlar)",
+  priceTag: "(2,700 alt\u0131nlar)",
   description: "Extracts 20% more gold per cycle",
   trigger: function() {return mines >= 2},
   uses: 1,
