@@ -517,7 +517,7 @@ var research21 = {
 research.push(research21);
 
 var research22 = {
-  id: "researchButton40",
+  id: "researchButton22",
   title: "Revenue Tracker ",
   priceTag: "(6 yiralar)",
   description: "Automatically calculates average revenue per second",
@@ -840,6 +840,96 @@ var research45 = {
 }
 
 research.push(research45);
+
+var research46 = {
+  id: "researchButton46",
+  title: "Buy off the core guard",
+  priceTag: "(XX alt\u0131nlar)",
+  description: "Pay the core guard to be loyal to the Mahisti family",
+  trigger: function() {return },
+  uses: 1,
+  cost: function() {return },
+  flag: 0,
+  element: null,
+  effect: function() {
+    research46.flag = 1;
+    balance -= 55555555;
+    research46.element.parentNode.removeChild(research46.element);
+    let index = activeResearch.indexOf(research46);
+    activeResearch.splice(index, 1);
+  }
+}
+  
+research.push(research46);
+
+var research47 = {
+  id: "researchButton47",
+  title: "Buy off the fringe guard",
+  priceTag: "(XX alt\u0131nlar)",
+  description: "Pay the fringe guard to be loyal to the Mahisti family",
+  trigger: function() {return },
+  uses: 1,
+  cost: function() {return },
+  flag: 0,
+  element: null,
+  effect: function() {
+    research47.flag = 1;
+
+    research47.element.parentNode.removeChild(research47.element);
+    let index = activeResearch.indexOf(research47);
+    activeResearch.splice(index, 1);
+  }
+}
+  
+research.push(research47);
+
+var research48 = {
+  id: "researchButton48",
+  title: "",
+  priceTag: "(XX alt\u0131nlar)",
+  description: "",
+  trigger: function() {return },
+  uses: 1,
+  cost: function() {return },
+  flag: 0,
+  element: null,
+  effect: function() {
+    research48.flag = 1;
+
+    research48.element.parentNode.removeChild(research48.element);
+    let index = activeResearch.indexOf(research48);
+    activeResearch.splice(index, 1);
+  }
+}
+  
+research.push(research48);
+
+var research49 = {
+  id: "researchButton49",
+  title: "Overthrow the Shahre and take over Ara\u015Ft",
+  priceTag: "(XX alt\u0131nlar)",
+  description: "",
+  trigger: function() {return },
+  uses: 1,
+  cost: function() {return },
+  flag: 0,
+  element: null,
+  effect: function() {
+    research49.flag = 1;
+    employeesDiv.classList.add("hidden");
+    shopsDiv.classList.add("hidden");
+    fleetDiv.classList.add("hidden");
+    minesDiv.classList.add("hidden");
+    discoveredSecretAnnouncementDiv.classList.add("hidden");
+    researchPoints2 = researchPoints;
+    happinessDiv.classList.remove("hidden");
+    research49.element.parentNode.removeChild(research49.element);
+    let index = activeResearch.indexOf(research49);
+    activeResearch.splice(index, 1);
+  }
+}
+  
+research.push(research49);
 
 /* var researchX = {
   id: "researchButtonX",

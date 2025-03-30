@@ -8,17 +8,17 @@
   </head>
   <body>
     <header>
-			<div class="title-version"><h1>MAHISTI CLICKER<span class="version">v3.6</span></h1></div>
+			<div class="title-version"><h1>MAHISTI CLICKER<span class="version">v4</span></h1></div>
       <div class="save-buttons">
-        <button id="save-btn">Save</button>
-        <button id="delete-btn">Delete Save</button>
+        <button id="save-btn" type="button">Save</button>
+        <button id="delete-btn" type="button">Delete Save</button>
       </div>
 		</header>
     <main>
       <div id="col1">
         <p class="balance">Money: <span id="balance">0</span> &#8365;</p>
         <p id="currency" class="hidden"><span id="altinlar"></span> &#570;, <span id="yiralar"></span> &#590;, and <span id="kurler"></span> &#8365;</p>
-        <button id="sell">Sell for 1 k&#252;r</button>
+        <button id="sell" type="button">Sell for 1 k&#252;r</button>
         <div id="rev-track-div" class="hidden">
           <p>Revenue per second: <span id="rev-tracker">0 &#8365;</span></p>
         </div>
@@ -26,22 +26,22 @@
           <h3>BUsiness</h3>
           <p>Employees: <span id="employees-count">0</span><br /><span id="employees-rps-element" class="small hidden">(<span id="employees-rps">1</span> per employee per sec)</span></p>
           <p>New employee: <span id="employee-cost">10 &#8365;</span></p>
-          <button id="hire">Hire an employee</button>
+          <button id="hire" type="button">Hire an employee</button>
         </div>
         <div id="shops-div" class="hidden">
           <p>Shops: <span id="shops-count">0</span><br /><span id="shops-rps-element" class="small hidden">(<span id="shops-rps">24</span> per shop per sec)</span></p>
           <p>New shop: <span id="shop-cost">3 &#570;</span></p>
-          <button id="buy-shop">Open a shop</button>
+          <button id="buy-shop" type="button">Open a shop</button>
         </div>
         <div id="fleet-div" class="hidden">
           <p>Fleet: <span id="fleet-count">0</span> ships<br /><span id="fleet-rps-element" class="small hidden">(<span id="fleet-rps">252</span> per ship per sec)</span></p>
           <p>New ship: <span id="fleet-cost">120 &#570;</span></p>
-          <button id="buy-ship">Buy a ship</button>
+          <button id="buy-ship" type="button">Buy a ship</button>
         </div>
         <div id="mines-div" class="hidden">
           <p>Mines: <span id="mines-count">0</span><br /><span id="mines-rps-element" class="small hidden">(<span id="mines-rps">3000</span> per mine per sec)</span></p>
           <p>New mine: <span id="mines-cost">1400 &#570;</span></p>
-          <button id="buy-mine">Open a gold mine</button>
+          <button id="buy-mine" type="button">Open a gold mine</button>
         </div>
       </div>
       <div id="col2">
@@ -67,7 +67,7 @@
         <div id="expeditions-div" class="hidden">
           <p>Research points: <span id="points-count">0</span></p>
           <h3>Expeditions</h3>
-          <button id="buy-research-ship">Buy new research ship</button>
+          <button id="buy-research-ship" type="button">Buy new research ship</button>
           <p>Cost: <span id="research-fleet-cost">200</span></p>
           <p>Research fleet: <span id="research-fleet-count">0</span> ships</p>
           <div id="expedition-options-engine">
@@ -86,7 +86,7 @@
             <p id="escape-plans" class="hidden">Advanced escape plans: active</p>
             <p>Expedition cost: <span id="launch-cost">0 &#570;</span><br /><span class="small">(Est. chance of success: <span id="success-rate">0</span>%)</span></p>
           </div>
-          <button id="launch-btn">Launch expedition</button>
+          <button id="launch-btn" type="button">Launch expedition</button>
           <div id="expedition-progress">
             <div id="expedition-progress-bar"></div>
           </div>
