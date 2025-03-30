@@ -31,8 +31,8 @@ const happinessDiv = document.getElementById("happiness-div");
 const happinessLevel = document.getElementById("happiness-level-text");
 const happinessBar = document.getElementById("happiness-bar");
 const happinessPSElem = document.getElementById("happiness-per-sec");
-const points2Elem = document.getElementById("points2-count");
 const expeditionsDiv = document.getElementById("expeditions-div");
+const pointsP = document.getElementById("points-p")
 const pointsCount = document.getElementById("points-count");
 const researchFleetCost = document.getElementById("research-fleet-cost");
 const researchFleetCount = document.getElementById("research-fleet-count");
@@ -181,13 +181,13 @@ var savegame;
 saveBtn.onclick = save;
 deleteBtn.onclick = deleteSave;
 sell.onclick = sellItem;
-/* hire.onclick = hireEmployee;
+hire.onclick = hireEmployee;
 buyShop.onclick = newShop;
 buyShip.onclick = newShip;
 buyMine.onclick = newMine;
 buyResearchShip.onclick = newResearchShip;
 launchBtn.onclick = launchExpedition;
-startOverBtn.onclick = startOver; */
+startOverBtn.onclick = startOver;
 
 // PURCHASE FUNCTIONS ----------------------
 
@@ -275,7 +275,7 @@ function revTracker() {
   revTrackerElement.innerText = rpsText;
 }
 
-/* function checkButtons() {
+function checkButtons() {
   if (balance < nextEmployee) {
     hire.disabled = true;
   } else {
@@ -306,7 +306,92 @@ function revTracker() {
   } else {
     launchBtn.disabled = false;
   }
-} */
+  if (balance < parseInt(principalPicker.value)) {
+    loanBtn.disabled = true;
+  } else {
+    loanBtn.disabled = false;
+  }
+  if (taxes1 <= 0) {
+    lowerTax1Btn.disabled = true;
+  } else if (taxes1 >= 9) {
+    raiseTax1Btn.disabled = true;
+  } else {
+    lowerTax1Btn.disabled = false;
+    raiseTax1Btn.disabled = false;
+  }
+  if (taxes2 <= 0) {
+    lowerTax2Btn.disabled = true;
+  } else if (taxes2 >= 9) {
+    raiseTax2Btn.disabled = true;
+  } else {
+    lowerTax2Btn.disabled = false;
+    raiseTax2Btn.disabled = false;
+  }
+  if (taxes3 <= 0) {
+    lowerTax3Btn.disabled = true;
+  } else if (taxes3 >= 9) {
+    raiseTax3Btn.disabled = true;
+  } else {
+    lowerTax3Btn.disabled = false;
+    raiseTax3Btn.disabled = false;
+  }
+  if (taxes4 <= 0) {
+    lowerTax4Btn.disabled = true;
+  } else if (taxes4 >= 9) {
+    raiseTax4Btn.disabled = true;
+  } else {
+    lowerTax4Btn.disabled = false;
+    raiseTax4Btn.disabled = false;
+  }
+  if (taxes5 <= 0) {
+    lowerTax5Btn.disabled = true;
+  } else if (taxes5 >= 9) {
+    raiseTax5Btn.disabled = true;
+  } else {
+    lowerTax5Btn.disabled = false;
+    raiseTax5Btn.disabled = false;
+  }
+  if (taxes6 <= 0) {
+    lowerTax6Btn.disabled = true;
+  } else if (taxes6 >= 9) {
+    raiseTax6Btn.disabled = true;
+  } else {
+    lowerTax6Btn.disabled = false;
+    raiseTax6Btn.disabled = false;
+  }
+  if (taxes7 <= 0) {
+    lowerTax7Btn.disabled = true;
+  } else if (taxes7 >= 9) {
+    raiseTax7Btn.disabled = true;
+  } else {
+    lowerTax7Btn.disabled = false;
+    raiseTax7Btn.disabled = false;
+  }
+  if (taxes8 <= 0) {
+    lowerTax8Btn.disabled = true;
+  } else if (taxes8 >= 9) {
+    raiseTax8Btn.disabled = true;
+  } else {
+    lowerTax8Btn.disabled = false;
+    raiseTax8Btn.disabled = false;
+  }
+  if (taxes9 <= 0) {
+    lowerTax9Btn.disabled = true;
+  } else if (taxes9 >= 9) {
+    raiseTax9Btn.disabled = true;
+  } else {
+    lowerTax9Btn.disabled = false;
+    raiseTax9Btn.disabled = false;
+  }
+  if (taxes10 <= 0) {
+    lowerTax10Btn.disabled = true;
+  } else if (taxes10 >= 9) {
+    raiseTax10Btn.disabled = true;
+  } else {
+    lowerTax10Btn.disabled = false;
+    raiseTax10Btn.disabled = false;
+  }
+}
 // TODO add all new buttons above
 
 function manageResearch() {
@@ -376,7 +461,12 @@ function calcLaunchCost() {
   typeValue = parseInt(typePicker.value);
   crewValue = parseInt(crewPicker.value);
   equipmentValue = parseInt(equipmentPicker.value);
-  successRate = typeValue + crewValue + equipmentValue + escapePlansFlag;
+  //successRate = typeValue + crewValue + equipmentValue + escapePlansFlag + researchShips;
+  if ((typeValue + crewValue + equipmentValue + researchShips) <= 90 ) {
+    successRate = typeValue + crewValue + equipmentValue + escapePlansFlag + researchShips;
+  } else {
+    successRate = 90 + escapePlansFlag;
+  }
 
   launchCost = 0;
 
@@ -399,9 +489,9 @@ function calcLaunchCost() {
   checkButtons();
 }
 
-/* typePicker.oninput = updateLaunchCost;
+typePicker.oninput = updateLaunchCost;
 crewPicker.oninput = updateLaunchCost;
-equipmentPicker.oninput = updateLaunchCost; */
+equipmentPicker.oninput = updateLaunchCost;
 
 function updateLaunchCost() {
   calcLaunchCost();
@@ -466,7 +556,7 @@ function launchExpedition() {
     }, 1500);
     launching = 0;
     loadDelay = true;
-  }, (time * 100) + 500);
+  }, (time * 10) + 500); //TODO time * 100
 }
 
 function progressBar(time) {
@@ -480,7 +570,7 @@ function progressBar(time) {
         width++;
         expeditionProgressBar.style.width = width + "%";
       }
-    }, time);
+    }, time/10); // TODO take out /10
   }
 }
 
@@ -494,29 +584,26 @@ function updateHappiness() {
   happinessLevel.style.marginLeft = (happiness - 1) + "%";
 }
 
-/* function calcResearchPts() {
-  researchPoints += 1;
-
-} */
-
 // LOANS -------------------------------------
 
 function signLoan() {
-  countryValue = countryPicker.value;
   principalValue = parseInt(principalPicker.value);
-  rateValue = parseInt(interestPicker.value);
-  timeValue = parseInt(timePicker.value);
-  loansList.push({
-    loanNum: loansList.length + 1,
-    country: countryValue,
-    principal: principalValue,
-    rate: rateValue,
-    time: timeValue,
-    paid: 0,
-    pmt: (Math.floor(((rateValue/100 * principalValue) / 12) * 100) / 100)
-  })
-  balance -= (principalValue * 360);
-  displayLoans();
+  if (balance >= principalValue && loansList.length <= maxLoans) {
+    countryValue = countryPicker.value;
+    rateValue = parseInt(interestPicker.value);
+    timeValue = parseInt(timePicker.value);
+    loansList.push({
+      loanNum: loansList.length + 1,
+      country: countryValue,
+      principal: principalValue,
+      rate: rateValue,
+      time: timeValue,
+      paid: 0,
+      pmt: (Math.floor(((rateValue/100 * principalValue) / 12) * 100) / 100)
+    })
+    balance -= (principalValue * 360);
+    displayLoans();
+  }
 }
 
 function updateLoans() {
@@ -559,7 +646,6 @@ function displayLoans() {
       } else {
         pr.innerText = "10,000 \u023a";
       }
-      //pr.innerText = loansList[i].principal;
       r.innerText = `${loansList[i].rate}%`;
       t.innerText = loansList[i].time;
       pd.innerText = `${Math.floor(loansList[i].paid)} \u023a`;
@@ -576,10 +662,10 @@ function displayLoans() {
 // TAXES -------------------------------------
 
 function updateTaxes(num) {
-  empMult += num;
-  shopsMult += num;
   fleetMult += num;
   minesMult += num;
+  happinessPS -= num;
+  happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
 }
 
 function lowerTax1() {
@@ -723,7 +809,16 @@ function refresh() {
   pointsCount.innerText = researchPoints;
   researchFleetCost.innerText = easyRead(nextResearchShip);
   researchFleetCount.innerText = researchShips;
-  //TODO add the info for updating the phase 3 elements
+  tax1TextElem.innerText = taxes1;
+  tax2TextElem.innerText = taxes2;
+  tax3TextElem.innerText = taxes3;
+  tax4TextElem.innerText = taxes4;
+  tax5TextElem.innerText = taxes5;
+  tax6TextElem.innerText = taxes6;
+  tax7TextElem.innerText = taxes7;
+  tax8TextElem.innerText = taxes8;
+  tax9TextElem.innerText = taxes9;
+  tax10TextElem.innerText = taxes10;
 
   if (research1.flag === 1) employeesDiv.classList.remove("hidden");
   if (research5.flag === 1) shopsDiv.classList.remove("hidden");
@@ -786,9 +881,14 @@ function refresh() {
     shopsDiv.classList.add("hidden");
     fleetDiv.classList.add("hidden");
     minesDiv.classList.add("hidden");
+    updateHappiness();
     happinessDiv.classList.remove("hidden");
+    pointsP.classList.remove("hidden");
   }
-  if (research69.flag === 1) loansEngineDiv.classList.remove("hidden");
+  if (research69.flag === 1) {
+    displayLoans();
+    loansEngineDiv.classList.remove("hidden")
+  };
   if (research70.flag === 1) taxesEngineDiv.classList.remove("hidden");
   if (research71.flag === 1) tax3Div.classList.remove("hidden");
   if (research72.flag === 1) tax4Div.classList.remove("hidden");
@@ -968,19 +1068,19 @@ window.setInterval(function() {
   balanceText.innerText = Math.floor(balance);
   manageResearch();
   convertCurrency(balance);
-  //checkButtons();
+  checkButtons();
   revTracker();
   if (balance >= 1000000000) billionaireAnnouncementDiv.classList.remove("hidden");
-  //if (research49.flag === 1) {
+  if (research49.flag === 1) {
     happiness += happinessPS;
     updateHappiness();
     researchPoints += researchMult;
-    points2Elem.innerText = researchPoints;
-    //if (research69.flag === 1) {
+    pointsCount.innerText = researchPoints;
+    if (research69.flag === 1) {
       updateLoans();
-    //}
-  //}
-}, 1000); //LIVE is 1000
+    }
+  }
+}, 100); //TODO LIVE is 1000
 
 window.setInterval(function() {
   save();  

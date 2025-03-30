@@ -1,9 +1,9 @@
 var balance = 0;
 
-var employees = 50;
-var shops = 40;
-var ships = 20;
-var mines = 10;
+var employees = 0;
+var shops = 0;
+var ships = 0;
+var mines = 0;
 
 var nextEmployee = 10;
 var nextShop = 1080;
@@ -14,12 +14,12 @@ var shopsRPS = 24;
 var fleetRPS = 252;
 var minesRPS = 3000;
 
-var empMult = 3;
-var shopsMult = 3.75;
-var fleetMult = 3.2;
-var minesMult = 2.15;
+var empMult = 1;
+var shopsMult = 1;
+var fleetMult = 1;
+var minesMult = 1;
 
-var researchPoints = 50;
+var researchPoints = 0;
 var researchShips = 0;
 var nextResearchShip = 72000;
 var launchCost = 0;
