@@ -392,7 +392,6 @@ function checkButtons() {
     raiseTax10Btn.disabled = false;
   }
 }
-// TODO add all new buttons above
 
 function manageResearch() {
   for(let i=0; i < research.length; i++) {
@@ -461,7 +460,6 @@ function calcLaunchCost() {
   typeValue = parseInt(typePicker.value);
   crewValue = parseInt(crewPicker.value);
   equipmentValue = parseInt(equipmentPicker.value);
-  //successRate = typeValue + crewValue + equipmentValue + escapePlansFlag + researchShips;
   if ((typeValue + crewValue + equipmentValue + researchShips) <= 90 ) {
     successRate = typeValue + crewValue + equipmentValue + escapePlansFlag + researchShips;
   } else {
@@ -514,16 +512,44 @@ function launchExpedition() {
   };
   launching = 1;
   expeditionResultText.innerHTML = `Expedition in progress...`;
-  calcLaunchCost();
+  
+  let typeValueTemp = parseInt(typePicker.value);
+  let crewValueTemp = parseInt(crewPicker.value);
+  let equipmentValueTemp = parseInt(equipmentPicker.value);
+  if ((typeValueTemp + crewValueTemp + equipmentValueTemp + researchShips) <= 90 ) {
+    successRate = typeValueTemp + crewValueTemp + equipmentValueTemp + escapePlansFlag + researchShips;
+  } else {
+    successRate = 90 + escapePlansFlag;
+  }
+
+  launchCost = 0;
+
+  for (let i=0; i < 3; i++) { //look through TYPES
+    if (typeValueTemp === expeditionOptionsList[i].value) {
+      launchCost += expeditionOptionsList[i].cost;
+    }
+  }
+  for (let i=3; i < 6; i++) { //look through CREWS
+    if (crewValueTemp === expeditionOptionsList[i].value) {
+      launchCost += expeditionOptionsList[i].cost;
+    }
+  }
+  for (let i=6; i < expeditionOptionsList.length; i++) { //look through EQUIPS
+    if (equipmentValueTemp === expeditionOptionsList[i].value) {
+      launchCost += expeditionOptionsList[i].cost;
+    }
+  }
+  launchCost = launchCost * researchShips;
+
   balance -= launchCost * 360;
   balanceText.innerText = Math.floor(balance);
   let currentShips = researchShips;
   let newResearchPoints = 0;
   let time = 50; 
 
-  if (typeValue === 30) {
+  if (typeValueTemp === 30) {
     time = 600;
-  } else if (typeValue === 10) {
+  } else if (typeValueTemp === 10) {
     time = 3000;
   }
   
@@ -534,10 +560,10 @@ function launchExpedition() {
 
     if (calcProbability(successRate/100)) { //success!
       for (let i=0; i < 3; i++) { //look through TYPES
-        if (typeValue === expeditionOptionsList[i].value) {
+        if (typeValueTemp === expeditionOptionsList[i].value) {
           newResearchPoints = expeditionOptionsList[i].result;
           researchPoints += newResearchPoints;
-          break;
+          //break;
         }
       }
       pointsCount.innerText = researchPoints;
@@ -556,7 +582,7 @@ function launchExpedition() {
     }, 1500);
     launching = 0;
     loadDelay = true;
-  }, (time * 10) + 500); //TODO time * 100
+  }, (time * 100) + 500); //live = time * 100
 }
 
 function progressBar(time) {
@@ -570,7 +596,7 @@ function progressBar(time) {
         width++;
         expeditionProgressBar.style.width = width + "%";
       }
-    }, time/10); // TODO take out /10
+    }, time); // testing = time/10
   }
 }
 
@@ -1070,7 +1096,7 @@ window.setInterval(function() {
   convertCurrency(balance);
   checkButtons();
   revTracker();
-  if (balance >= 1000000000) billionaireAnnouncementDiv.classList.remove("hidden");
+  if (research92.flag === 1 && balance >= 1000000000) billionaireAnnouncementDiv.classList.remove("hidden");
   if (research49.flag === 1) {
     happiness += happinessPS;
     updateHappiness();
@@ -1080,7 +1106,7 @@ window.setInterval(function() {
       updateLoans();
     }
   }
-}, 100); //TODO LIVE is 1000
+}, 1000); //TODO LIVE is 1000
 
 window.setInterval(function() {
   save();  

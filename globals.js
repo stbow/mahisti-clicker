@@ -32,66 +32,66 @@ const expeditionOptionsList = [
     title: "type1",
     picker: "type",
     value: 50,
-    cost: 80,
-    result: 10
+    cost: 400,
+    result: 2
   },
   {
     id: "exOpt24",
     title: "type2",
     picker: "type",
     value: 30,
-    cost: 600,
-    result: 50
+    cost: 3000,
+    result: 30
   },
   {
     id: "exOpt25",
     title: "type3",
     picker: "type",
     value: 10,
-    cost: 3000,
-    result: 150
+    cost: 15000,
+    result: 200
   },
   {
     id: "exOpt26",
     title: "crew1",
     picker: "crew",
     value: 10,
-    cost: 40
+    cost: 200
   },
   {
     id: "exOpt27",
     title: "crew2",
     picker: "crew",
     value: 15,
-    cost: 200
+    cost: 1000
   },
   {
     id: "exOpt28",
     title: "crew3",
     picker: "crew",
     value: 20,
-    cost: 1000
+    cost: 5000
   },
   {
     id: "exOpt29",
     title: "equip1",
     picker: "equip",
     value: 10,
-    cost: 30
+    cost: 150
   },
   {
     id: "exOpt30",
     title: "equip2",
     picker: "equip",
     value: 15,
-    cost: 100
+    cost: 500
   },
   {
     id: "exOpt31",
     title: "equip3",
     picker: "equip",
     value: 20,
-    cost: 1000
+    cost: 5000
   }
 ]
 

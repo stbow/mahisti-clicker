@@ -585,16 +585,16 @@ research.push(research31);
 var research32 = {
   id: "researchButton32",
   title: "Deep sea study ",
-  priceTag: "(100 points)",
+  priceTag: "(50 points)",
   description: "Venture into open waters - serpent attacks are possible, but payoff is greater",
   trigger: function() {return research31.flag === 1},
   uses: 1,
-  cost: function() {return researchPoints >= 100},
+  cost: function() {return researchPoints >= 50},
   flag: 0,
   element: null,
   effect: function() {
     research32.flag = 1;
-    researchPoints -= 100;
+    researchPoints -= 50;
     pointsCount.innerText = researchPoints;
     var list = document.getElementById("type-picker");
     var el = document.createElement("option");
@@ -612,16 +612,16 @@ research.push(research32);
 var research33 = {
   id: "researchButton33",
   title: "Forbidden waters expedition ",
-  priceTag: "(300 points)",
+  priceTag: "(200 points)",
   description: "Directly sail into serpent territory - high chance of losses but largest payoff",
   trigger: function() {return research32.flag === 1},
   uses: 1,
-  cost: function() {return researchPoints >= 300},
+  cost: function() {return researchPoints >= 200},
   flag: 0,
   element: null,
   effect: function() {
     research33.flag = 1;
-    researchPoints -= 300;
+    researchPoints -= 200;
     pointsCount.innerText = researchPoints;
     var list = document.getElementById("type-picker");
     var el = document.createElement("option");
@@ -639,17 +639,17 @@ research.push(research33);
 var research34 = {
   id: "researchButton34",
   title: "Hire inexperienced crews ",
-  priceTag: "(20 points)",
+  priceTag: "(10 points)",
   description: "Inexperienced (Level 1) crews are cheap, but more likely to make mistakes",
-  trigger: function() {return research31.flag === 1 && researchPoints >= 10},
+  trigger: function() {return research31.flag === 1},
   uses: 1,
-  cost: function() {return researchPoints >= 20},
+  cost: function() {return researchPoints >= 10},
   flag: 0,
   element: null,
   effect: function() {
     research34.flag = 1;
     crewPicker.classList.remove("hidden");
-    researchPoints -= 20;
+    researchPoints -= 10;
     pointsCount.innerText = researchPoints;
     research34.element.parentNode.removeChild(research34.element);
     let index = activeResearch.indexOf(research34);
@@ -662,16 +662,16 @@ research.push(research34);
 var research35 = {
   id: "researchButton35",
   title: "Hire more experienced crews ",
-  priceTag: "(150 points)",
+  priceTag: "(100 points)",
   description: "More experienced (Level 2) crews are more expensive, but more likely to survive",
   trigger: function() {return research34.flag === 1},
   uses: 1,
-  cost: function() {return researchPoints >= 150},
+  cost: function() {return researchPoints >= 100},
   flag: 0,
   element: null,
   effect: function() {
     research35.flag = 1;
-    researchPoints -= 150;
+    researchPoints -= 100;
     pointsCount.innerText = researchPoints;
     var list = document.getElementById("crew-picker");
     var el = document.createElement("option");
@@ -689,16 +689,16 @@ research.push(research35);
 var research36 = {
   id: "researchButton36",
   title: "Hire very experienced crews ",
-  priceTag: "(400 points)",
+  priceTag: "(300 points)",
   description: "Very experienced (Level 3) crews are most expensive, but most likely to survive",
   trigger: function() {return research35.flag === 1},
   uses: 1,
-  cost: function() {return researchPoints >= 400},
+  cost: function() {return researchPoints >= 300},
   flag: 0,
   element: null,
   effect: function() {
     research36.flag = 1;
-    researchPoints -= 400;
+    researchPoints -= 300;
     pointsCount.innerText = researchPoints;
     var list = document.getElementById("crew-picker");
     var el = document.createElement("option");
@@ -716,17 +716,17 @@ research.push(research36);
 var research37 = {
   id: "researchButton37",
   title: "Low quality supplies ",
-  priceTag: "(50 points)",
+  priceTag: "(20 points)",
   description: "Supply your research fleet with supplies and equipment",
   trigger: function() {return research31.flag === 1 && researchPoints >= 30},
   uses: 1,
-  cost: function() {return researchPoints >= 50},
+  cost: function() {return researchPoints >= 20},
   flag: 0,
   element: null,
   effect: function() {
     research37.flag = 1;
     equipmentPicker.classList.remove("hidden");
-    researchPoints -= 50;
+    researchPoints -= 20;
     pointsCount.innerText = researchPoints;
     research37.element.parentNode.removeChild(research37.element);
     let index = activeResearch.indexOf(research37);
@@ -739,16 +739,16 @@ research.push(research37);
 var research38 = {
   id: "researchButton38",
   title: "Medium quality supplies ",
-  priceTag: "(200 points)",
+  priceTag: "(150 points)",
   description: "Improve the supplies and equipment used for research expeditions",
   trigger: function() {return research37.flag === 1},
   uses: 1,
-  cost: function() {return researchPoints >= 200},
+  cost: function() {return researchPoints >= 150},
   flag: 0,
   element: null,
   effect: function() {
     research38.flag = 1;
-    researchPoints -= 200;
+    researchPoints -= 150;
     pointsCount.innerText = researchPoints;
     var list = document.getElementById("equipment-picker");
     var el = document.createElement("option");
@@ -766,16 +766,16 @@ research.push(research38);
 var research39 = {
   id: "researchButton39",
   title: "High quality supplies ",
-  priceTag: "(500 points)",
+  priceTag: "(400 points)",
   description: "Improve the supplies and equipment used for research expeditions",
   trigger: function() {return research38.flag === 1},
   uses: 1,
-  cost: function() {return researchPoints >= 500},
+  cost: function() {return researchPoints >= 400},
   flag: 0,
   element: null,
   effect: function() {
     research39.flag = 1;
-    researchPoints -= 500;
+    researchPoints -= 400;
     pointsCount.innerText = researchPoints;
     var list = document.getElementById("equipment-picker");
     var el = document.createElement("option");
@@ -793,16 +793,17 @@ research.push(research39);
 var research40 = {
   id: "researchButton40",
   title: "Advanced escape plans ",
-  priceTag: "(50,000 alt\u0131nlar)",
+  priceTag: "(50,000 \u023a + 500 pts)",
   description: "Invest in diversion tactics to improve expedition success rates",
   trigger: function() {return balance >= 10000000 && research33.flag === 1},
   uses: 1,
-  cost: function() {return balance >= 18000000},
+  cost: function() {return balance >= 18000000 && researchPoints >= 500},
   flag: 0,
   element: null,
   effect: function() {
     research40.flag = 1;
     balance -= 18000000;
+    researchPoints -= 500;
     escapePlans.classList.remove("hidden");
     escapePlansFlag = 5;
     research40.element.parentNode.removeChild(research40.element);
@@ -840,7 +841,7 @@ research.push(research45);
 var research46 = {
   id: "researchButton46",
   title: "Buy off the core guard",
-  priceTag: "(25,000 alt\u0131nlar)",
+  priceTag: "(25,000 \u023a)",
   description: "Pay the core guard to be loyal to the Mahisti family",
   trigger: function() {return research45.flag === 1},
   uses: 1,
@@ -861,7 +862,7 @@ research.push(research46);
 var research47 = {
   id: "researchButton47",
   title: "Buy off the fringe guard",
-  priceTag: "(35,000 alt\u0131nlar)",
+  priceTag: "(35,000 \u023a)",
   description: "Pay the fringe guard to be loyal to the Mahisti family",
   trigger: function() {return research46.flag === 1},
   uses: 1,
@@ -882,7 +883,7 @@ research.push(research47);
 var research49 = {
   id: "researchButton49",
   title: "Overthrow the Shahre and take over Ara\u015Ft ",
-  priceTag: "(1,000,000 alt\u0131nlar)",
+  priceTag: "(1,000,000 \u023a)",
   description: "Mines and fleet are now run by the crown, employees and shops are sold off",
   trigger: function() {return research47.flag === 1},
   uses: 1,
@@ -912,7 +913,7 @@ research.push(research49);
 var research50 = {
   id: "researchButton50",
   title: "Basic roads ",
-  priceTag: "(90,000 alt\u0131nlar)",
+  priceTag: "(90,000 \u023a)",
   description: "Upgrade to cobbled roads. Small increases to happiness and revenues",
   trigger: function() {return research49.flag === 1},
   uses: 1,
@@ -937,7 +938,7 @@ research.push(research50);
 var research51 = {
   id: "researchButton51",
   title: "Aqueducts and wells ",
-  priceTag: "(175,000 alt\u0131nlar)",
+  priceTag: "(175,000 \u023a)",
   description: "Provide clean water for a healthier citizenry",
   trigger: function() {return research50.flag === 1},
   uses: 1,
@@ -960,7 +961,7 @@ research.push(research51);
 var research52 = {
   id: "researchButton52",
   title: "Public bathhouses ",
-  priceTag: "(320,000 alt\u0131nlar)",
+  priceTag: "(320,000 \u023a)",
   description: "Improve hygiene and morale. Increases happiness, but decreases revenue",
   trigger: function() {return research51.flag === 1},
   uses: 1,
@@ -1139,19 +1140,19 @@ var r59count = 4;
 var research59 = {
   id: "researchButton59",
   title: "Host a cultural festival ",
-  priceTag: `${(-200000 * r59count) + 900000} \u023a`,
+  priceTag: "100,000 \u023a",
   description: "Promote unity through national events",
   trigger: function() {return happiness <= 30},
   uses: 5,
-  cost: function() {return balance >= (-200000 * r59count) + 900000},
+  cost: function() {return balance >= 360000},
   flag: 0,
   element: null,
   effect: function() {
     research59.flag = 1;
-    balance -= (-200000 * r59count) + 900000;
+    balance -= 360000; //(-200000 * r59count) + 900000
     happiness += 5;
     updateHappiness();
-    r59count--;
+    //r59count--;
     research59.element.parentNode.removeChild(research59.element);
     let index = activeResearch.indexOf(research59);
     activeResearch.splice(index, 1);
@@ -1257,7 +1258,7 @@ research.push(research64);
 
 var research65 = {
   id: "researchButton65",
-  title: "Invest in the Ministry of Intelligence ",
+  title: "Invest in Ministry of Intelligence ",
   priceTag: "(300,000 \u023a)",
   description: "If they told you, they'd have to kill you",
   trigger: function() {return research64.flag === 1},
@@ -1330,19 +1331,19 @@ var r68count = 4;
 var research68 = {
   id: "researchButton68",
   title: "Inventor's Challenge ",
-  priceTag: `${(-200000 * r68count) + 1200000} \u023a`,
+  priceTag: "1,200,000 \u023a",
   description: "Hold an empire-wide competition for the best new invention, idea, or process",
   trigger: function() {return research67.flag === 1 && balance >= 360000000 && researchPoints <= 1000},
-  uses: 5,
-  cost: function() {return balance >= (-200000 * r68count) + 1200000},
+  uses: 1,
+  cost: function() {return balance >= 432000000},
   flag: 0,
   element: null,
   effect: function() {
     research68.flag = 1;
-    balance -= (-200000 * r68count) + 1200000;
-    researchPoints += (-500 * r68count) + 2500;
+    balance -= 432000000; //(-200000 * r68count) + 1200000
+    researchPoints += 500; //(-500 * r68count) + 2500
     pointsCount.innerText = researchPoints;
-    r68count--;
+    //r68count--;
     research68.element.parentNode.removeChild(research68.element);
     let index = activeResearch.indexOf(research68);
     activeResearch.splice(index, 1);
