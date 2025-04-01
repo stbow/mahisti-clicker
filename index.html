@@ -8,17 +8,17 @@
   </head>
   <body>
     <header>
-			<div class="title-version"><h1>MAHISTI CLICKER<span class="version">v3.6</span></h1></div>
+			<div class="title-version"><h1>MAHISTI CLICKER<span class="version">v4.0</span></h1></div>
       <div class="save-buttons">
-        <button id="save-btn">Save</button>
-        <button id="delete-btn">Delete Save</button>
+        <button id="save-btn" type="button">Save</button>
+        <button id="delete-btn" type="button">Delete Save</button>
       </div>
 		</header>
     <main>
       <div id="col1">
         <p class="balance">Money: <span id="balance">0</span> &#8365;</p>
         <p id="currency" class="hidden"><span id="altinlar"></span> &#570;, <span id="yiralar"></span> &#590;, and <span id="kurler"></span> &#8365;</p>
-        <button id="sell">Sell for 1 k&#252;r</button>
+        <button id="sell" type="button">Sell for 1 k&#252;r</button>
         <div id="rev-track-div" class="hidden">
           <p>Revenue per second: <span id="rev-tracker">0 &#8365;</span></p>
         </div>
@@ -26,27 +26,39 @@
           <h3>BUsiness</h3>
           <p>Employees: <span id="employees-count">0</span><br /><span id="employees-rps-element" class="small hidden">(<span id="employees-rps">1</span> per employee per sec)</span></p>
           <p>New employee: <span id="employee-cost">10 &#8365;</span></p>
-          <button id="hire">Hire an employee</button>
+          <button id="hire" type="button">Hire an employee</button>
+          <button id="liquidate-emps-btn" type="button" class="hidden">Liquidate</button>
         </div>
         <div id="shops-div" class="hidden">
           <p>Shops: <span id="shops-count">0</span><br /><span id="shops-rps-element" class="small hidden">(<span id="shops-rps">24</span> per shop per sec)</span></p>
           <p>New shop: <span id="shop-cost">3 &#570;</span></p>
-          <button id="buy-shop">Open a shop</button>
+          <button id="buy-shop" type="button">Open a shop</button>
+          <button id="liquidate-shops-btn" type="button" class="hidden">Liquidate</button>
         </div>
         <div id="fleet-div" class="hidden">
           <p>Fleet: <span id="fleet-count">0</span> ships<br /><span id="fleet-rps-element" class="small hidden">(<span id="fleet-rps">252</span> per ship per sec)</span></p>
           <p>New ship: <span id="fleet-cost">120 &#570;</span></p>
-          <button id="buy-ship">Buy a ship</button>
+          <button id="buy-ship" type="button">Buy a ship</button>
         </div>
         <div id="mines-div" class="hidden">
           <p>Mines: <span id="mines-count">0</span><br /><span id="mines-rps-element" class="small hidden">(<span id="mines-rps">3000</span> per mine per sec)</span></p>
           <p>New mine: <span id="mines-cost">1400 &#570;</span></p>
-          <button id="buy-mine">Open a gold mine</button>
+          <button id="buy-mine" type="button">Open a gold mine</button>
+        </div>
+        <div id="happiness-div" class="hidden">
+          <h4>Happiness</h4>
+          <span id="happiness-level-text">50</span>
+          <div id="happiness-back">
+            <div id="happiness-bar"></div>
+          </div>
+          <span>0</span>
+          <span class="right">100</span>
+          <p>Happiness per second: <span id="happiness-per-sec">0</span></p>
         </div>
       </div>
       <div id="col2">
-        
         <h3>Research</h3>
+        <p id="points-p">Research points: <span id="points-count">0</span></p>
         <div id="research-list"></div>
       </div>
       <div id="col3">
@@ -65,9 +77,8 @@
           </div>
         </div>
         <div id="expeditions-div" class="hidden">
-          <p>Research points: <span id="points-count">0</span></p>
           <h3>Expeditions</h3>
-          <button id="buy-research-ship">Buy new research ship</button>
+          <button id="buy-research-ship" type="button">Buy new research ship</button>
           <p>Cost: <span id="research-fleet-cost">200</span></p>
           <p>Research fleet: <span id="research-fleet-count">0</span> ships</p>
           <div id="expedition-options-engine">
@@ -86,11 +97,207 @@
             <p id="escape-plans" class="hidden">Advanced escape plans: active</p>
             <p>Expedition cost: <span id="launch-cost">0 &#570;</span><br /><span class="small">(Est. chance of success: <span id="success-rate">0</span>%)</span></p>
           </div>
-          <button id="launch-btn">Launch expedition</button>
+          <button id="launch-btn" type="button">Launch expedition</button>
           <div id="expedition-progress">
             <div id="expedition-progress-bar"></div>
           </div>
           <p id="expedition-result-text"></p>
+        </div>
+        <div id="loans-engine" class="hidden">
+          <h3>Loans</h3>
+          <form name="form2" class="form2">
+            <select id="country-picker" autocomplete="off" class="small-picker">
+              <option value="0" selected disabled>Country</option>
+              <option value="Kafia">Kafia</option>
+              <option value="Qeteren">Qeteren</option>
+              <option value="Arjuneh">Arjuneh</option>
+              <option value="Laemuir">Laemuir</option>
+              <option value="Lapaladi">Lapaladi</option>
+              <option id="opt-oissos" value="Oissos" class="hidden">Oissos</option>
+              <option id="opt-kaskinen" value="Kaskinen" class="hidden">Kaskinen</option>
+              <option id="opt-vinte" value="Vinte" class="hidden">Vinte</option>
+              <option id="opt-heyrland" value="Heyrland" class="hidden">Heyrland</option>
+              <option id="opt-amariyan" value="Amariyan" class="hidden">Amariyan</option>
+              <option id="opt-mapsut" value="MapSut" class="hidden">Map Sut</option>
+              <option id="opt-genzhu" value="Genzhu" class="hidden">Genzhu</option>
+              <option id="opt-pezia" value="Pezia" class="hidden">Pezia</option>
+              <option id="opt-cascavey" value="Cascavey" class="hidden">Cascavey</option>
+            </select>
+            <select id="principal-picker" autocomplete="off" class="small-picker">
+              <option value="0" selected disabled>Principal</option>
+              <option value="100">100 &#570;</option>
+              <option value="1000">1,000 &#570;</option>
+              <option value="10000">10,000 &#570;</option>
+            </select>
+            <select id="interest-picker" autocomplete="off" class="small-picker">
+              <option value="0" selected disabled>Rate</option>
+              <option value="5">5%</option>
+              <option id="10pc" value="10" class="hidden">10%</option>
+              <option id="20pc" value="20" class="hidden">20%</option>
+            </select>
+            <select id="time-picker" autocomplete="off" class="small-picker">
+              <option value="0" selected disabled>Time</option>
+              <option value="12">1 year</option>
+              <option id="5y" value="60" class="hidden">5 years</option>
+              <option id="15y" value="180" class="hidden">15 years</option>
+              <option id="25y" value="300" class="hidden">25 years</option>
+              <option id="40y" value="480" class="hidden">40 years</option>
+            </select>
+            <button id="loan-btn" class="btn2" type="button" onclick="signLoan()">Sign</button>
+          </form>
+          <table id="loans-list">
+            <tr>
+              <th width="20px"></th>
+              <th width="80px">Country</th>
+              <th width="80px">Principal</th>
+              <th width="42px">Rate</th>
+              <th width="42px">Time</th>
+              <th width="76px">Paid</th>
+            </tr>
+            <tr id="loan1-slot">
+              <td>1. </td>
+              <td id="country1"></td>
+              <td id="principal1"></td>
+              <td id="rate1"></td>
+              <td id="time1"></td>
+              <td id="paid1"></td>
+            </tr>
+            <tr id="loan2-slot">
+              <td>2. </td>
+              <td id="country2"></td>
+              <td id="principal2"></td>
+              <td id="rate2"></td>
+              <td id="time2"></td>
+              <td id="paid2"></td>
+            </tr>
+            <tr id="loan3-slot">
+              <td>3. </td>
+              <td id="country3"></td>
+              <td id="principal3"></td>
+              <td id="rate3"></td>
+              <td id="time3"></td>
+              <td id="paid3"></td>
+            </tr>
+            <tr id="loan4-slot">
+              <td>4. </td>
+              <td id="country4"></td>
+              <td id="principal4"></td>
+              <td id="rate4"></td>
+              <td id="time4"></td>
+              <td id="paid4"></td>
+            </tr>
+            <tr id="loan5-slot">
+              <td>5. </td>
+              <td id="country5"></td>
+              <td id="principal5"></td>
+              <td id="rate5"></td>
+              <td id="time5"></td>
+              <td id="paid5"></td>
+            </tr>
+            <tr id="loan6-slot" class="hidden">
+              <td>6. </td>
+              <td id="country6"></td>
+              <td id="principal6"></td>
+              <td id="rate6"></td>
+              <td id="time6"></td>
+              <td id="paid6"></td>
+            </tr>
+            <tr id="loan7-slot" class="hidden">
+              <td>7. </td>
+              <td id="country7"></td>
+              <td id="principal7"></td>
+              <td id="rate7"></td>
+              <td id="time7"></td>
+              <td id="paid7"></td>
+            </tr>
+            <tr id="loan8-slot" class="hidden">
+              <td>8. </td>
+              <td id="country8"></td>
+              <td id="principal8"></td>
+              <td id="rate8"></td>
+              <td id="time8"></td>
+              <td id="paid8"></td>
+            </tr>
+            <tr id="loan9-slot" class="hidden">
+              <td>9. </td>
+              <td id="country9"></td>
+              <td id="principal9"></td>
+              <td id="rate9"></td>
+              <td id="time9"></td>
+              <td id="paid9"></td>
+            </tr>
+            <tr id="loan10-slot" class="hidden">
+              <td>10. </td>
+              <td id="country10"></td>
+              <td id="principal10"></td>
+              <td id="rate10"></td>
+              <td id="time10"></td>
+              <td id="paid10"></td>
+            </tr>
+          </table>
+        </div>
+        <div id="taxes-engine" class="hidden">
+          <h3>Taxes</h3>
+          <div id="tax1">
+            <button id="btn-lower-tax1" class="btn2 bottom-margin" type="button" onclick="lowerTax1()"><</button>
+            <span id="tax1-display">0</span>
+            <button id="btn-raise-tax1" class="btn2 bottom-margin" type="button" onclick="raiseTax1()">></button>
+            Grain harvesting, livestock herding
+          </div>
+          <div id="tax2">
+            <button id="btn-lower-tax2" class="btn2 bottom-margin" type="button" onclick="lowerTax2()"><</button>
+            <span id="tax2-display">1</span>
+            <button id="btn-raise-tax2" class="btn2 bottom-margin" type="button" onclick="raiseTax2()">></button>
+            Lumber mills, stone quarries
+          </div>
+          <div id="tax3" class="hidden">
+            <button id="btn-lower-tax3" class="btn2 bottom-margin" type="button" onclick="lowerTax3()"><</button>
+            <span id="tax3-display">4</span>
+            <button id="btn-raise-tax3" class="btn2 bottom-margin" type="button" onclick="raiseTax3()">></button>
+            Textile workshops, blacksmithing
+          </div>
+          <div id="tax4" class="hidden">
+            <button id="btn-lower-tax4" class="btn2 bottom-margin" type="button" onclick="lowerTax4()"><</button>
+            <span id="tax4-display">7</span>
+            <button id="btn-raise-tax4" class="btn2 bottom-margin" type="button" onclick="raiseTax4()">></button>
+            Salt mills
+          </div>
+          <div id="tax5" class="hidden">
+            <button id="btn-lower-tax5" class="btn2 bottom-margin" type="button" onclick="lowerTax5()"><</button>
+            <span id="tax5-display">9</span>
+            <button id="btn-raise-tax5" class="btn2 bottom-margin" type="button" onclick="raiseTax5()">></button>
+            Tanneries & leatherworks
+          </div>
+          <div id="tax6" class="hidden">
+            <button id="btn-lower-tax6" class="btn2 bottom-margin" type="button" onclick="lowerTax6()"><</button>
+            <span id="tax6-display">4</span>
+            <button id="btn-raise-tax6" class="btn2 bottom-margin" type="button" onclick="raiseTax6()">></button>
+            Textile workshops, blacksmithing
+          </div>
+          <div id="tax7" class="hidden">
+            <button id="btn-lower-tax7" class="btn2 bottom-margin" type="button" onclick="lowerTax7()"><</button>
+            <span id="tax7-display">7</span>
+            <button id="btn-raise-tax7" class="btn2 bottom-margin" type="button" onclick="raiseTax7()">></button>
+            Salt mills
+          </div>
+          <div id="tax8" class="hidden">
+            <button id="btn-lower-tax8" class="btn2 bottom-margin" type="button" onclick="lowerTax8()"><</button>
+            <span id="tax8-display">9</span>
+            <button id="btn-raise-tax8" class="btn2 bottom-margin" type="button" onclick="raiseTax8()">></button>
+            Tanneries & leatherworks
+          </div>
+          <div id="tax9" class="hidden">
+            <button id="btn-lower-tax9" class="btn2 bottom-margin" type="button" onclick="lowerTax9()"><</button>
+            <span id="tax9-display">4</span>
+            <button id="btn-raise-tax9" class="btn2 bottom-margin" type="button" onclick="raiseTax9()">></button>
+            Textile workshops, blacksmithing
+          </div>
+          <div id="tax10" class="hidden">
+            <button id="btn-lower-tax10" class="btn2 bottom-margin" type="button" onclick="lowerTax10()"><</button>
+            <span id="tax10-display">7</span>
+            <button id="btn-raise-tax10" class="btn2 bottom-margin" type="button" onclick="raiseTax10()">></button>
+            Salt mills
+          </div>
         </div>
       </div>
     </main>
