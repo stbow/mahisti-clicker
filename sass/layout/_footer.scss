@@ -1,0 +1,27 @@
+@use '../utilities/index' as *;
+
+footer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: 1rem;
+  text-align: right;
+  a {
+    &:link {
+      color: $gold;
+      text-decoration: none;
+    }
+    &:visited {
+      color: hsl(51, 100%, 44%);
+      text-decoration: none;
+    }
+    &:hover {
+      color: $lightgold;
+      text-decoration: underline;
+    }
+    &:active {
+      color: $lightgold;
+      text-decoration: underline;
+    }
+  }
+}

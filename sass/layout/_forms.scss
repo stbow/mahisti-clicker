@@ -1,0 +1,6 @@
+@use '../utilities/index' as *;
+
+.form2 {
+  @include flex(row, space-between, middle);
+}
+

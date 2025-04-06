@@ -1,0 +1,32 @@
+@use '../utilities/index' as *;
+
+#expeditions-div {
+  margin-top: 1em;
+}
+
+#happiness-div {
+  width: 275px;
+}
+
+#loans-engine, #taxes-engine {
+  margin-bottom: 1em;
+  padding: 4px;
+  @include bordered($gold, 1px);
+}
+
+#loans-list {
+  width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+tr {
+  border-bottom: 1px solid $lightgold;
+  border-top: 1px solid $lightgold;
+}
+
+th {
+  text-align: left;
+}

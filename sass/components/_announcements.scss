@@ -1,0 +1,20 @@
+@use '../utilities/index' as *;
+
+.announcement {
+  margin-top: 1rem;
+  padding: 6px;
+  @include bordered($gold, 2px);
+  p {
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+}
+
+#announcements-list {
+  margin-top: 1rem;
+  color: $gold;
+}
+
+#congrats-text {
+  font-weight: bold;
+}

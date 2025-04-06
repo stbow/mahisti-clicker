@@ -1,0 +1,28 @@
+@charset 'utf-8';
+
+@use 'utilities/variables';
+@use 'utilities/mixins';
+
+@use 'base/reset';
+@use 'base/helpers';
+@use 'base/typography';
+
+@use 'layout/structure';
+@use 'layout/footer';
+@use 'layout/forms';
+@use 'layout/header';
+
+@use 'components/announcements';
+@use 'components/buttons';
+@use 'components/dropdowns';
+@use 'components/loaders';
+
+@use 'themes/theme';
+
+@media only screen and (max-width: 950px) {
+  main { grid-template-columns: 300px 300px;}
+}
+
+@media only screen and (max-width: 599px) {
+  main { grid-template-columns: 300px; }
+}

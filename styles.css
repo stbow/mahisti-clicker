@@ -257,3 +257,10 @@ footer a:active {
 @media only screen and (max-width: 599px) {
   main { grid-template-columns: 300px; }
 }
+
+/* declarations order: 
+position - location, margin, padding
+display - block/etc, borders
+colors, 
+font, 
+miscellaneous */

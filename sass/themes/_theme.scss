@@ -1,0 +1,17 @@
+@use '../utilities/index' as *;
+
+body {
+  background-color: $darkblue;
+  color: $white;
+  font-family: $font-stack;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 300px 300px 350px;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}

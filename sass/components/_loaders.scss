@@ -1,0 +1,28 @@
+@use '../utilities/index' as *;
+
+#expedition-progress {
+  width: 100%;
+  margin-top: 1em;
+  background-color: $gray;
+}
+
+#expedition-progress-bar {
+  @include box(1%, 20px);
+  background-color: $gold;
+}
+
+#happiness-back {
+  width: 100%;
+  border-radius: 4px;
+  background-color: $gray;
+}
+
+#happiness-level-text {
+  margin-left: 49%;
+}
+
+#happiness-bar {
+  @include box(50%, 20px);
+  border-radius: 4px;
+  background-color: $gold;
+}
