@@ -83,6 +83,7 @@ button:disabled {
 
 #expeditions-div {
   margin-top: 1em;
+  min-width: 275px;
 }
 
 .research-button {
@@ -137,6 +138,7 @@ select {
 #announcements-list {
   margin-top: 1rem;
   color: #FFD700;
+  min-width: 275px;
 }
 
 #congrats-text {
@@ -171,6 +173,7 @@ select {
 #loans-engine, #taxes-engine {
   border: 1px solid #FFD700;
   padding: 4px;
+  min-width: 275px;
   margin-bottom: 1em;
 }
 
@@ -201,6 +204,7 @@ select {
 
 #loans-list {
   width: 100%;
+  min-width: 275px;
 }
 
 table {
