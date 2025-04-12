@@ -1,0 +1,35 @@
+@use '../utilities/variables' as *;
+
+@mixin bordered($color, $width: 2px) {
+  border:  $width solid $color;
+}
+
+@mixin box($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin font-face($font-name, $path, $weight: normal, $style: normal) {
+  @font-face {
+    font-family: quote($font-name);
+    src: url($path+".eot");
+    src: url($path+".eot?#iefix") format("embedded-opentype"), 
+      url($path+".woff2") format("woff2")
+      url($path+".woff") format("woff");
+    font-weight: $weight;
+    font-style: $style;
+    font-display: swap;
+  }
+}
+
+@mixin main-fonts {
+  font-family: $font-stack;
+}
+
+@mixin flex($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: wrap;
+  justify-content: $justify;
+  align-items: $align;
+}

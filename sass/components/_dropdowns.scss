@@ -1,0 +1,18 @@
+@use '../utilities/index' as *;
+
+select {
+  width: 225px;
+  margin-bottom: 6px;
+  padding: 4px;
+  @include bordered($lightgold);
+  border-radius: 2px;
+  background-color: $gold;
+  @include main-fonts;
+}
+
+.small-picker {
+  @include box(auto, 22px);
+  margin-bottom: 6px;
+  padding: 2px;
+  border-radius: 2px;
+}

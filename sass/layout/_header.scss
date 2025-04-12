@@ -1,0 +1,24 @@
+@use '../utilities/index' as *;
+
+header {
+  @include flex(row, space-between, baseline);
+}
+
+header, h1, h2, h3, h4 {
+  margin: 0;
+  color: $gold;
+  font-family: 'UnderWorld', 'Brush Script MT';
+}
+
+h2, h3, h4 {
+  margin-top: 0.7rem;
+  margin-bottom: 1rem;
+}
+
+.version {
+  font: {
+    family: 'Courier New', Courier, monospace;
+    size: 1rem;
+    weight: 400;
+  }
+}
