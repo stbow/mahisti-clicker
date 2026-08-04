@@ -2,20 +2,23 @@
 
 #expeditions-div {
   margin-top: 1em;
+  @include engine-sizing;
 }
 
 #happiness-div {
-  width: 275px;
+  @include engine-sizing;
 }
 
 #loans-engine, #taxes-engine {
   margin-bottom: 1em;
   padding: 4px;
+  min-width: 280px;
   @include bordered($gold, 1px);
 }
 
 #loans-list {
   width: 100%;
+  @include engine-sizing;
 }
 
 table {
