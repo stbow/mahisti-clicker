@@ -236,7 +236,7 @@ research.push(research9);
 var research10 = {
   id: "researchButton10",
   title: "Renovate shops ",
-  priceTag: "(10 \u023a per shop)",
+  priceTag: "(11 \u023a per shop)",
   description: "Shops generate 50% higher revenue",
   trigger: function() {return research8.flag === 1},
   uses: 1,
