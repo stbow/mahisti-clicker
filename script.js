@@ -250,9 +250,9 @@ function convertCurrency(num) {
 }
 
 function easyRead(num) {
-  a = Math.ceil(num / 360);
-  y = Math.ceil(num % 360 / 30);
-  k = Math.ceil(num % 360 % 30);
+  let a = Math.ceil(num / 360);
+  let y = Math.ceil(num % 360 / 30);
+  let k = Math.ceil(num % 360 % 30);
   if (num >= 331) {
     return `${a} \u023a`;
   } else if (num >= 30) {
