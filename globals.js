@@ -104,14 +104,6 @@ var happiness = 50;
 var happinessPS = 0;
 var researchMult = 1;
 
-var loansList = [];
-
-var maxLoans = 5;
-var countryValue;
-var principalValue;
-var rateValue;
-var timeValue;
-
 var taxes1 = 0;
 var taxes2 = 0;
 var taxes3 = 0;

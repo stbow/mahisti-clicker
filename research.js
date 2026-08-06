@@ -1352,7 +1352,7 @@ var research68 = {
   
 research.push(research68);
 
-var research69 = {
+/* var research69 = {
   id: "researchButton69",
   title: "Issue loans to other countries ",
   priceTag: "(400 points)",
@@ -1373,7 +1373,7 @@ var research69 = {
   }
 }
   
-research.push(research69);
+research.push(research69); */
 
 var research70 = {
   id: "researchButton70",
@@ -1582,7 +1582,7 @@ var research78 = {
 
 research.push(research78);
 
-var research81 = {
+/* var research81 = {
   id: "researchButton81",
   title: "Increase loan capacity ",
   priceTag: "(700 points)",
@@ -1604,9 +1604,9 @@ var research81 = {
   }
 }
   
-research.push(research81);
+research.push(research81); */
 
-var research82 = {
+/* var research82 = {
   id: "researchButton82",
   title: "Increase loan capacity ",
   priceTag: "(2,000 points)",
@@ -1628,9 +1628,9 @@ var research82 = {
   }
 }
   
-research.push(research82);
+research.push(research82); */
 
-var research83 = {
+/* var research83 = {
   id: "researchButton83",
   title: "Increase loan capacity ",
   priceTag: "(3,400 points)",
@@ -1652,9 +1652,9 @@ var research83 = {
   }
 }
   
-research.push(research83);
+research.push(research83); */
 
-var research84 = {
+/* var research84 = {
   id: "researchButton84",
   title: "Increase loan capacity ",
   priceTag: "(5,000 points)",
@@ -1676,9 +1676,9 @@ var research84 = {
   }
 }
 
-research.push(research84);
+research.push(research84); */
 
-var research85 = {
+/* var research85 = {
   id: "researchButton85",
   title: "Increase loan capacity ",
   priceTag: "(6,500 points)",
@@ -1700,9 +1700,9 @@ var research85 = {
   }
 }
 
-research.push(research85);
+research.push(research85); */
 
-var research86 = {
+/* var research86 = {
   id: "researchButton86",
   title: "Loan to more countries ",
   priceTag: "(600 points)",
@@ -1725,9 +1725,9 @@ var research86 = {
   }
 }
 
-research.push(research86);
+research.push(research86); */
 
-var research87 = {
+/* var research87 = {
   id: "researchButton87",
   title: "Loan to more countries ",
   priceTag: "(2,600 points)",
@@ -1750,9 +1750,9 @@ var research87 = {
   }
 }
 
-research.push(research87);
+research.push(research87); */
 
-var research88 = {
+/* var research88 = {
   id: "researchButton88",
   title: "Loan to more countries ",
   priceTag: "(5,500 points)",
@@ -1775,9 +1775,9 @@ var research88 = {
   }
 }
 
-research.push(research88);
+research.push(research88); */
 
-var research89 = {
+/* var research89 = {
   id: "researchButton89",
   title: "Charge higher interest ",
   priceTag: "(1,000 points)",
@@ -1798,9 +1798,9 @@ var research89 = {
   }
 }
 
-research.push(research89);
+research.push(research89); */
 
-var research90 = {
+/* var research90 = {
   id: "researchButton90",
   title: "Charge even higher interest ",
   priceTag: "(3,000 points)",
@@ -1821,9 +1821,9 @@ var research90 = {
   }
 }
 
-research.push(research90);
+research.push(research90); */
 
-var research91 = {
+/* var research91 = {
   id: "researchButton91",
   title: "Loan for longer terms ",
   priceTag: "(1,400 points)",
@@ -1845,9 +1845,9 @@ var research91 = {
   }
 }
 
-research.push(research91);
+research.push(research91); */
 
-var research92 = {
+/* var research92 = {
   id: "researchButton92",
   title: "Loan for even longer terms ",
   priceTag: "(4,200 points)",
@@ -1869,7 +1869,7 @@ var research92 = {
   }
 }
 
-research.push(research92);
+research.push(research92); */
 
     /* var researchX = {
   id: "researchButtonX",

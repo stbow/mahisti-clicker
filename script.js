@@ -48,81 +48,6 @@ const expeditionResultText = document.getElementById("expedition-result-text");
 const currencyBaseAnnouncementDiv = document.getElementById("currency-base-announcement");
 const discoveredSecretAnnouncementDiv = document.getElementById("discovered-secret-announcement");
 const billionaireAnnouncementDiv = document.getElementById("billionaire-announcement");
-const loansEngineDiv = document.getElementById("loans-engine");
-const countryPicker = document.getElementById("country-picker");
-const optOissos = document.getElementById("opt-oissos");
-const optKaskinen = document.getElementById("opt-kaskinen");
-const optVinte = document.getElementById("opt-vinte");
-const optHeyrland = document.getElementById("opt-heyrland");
-const optAmariyan = document.getElementById("opt-amariyan");
-const optMapSut = document.getElementById("opt-mapsut");
-const optGenzhu = document.getElementById("opt-genzhu");
-const optPezia = document.getElementById("opt-pezia");
-const optCascavey = document.getElementById("opt-cascavey");
-const principalPicker = document.getElementById("principal-picker");
-const interestPicker = document.getElementById("interest-picker");
-const opt10pc = document.getElementById("10pc");
-const opt20pc = document.getElementById("20pc");
-const timePicker = document.getElementById("time-picker");
-const opt5y = document.getElementById("5y");
-const opt15y = document.getElementById("15y");
-const opt25y = document.getElementById("25y");
-const opt40y = document.getElementById("40y");
-const loan6Slot = document.getElementById("loan6-slot");
-const loan7Slot = document.getElementById("loan7-slot");
-const loan8Slot = document.getElementById("loan8-slot");
-const loan9Slot = document.getElementById("loan9-slot");
-const loan10Slot = document.getElementById("loan10-slot");
-const loan1C = document.getElementById("country1");
-const loan1Pr = document.getElementById("principal1");
-const loan1R = document.getElementById("rate1");
-const loan1T = document.getElementById("time1");
-const loan1Pd = document.getElementById("paid1");
-const loan2C = document.getElementById("country2");
-const loan2Pr = document.getElementById("principal2");
-const loan2R = document.getElementById("rate2");
-const loan2T = document.getElementById("time2");
-const loan2Pd = document.getElementById("paid2");
-const loan3C = document.getElementById("country3");
-const loan3Pr = document.getElementById("principal3");
-const loan3R = document.getElementById("rate3");
-const loan3T = document.getElementById("time3");
-const loan3Pd = document.getElementById("paid3");
-const loan4C = document.getElementById("country4");
-const loan4Pr = document.getElementById("principal4");
-const loan4R = document.getElementById("rate4");
-const loan4T = document.getElementById("time4");
-const loan4Pd = document.getElementById("paid4");
-const loan5C = document.getElementById("country5");
-const loan5Pr = document.getElementById("principal5");
-const loan5R = document.getElementById("rate5");
-const loan5T = document.getElementById("time5");
-const loan5Pd = document.getElementById("paid5");
-const loan6C = document.getElementById("country6");
-const loan6Pr = document.getElementById("principal6");
-const loan6R = document.getElementById("rate6");
-const loan6T = document.getElementById("time6");
-const loan6Pd = document.getElementById("paid6");
-const loan7C = document.getElementById("country7");
-const loan7Pr = document.getElementById("principal7");
-const loan7R = document.getElementById("rate7");
-const loan7T = document.getElementById("time7");
-const loan7Pd = document.getElementById("paid7");
-const loan8C = document.getElementById("country8");
-const loan8Pr = document.getElementById("principal8");
-const loan8R = document.getElementById("rate8");
-const loan8T = document.getElementById("time8");
-const loan8Pd = document.getElementById("paid8");
-const loan9C = document.getElementById("country9");
-const loan9Pr = document.getElementById("principal9");
-const loan9R = document.getElementById("rate9");
-const loan9T = document.getElementById("time9");
-const loan9Pd = document.getElementById("paid9");
-const loan100C = document.getElementById("country10");
-const loan10Pr = document.getElementById("principal10");
-const loan10R = document.getElementById("rate10");
-const loan10T = document.getElementById("time10");
-const loan10Pd = document.getElementById("paid10");
 const taxesEngineDiv = document.getElementById("taxes-engine");
 const tax1Div = document.getElementById("tax1");
 const tax2Div = document.getElementById("tax2");
@@ -171,7 +96,6 @@ const raiseTax9Btn = document.getElementById("btn-raise-tax9");
 const lowerTax10Btn = document.getElementById("btn-lower-tax10");
 const tax10TextElem = document.getElementById("tax10-display");
 const raiseTax10Btn = document.getElementById("btn-raise-tax10");
-const loanBtn = document.getElementById("loan-btn");
 const startOverBtn = document.getElementById("start-over-btn");
 
 var savegame;
@@ -305,11 +229,6 @@ function checkButtons() {
     launchBtn.disabled = true;
   } else {
     launchBtn.disabled = false;
-  }
-  if (balance < parseInt(principalPicker.value)) {
-    loanBtn.disabled = true;
-  } else {
-    loanBtn.disabled = false;
   }
   if (taxes1 <= 0) {
     lowerTax1Btn.disabled = true;
@@ -610,81 +529,6 @@ function updateHappiness() {
   happinessLevel.style.marginLeft = (happiness - 1) + "%";
 }
 
-// LOANS -------------------------------------
-
-function signLoan() {
-  principalValue = parseInt(principalPicker.value);
-  if (balance >= principalValue && loansList.length <= maxLoans) {
-    countryValue = countryPicker.value;
-    rateValue = parseInt(interestPicker.value);
-    timeValue = parseInt(timePicker.value);
-    loansList.push({
-      loanNum: loansList.length + 1,
-      country: countryValue,
-      principal: principalValue,
-      rate: rateValue,
-      time: timeValue,
-      paid: 0,
-      pmt: (Math.floor(((rateValue/100 * principalValue) / 12) * 100) / 100)
-    })
-    balance -= (principalValue * 360);
-    displayLoans();
-  }
-}
-
-function updateLoans() {
-  for (let i=0; i < loansList.length; i++) {
-    let currTime = loansList[i].time;
-    let currPaid = loansList[i].paid;
-    currTime--;
-    currPaid += loansList[i].pmt;
-    loansList[i].time = currTime;
-    loansList[i].paid = currPaid;
-    balance += loansList[i].pmt * 360;
-  }
-  displayLoans();
-  for (let i= (loansList.length-1); i>=0; i--) {
-    if (loansList[i].time <= 0) {
-      balance += loansList[i].principal;
-      loansList.splice(i, 1);
-    }
-  }
-}
-
-function displayLoans() {
-  for (let i=0; i < maxLoans; i++) {
-    let cid = "country" + (i + 1);
-    let prid = "principal" + (i + 1);
-    let rid = "rate" + (i + 1);
-    let tid = "time" + (i + 1);
-    let pdid = "paid" + (i + 1);
-    let c = document.getElementById(cid);
-    let pr = document.getElementById(prid);
-    let r = document.getElementById(rid);
-    let t = document.getElementById(tid);
-    let pd = document.getElementById(pdid);
-    if (typeof loansList[i] !== 'undefined') {
-      c.innerText = loansList[i].country;
-      if (loansList[i].principal === 100) {
-        pr.innerText = "100 \u023a";
-      } else if (loansList[i].principal === 1000) {
-        pr.innerText = "1,000 \u023a";
-      } else {
-        pr.innerText = "10,000 \u023a";
-      }
-      r.innerText = `${loansList[i].rate}%`;
-      t.innerText = loansList[i].time;
-      pd.innerText = `${Math.floor(loansList[i].paid)} \u023a`;
-    } else {
-      c.innerText = "";
-      pr.innerText = "";
-      r.innerText = "";
-      t.innerText = "";
-      pd.innerText = "";
-    }
-  }
-}
-
 // TAXES -------------------------------------
 
 function updateTaxes(num) {
@@ -911,10 +755,6 @@ function refresh() {
     happinessDiv.classList.remove("hidden");
     pointsP.classList.remove("hidden");
   }
-  if (research69.flag === 1) {
-    displayLoans();
-    loansEngineDiv.classList.remove("hidden")
-  };
   if (research70.flag === 1) taxesEngineDiv.classList.remove("hidden");
   if (research71.flag === 1) tax3Div.classList.remove("hidden");
   if (research72.flag === 1) tax4Div.classList.remove("hidden");
@@ -924,40 +764,6 @@ function refresh() {
   if (research76.flag === 1) tax8Div.classList.remove("hidden");
   if (research77.flag === 1) tax9Div.classList.remove("hidden");
   if (research78.flag === 1) tax10Div.classList.remove("hidden");
-  if (research81.flag === 1) loan6Slot.classList.remove("hidden");
-  if (research82.flag === 1) loan7Slot.classList.remove("hidden");
-  if (research83.flag === 1) loan8Slot.classList.remove("hidden");
-  if (research84.flag === 1) loan9Slot.classList.remove("hidden");
-  if (research85.flag === 1) loan10Slot.classList.remove("hidden");
-  if (research86.flag === 1) {
-    optOissos.classList.remove("hidden");
-    optKaskinen.classList.remove("hidden");
-    optVinte.classList.remove("hidden");
-  };
-  if (research87.flag === 1) {
-    optHeyrland.classList.remove("hidden");
-    optAmariyan.classList.remove("hidden");
-    optMapSut.classList.remove("hidden");
-  };
-  if (research88.flag === 1) {
-    optGenzhu.classList.remove("hidden");
-    optPezia.classList.remove("hidden");
-    optCascavey.classList.remove("hidden");
-  };
-  if (research89.flag === 1) {
-    opt10pc.classList.remove("hidden");
-  }
-  if (research90.flag === 1) {
-    opt20pc.classList.remove("hidden");
-  }
-  if (research91.flag === 1) {
-    opt5y.classList.remove("hidden");
-    opt15y.classList.remove("hidden");
-  }
-  if (research92.flag === 1) {
-    opt25y.classList.remove("hidden");
-    opt40y.classList.remove("hidden");
-  }
 }
 
 function save() {
@@ -997,8 +803,6 @@ function save() {
     happiness: happiness,
     happinessPS: happinessPS,
     researchMult: researchMult,
-    loansList: loansList,
-    maxLoans: maxLoans,
     taxes1: taxes1,
     taxes2: taxes2,
     taxes3: taxes3,
@@ -1047,8 +851,6 @@ function load() {
   if (typeof savegame.happiness !== "undefined") happiness = savegame.happiness;
   if (typeof savegame.happinessPS !== "undefined") happinessPS = savegame.happinessPS;
   if (typeof savegame.researchMult !== "undefined") researchMult = savegame.researchMult;
-  if (typeof savegame.loansList !== "undefined") loansList = savegame.loansList;
-  if (typeof savegame.maxLoans !== "undefined") maxLoans = savegame.maxLoans;
   if (typeof savegame.taxes1 !== "undefined") taxes1 = savegame.taxes1;
   if (typeof savegame.taxes2 !== "undefined") taxes2 = savegame.taxes2;
   if (typeof savegame.taxes3 !== "undefined") taxes3 = savegame.taxes3;
@@ -1106,7 +908,7 @@ window.setInterval(function() {
       updateLoans();
     }
   }
-}, 1000); //TODO LIVE is 1000
+}, 1000); //NOTE LIVE is 1000
 
 window.setInterval(function() {
   save();  
