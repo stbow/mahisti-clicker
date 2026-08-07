@@ -102,6 +102,7 @@ var successRate;
 
 var happiness = 50;
 var happinessPS = 0;
+var unrestPenalty = 1;
 var researchMult = 1;
 
 var taxes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // index 0 = tax1 ... index 9 = tax10

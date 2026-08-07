@@ -58,7 +58,7 @@
       </div>
       <div id="col2">
         <h3>Research</h3>
-        <p id="points-p">Research points: <span id="points-count">0</span></p>
+        <p id="points-p" class="hidden">Research points: <span id="points-count">0</span></p>
         <div id="research-list"></div>
       </div>
       <div id="col3">
@@ -74,6 +74,10 @@
           <div id="discovered-secret-announcement" class="announcement hidden">
             <p id="congrats-text">Congratulations! </p>
             <p id="secret-text">You have discovered the secret to avoiding the sea serpents. You now have a total monopoly on trade for six weeks every summer.</p>
+          </div>
+          <div id="rebellion-announcement" class="announcement hidden">
+            <p id="rebellion-text">Unrest has boiled over into open rebellion. The crown's fleet and mines have suffered losses, but order is being restored.</p>
+            <button id="dismiss-rebellion-btn" type="button" onclick="dismissRebellion()">Acknowledge</button>
           </div>
         </div>
         <div id="expeditions-div" class="hidden">

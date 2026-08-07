@@ -47,6 +47,7 @@ const expeditionProgressBar = document.getElementById("expedition-progress-bar")
 const expeditionResultText = document.getElementById("expedition-result-text");
 const currencyBaseAnnouncementDiv = document.getElementById("currency-base-announcement");
 const discoveredSecretAnnouncementDiv = document.getElementById("discovered-secret-announcement");
+const rebellionAnnouncementDiv = document.getElementById("rebellion-announcement");
 const billionaireAnnouncementDiv = document.getElementById("billionaire-announcement");
 const taxesEngineDiv = document.getElementById("taxes-engine");
 const tax1Div = document.getElementById("tax1");
@@ -430,6 +431,11 @@ function updateHappiness() {
   happinessBar.style.width = happiness + "%";
   happinessLevel.innerText = Math.floor(happiness);
   happinessLevel.style.marginLeft = (happiness - 1) + "%";
+  unrestPenalty = (happiness < 30) ? 0.5 : 1;
+}
+
+function dismissRebellion() {
+  rebellionAnnouncementDiv.classList.add("hidden");
 }
 
 // TAXES -------------------------------------
@@ -667,15 +673,22 @@ function startOver() {
 // TIMERS ------------------------------------
 
 window.setInterval(function() {
-  balance += (empMult * employees) + (shopsRPS * shopsMult * shops) + (fleetRPS * fleetMult * ships) + (minesRPS * minesMult * mines);
+  balance += ((empMult * employees) + (shopsRPS * shopsMult * shops) + (fleetRPS * fleetMult * ships) + (minesRPS * minesMult * mines)) * unrestPenalty;
   balanceText.innerText = Math.floor(balance);
   manageResearch();
   convertCurrency(balance);
   checkButtons();
   revTracker();
-  if (research92.flag === 1 && balance >= 1000000000) billionaireAnnouncementDiv.classList.remove("hidden");
+  if (balance >= 1000000000) billionaireAnnouncementDiv.classList.remove("hidden");
+  //TODO write winning vs losing win conditions
   if (research49.flag === 1) {
     happiness += happinessPS;
+    if (happiness <= 0) {
+      ships -= Math.floor(ships * 0.2);
+      mines -= Math.floor(mines * 0.2);
+      happiness = 50;
+      rebellionAnnouncementDiv.classList.remove("hidden");
+    }
     updateHappiness();
     researchPoints += researchMult;
     pointsCount.innerText = researchPoints;
