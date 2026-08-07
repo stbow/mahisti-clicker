@@ -904,9 +904,6 @@ window.setInterval(function() {
     updateHappiness();
     researchPoints += researchMult;
     pointsCount.innerText = researchPoints;
-    if (research69.flag === 1) {
-      updateLoans();
-    }
   }
 }, 1000); //NOTE LIVE is 1000
 
