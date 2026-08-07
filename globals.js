@@ -8,11 +8,11 @@ var mines = 0;
 var nextEmployee = 10;
 var nextShop = 1080;
 var nextShip = 43200;
-var nextMine = 504000;
+var nextMine = 864000;
 
 var shopsRPS = 24;
 var fleetRPS = 252;
-var minesRPS = 3000;
+var minesRPS = 2100;
 
 var empMult = 1;
 var shopsMult = 1;
