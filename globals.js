@@ -104,13 +104,4 @@ var happiness = 50;
 var happinessPS = 0;
 var researchMult = 1;
 
-var taxes1 = 0;
-var taxes2 = 0;
-var taxes3 = 0;
-var taxes4 = 0;
-var taxes5 = 0;
-var taxes6 = 0;
-var taxes7 = 0;
-var taxes8 = 0;
-var taxes9 = 0;
-var taxes10 = 0;
+var taxes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // index 0 = tax1 ... index 9 = tax10

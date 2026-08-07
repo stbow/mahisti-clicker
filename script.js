@@ -66,36 +66,15 @@ const buyShip = document.getElementById("buy-ship");
 const buyMine = document.getElementById("buy-mine");
 const buyResearchShip = document.getElementById("buy-research-ship");
 const launchBtn = document.getElementById("launch-btn");
-const lowerTax1Btn = document.getElementById("btn-lower-tax1");
-const tax1TextElem = document.getElementById("tax1-display");
-const raiseTax1Btn = document.getElementById("btn-raise-tax1");
-const lowerTax2Btn = document.getElementById("btn-lower-tax2");
-const tax2TextElem = document.getElementById("tax2-display");
-const raiseTax2Btn = document.getElementById("btn-raise-tax2");
-const lowerTax3Btn = document.getElementById("btn-lower-tax3");
-const tax3TextElem = document.getElementById("tax3-display");
-const raiseTax3Btn = document.getElementById("btn-raise-tax3");
-const lowerTax4Btn = document.getElementById("btn-lower-tax4");
-const tax4TextElem = document.getElementById("tax4-display");
-const raiseTax4Btn = document.getElementById("btn-raise-tax4");
-const lowerTax5Btn = document.getElementById("btn-lower-tax5");
-const tax5TextElem = document.getElementById("tax5-display");
-const raiseTax5Btn = document.getElementById("btn-raise-tax5");
-const lowerTax6Btn = document.getElementById("btn-lower-tax6");
-const tax6TextElem = document.getElementById("tax6-display");
-const raiseTax6Btn = document.getElementById("btn-raise-tax6");
-const lowerTax7Btn = document.getElementById("btn-lower-tax7");
-const tax7TextElem = document.getElementById("tax7-display");
-const raiseTax7Btn = document.getElementById("btn-raise-tax7");
-const lowerTax8Btn = document.getElementById("btn-lower-tax8");
-const tax8TextElem = document.getElementById("tax8-display");
-const raiseTax8Btn = document.getElementById("btn-raise-tax8");
-const lowerTax9Btn = document.getElementById("btn-lower-tax9");
-const tax9TextElem = document.getElementById("tax9-display");
-const raiseTax9Btn = document.getElementById("btn-raise-tax9");
-const lowerTax10Btn = document.getElementById("btn-lower-tax10");
-const tax10TextElem = document.getElementById("tax10-display");
-const raiseTax10Btn = document.getElementById("btn-raise-tax10");
+// Tax DOM refs, Index 0 = tax1 ... index 9 = tax10.
+const taxDisplays = [];
+const lowerTaxBtns = [];
+const raiseTaxBtns = [];
+for (let i = 1; i <= 10; i++) {
+  taxDisplays.push(document.getElementById(`tax${i}-display`));
+  lowerTaxBtns.push(document.getElementById(`btn-lower-tax${i}`));
+  raiseTaxBtns.push(document.getElementById(`btn-raise-tax${i}`));
+}
 const startOverBtn = document.getElementById("start-over-btn");
 
 var savegame;
@@ -230,85 +209,9 @@ function checkButtons() {
   } else {
     launchBtn.disabled = false;
   }
-  if (taxes1 <= 0) {
-    lowerTax1Btn.disabled = true;
-  } else if (taxes1 >= 9) {
-    raiseTax1Btn.disabled = true;
-  } else {
-    lowerTax1Btn.disabled = false;
-    raiseTax1Btn.disabled = false;
-  }
-  if (taxes2 <= 0) {
-    lowerTax2Btn.disabled = true;
-  } else if (taxes2 >= 9) {
-    raiseTax2Btn.disabled = true;
-  } else {
-    lowerTax2Btn.disabled = false;
-    raiseTax2Btn.disabled = false;
-  }
-  if (taxes3 <= 0) {
-    lowerTax3Btn.disabled = true;
-  } else if (taxes3 >= 9) {
-    raiseTax3Btn.disabled = true;
-  } else {
-    lowerTax3Btn.disabled = false;
-    raiseTax3Btn.disabled = false;
-  }
-  if (taxes4 <= 0) {
-    lowerTax4Btn.disabled = true;
-  } else if (taxes4 >= 9) {
-    raiseTax4Btn.disabled = true;
-  } else {
-    lowerTax4Btn.disabled = false;
-    raiseTax4Btn.disabled = false;
-  }
-  if (taxes5 <= 0) {
-    lowerTax5Btn.disabled = true;
-  } else if (taxes5 >= 9) {
-    raiseTax5Btn.disabled = true;
-  } else {
-    lowerTax5Btn.disabled = false;
-    raiseTax5Btn.disabled = false;
-  }
-  if (taxes6 <= 0) {
-    lowerTax6Btn.disabled = true;
-  } else if (taxes6 >= 9) {
-    raiseTax6Btn.disabled = true;
-  } else {
-    lowerTax6Btn.disabled = false;
-    raiseTax6Btn.disabled = false;
-  }
-  if (taxes7 <= 0) {
-    lowerTax7Btn.disabled = true;
-  } else if (taxes7 >= 9) {
-    raiseTax7Btn.disabled = true;
-  } else {
-    lowerTax7Btn.disabled = false;
-    raiseTax7Btn.disabled = false;
-  }
-  if (taxes8 <= 0) {
-    lowerTax8Btn.disabled = true;
-  } else if (taxes8 >= 9) {
-    raiseTax8Btn.disabled = true;
-  } else {
-    lowerTax8Btn.disabled = false;
-    raiseTax8Btn.disabled = false;
-  }
-  if (taxes9 <= 0) {
-    lowerTax9Btn.disabled = true;
-  } else if (taxes9 >= 9) {
-    raiseTax9Btn.disabled = true;
-  } else {
-    lowerTax9Btn.disabled = false;
-    raiseTax9Btn.disabled = false;
-  }
-  if (taxes10 <= 0) {
-    lowerTax10Btn.disabled = true;
-  } else if (taxes10 >= 9) {
-    raiseTax10Btn.disabled = true;
-  } else {
-    lowerTax10Btn.disabled = false;
-    raiseTax10Btn.disabled = false;
+  for (let i = 0; i < 10; i++) {
+    lowerTaxBtns[i].disabled = taxes[i] <= 0;
+    raiseTaxBtns[i].disabled = taxes[i] >= 9;
   }
 }
 
@@ -538,124 +441,21 @@ function updateTaxes(num) {
   happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
 }
 
-function lowerTax1() {
+// n is 1-indexed (matches the tax1...tax10 naming used in the HTML/IDs).
+function lowerTax(n) {
+  const i = n - 1;
+  if (taxes[i] <= 0) return;
   updateTaxes(-0.1);
-  taxes1--;
-  tax1TextElem.innerText = taxes1;
+  taxes[i]--;
+  taxDisplays[i].innerText = taxes[i];
 }
 
-function raiseTax1() {
+function raiseTax(n) {
+  const i = n - 1;
+  if (taxes[i] >= 9) return;
   updateTaxes(0.1);
-  taxes1++;
-  tax1TextElem.innerText = taxes1;
-}
-
-function lowerTax2() {
-  updateTaxes(-0.1);
-  taxes2--;
-  tax2TextElem.innerText = taxes2;
-}
-
-function raiseTax2() {
-  updateTaxes(0.1);
-  taxes2++;
-  tax2TextElem.innerText = taxes2;
-}
-
-function lowerTax3() {
-  updateTaxes(-0.1);
-  taxes3--;
-  tax3TextElem.innerText = taxes3;
-}
-
-function raiseTax3() {
-  updateTaxes(0.1);
-  taxes3++;
-  tax3TextElem.innerText = taxes3;
-}
-
-function lowerTax4() {
-  updateTaxes(-0.1);
-  taxes4--;
-  tax4TextElem.innerText = taxes4;
-}
-
-function raiseTax4() {
-  updateTaxes(0.1);
-  taxes4++;
-  tax4TextElem.innerText = taxes4;
-}
-
-function lowerTax5() {
-  updateTaxes(-0.1);
-  taxes5--;
-  tax5TextElem.innerText = taxes5;
-}
-
-function raiseTax5() {
-  updateTaxes(0.1);
-  taxes5++;
-  tax5TextElem.innerText = taxes5;
-}
-
-function lowerTax6() {
-  updateTaxes(-0.1);
-  taxes6--;
-  tax6TextElem.innerText = taxes6;
-}
-
-function raiseTax6() {
-  updateTaxes(0.1);
-  taxes6++;
-  tax6TextElem.innerText = taxes6;
-}
-
-function lowerTax7() {
-  updateTaxes(-0.1);
-  taxes7--;
-  tax7TextElem.innerText = taxes7;
-}
-
-function raiseTax7() {
-  updateTaxes(0.1);
-  taxes7++;
-  tax7TextElem.innerText = taxes7;
-}
-
-function lowerTax8() {
-  updateTaxes(-0.1);
-  taxes8--;
-  tax8TextElem.innerText = taxes8;
-}
-
-function raiseTax8() {
-  updateTaxes(0.1);
-  taxes8++;
-  tax8TextElem.innerText = taxes8;
-}
-
-function lowerTax9() {
-  updateTaxes(-0.1);
-  taxes9--;
-  tax9TextElem.innerText = taxes9;
-}
-
-function raiseTax9() {
-  updateTaxes(0.1);
-  taxes9++;
-  tax9TextElem.innerText = taxes9;
-}
-
-function lowerTax10() {
-  updateTaxes(-0.1);
-  taxes10--;
-  tax10TextElem.innerText = taxes10;
-}
-
-function raiseTax10() {
-  updateTaxes(0.1);
-  taxes10++;
-  tax10TextElem.innerText = taxes10;
+  taxes[i]++;
+  taxDisplays[i].innerText = taxes[i];
 }
 
 // CHECK FOR SAVES -------------------------
@@ -679,16 +479,9 @@ function refresh() {
   pointsCount.innerText = researchPoints;
   researchFleetCost.innerText = easyRead(nextResearchShip);
   researchFleetCount.innerText = researchShips;
-  tax1TextElem.innerText = taxes1;
-  tax2TextElem.innerText = taxes2;
-  tax3TextElem.innerText = taxes3;
-  tax4TextElem.innerText = taxes4;
-  tax5TextElem.innerText = taxes5;
-  tax6TextElem.innerText = taxes6;
-  tax7TextElem.innerText = taxes7;
-  tax8TextElem.innerText = taxes8;
-  tax9TextElem.innerText = taxes9;
-  tax10TextElem.innerText = taxes10;
+  for (let i = 0; i < 10; i++) {
+    taxDisplays[i].innerText = taxes[i];
+  }
 
   if (research1.flag === 1) employeesDiv.classList.remove("hidden");
   if (research5.flag === 1) shopsDiv.classList.remove("hidden");
@@ -803,16 +596,7 @@ function save() {
     happiness: happiness,
     happinessPS: happinessPS,
     researchMult: researchMult,
-    taxes1: taxes1,
-    taxes2: taxes2,
-    taxes3: taxes3,
-    taxes4: taxes4,
-    taxes5: taxes5,
-    taxes6: taxes6,
-    taxes7: taxes7,
-    taxes8: taxes8,
-    taxes9: taxes9,
-    taxes10: taxes10,
+    taxes: taxes,
     r59count: r59count,
     r68count: r68count
     //prestige: prestige
@@ -851,16 +635,7 @@ function load() {
   if (typeof savegame.happiness !== "undefined") happiness = savegame.happiness;
   if (typeof savegame.happinessPS !== "undefined") happinessPS = savegame.happinessPS;
   if (typeof savegame.researchMult !== "undefined") researchMult = savegame.researchMult;
-  if (typeof savegame.taxes1 !== "undefined") taxes1 = savegame.taxes1;
-  if (typeof savegame.taxes2 !== "undefined") taxes2 = savegame.taxes2;
-  if (typeof savegame.taxes3 !== "undefined") taxes3 = savegame.taxes3;
-  if (typeof savegame.taxes4 !== "undefined") taxes4 = savegame.taxes4;
-  if (typeof savegame.taxes5 !== "undefined") taxes5 = savegame.taxes5;
-  if (typeof savegame.taxes6 !== "undefined") taxes6 = savegame.taxes6;
-  if (typeof savegame.taxes7 !== "undefined") taxes7 = savegame.taxes7;
-  if (typeof savegame.taxes8 !== "undefined") taxes8 = savegame.taxes8;
-  if (typeof savegame.taxes9 !== "undefined") taxes9 = savegame.taxes9;
-  if (typeof savegame.taxes10 !== "undefined") taxes10 = savegame.taxes10;
+  if (typeof savegame.taxes !== "undefined") taxes = savegame.taxes;
   if (typeof savegame.r59count !== "undefined") r59count = savegame.r59count;
   if (typeof savegame.r68count !== "undefined") r68count = savegame.r68count;
   //if (typeof savegame.prestige !== "undefined") prestige = savegame.prestige;
