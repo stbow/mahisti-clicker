@@ -497,6 +497,7 @@ function refresh() {
   if (research22.flag === 1) revTrackDiv.classList.remove("hidden");
   if (research30.flag === 1 && research45.flag === 0) {
     expeditionsDiv.classList.remove("hidden");
+    pointsP.classList.remove("hidden");
     if (research31.flag === 1) typePicker.classList.remove("hidden");
     if (research32.flag === 1) {
       var list = document.getElementById("type-picker");
