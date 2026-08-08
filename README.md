@@ -16,10 +16,6 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ### Project structure
 
-Current: it's a mess. Don't worry about it. 👍
-
-Future:
-
 ```text
 mahisti-clicker/
 │
