@@ -682,7 +682,7 @@ window.setInterval(function() {
   if (balance >= 1000000000) billionaireAnnouncementDiv.classList.remove("hidden");
   //TODO write winning vs losing win conditions
   if (research49.flag === 1) {
-    happiness += happinessPS;
+    happiness += happinessPS; //TODO need to rewrite so happiness trends toward 50 rather than increasing/decreasing indefinitely??
     if (happiness <= 0) {
       ships -= Math.floor(ships * 0.2);
       mines -= Math.floor(mines * 0.2);
