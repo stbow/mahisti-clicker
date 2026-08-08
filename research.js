@@ -309,7 +309,7 @@ var research13 = {
   title: "New hull materials ",
   priceTag: "(275 alt\u0131nlar)",
   description: "Improves speed and durability of ships; increases revenue by 30%",
-  trigger: function() {return research11.flag === 1},
+  trigger: function() {return research11.flag === 1 && ships >= 3},
   uses: 1,
   cost: function() {return balance >= 99000},
   flag: 0,
@@ -552,6 +552,7 @@ var research30 = {
   effect: function() {
     research30.flag = 1;
     expeditionsDiv.classList.remove("hidden");
+    pointsP.classList.remove("hidden");
     balance -= 5400000;
     research30.element.parentNode.removeChild(research30.element);
     let index = activeResearch.indexOf(research30);
