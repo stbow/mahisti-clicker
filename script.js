@@ -97,14 +97,14 @@ startOverBtn.onclick = startOver;
 
 function sellItem() {
   balance++;
-  balanceText.innerText = Math.floor(balance);
+  balanceText.innerText = Math.floor(balance).toLocaleString();
   convertCurrency(balance);
 }
 
 function hireEmployee() {
   employees++;
   balance -= nextEmployee;
-  balanceText.innerText = Math.floor(balance);
+  balanceText.innerText = Math.floor(balance).toLocaleString();
   employeesCount.innerText = employees;
   nextEmployee = Math.floor(10 * Math.pow(1.2,employees));
   employeeCost.innerText = easyRead(nextEmployee);
@@ -115,7 +115,7 @@ function hireEmployee() {
 function newShop() {
   shops++;
   balance -= nextShop;
-  balanceText.innerText = Math.floor(balance);
+  balanceText.innerText = Math.floor(balance).toLocaleString();
   shopsCount.innerText = shops;
   nextShop = Math.floor(1080 * Math.pow(1.1,shops));
   shopCost.innerText = easyRead(nextShop);
@@ -126,7 +126,7 @@ function newShop() {
 function newShip() {
   ships++;
   balance -= nextShip;
-  balanceText.innerText = Math.floor(balance);
+  balanceText.innerText = Math.floor(balance).toLocaleString();
   fleetCount.innerText = ships;
   nextShip = Math.floor(43200 * Math.pow(1.1,ships));
   fleetCost.innerText = easyRead(nextShip);
@@ -137,7 +137,7 @@ function newShip() {
 function newMine() {
   mines++;
   balance -= nextMine;
-  balanceText.innerText = Math.floor(balance);
+  balanceText.innerText = Math.floor(balance).toLocaleString();
   minesCount.innerText = mines;
   nextMine = Math.floor(504000 * Math.pow(1.1,mines));
   minesCost.innerText = easyRead(nextMine);
@@ -148,13 +148,13 @@ function newMine() {
 // PAGE UPDATING --------------------------
 
 function convertCurrency(num) {
-  altinlar.innerText = Math.floor(num / 360);
+  altinlar.innerText = Math.floor(num / 360).toLocaleString();
   yiralar.innerText = Math.floor(num % 360 / 30);
   kurler.innerText = Math.floor(num % 360 % 30);
 }
 
 function easyRead(num) {
-  let a = Math.ceil(num / 360);
+  let a = Math.ceil(num / 360).toLocaleString();
   let y = Math.ceil(num % 360 / 30);
   let k = Math.ceil(num % 360 % 30);
   if (num >= 331) {
@@ -170,7 +170,7 @@ function revTracker() {
   let rps = (empMult * employees) + (shopsRPS * shopsMult * shops) + (fleetRPS * fleetMult * ships) + (minesRPS * minesMult * mines);
   let rpsText;
   if (rps >= 331) {
-    rpsText = `${(rps / 360).toFixed(2)} \u023a`;
+    rpsText = `${(rps / 360).toFixed(2).toLocaleString()} \u023a`;
   } else if (rps >= 30) {
     rpsText = `${(rps % 360 / 30).toFixed(2)} \u024e`;
   } else {
@@ -265,7 +265,7 @@ function newResearchShip() {
   researchShips++;
   researchFleetTotal++;
   balance -= nextResearchShip;
-  balanceText.innerText = Math.floor(balance);
+  balanceText.innerText = Math.floor(balance).toLocaleString();
   researchFleetCount.innerText = researchShips;
   nextResearchShip = Math.floor(72000 * Math.pow(1.06,researchFleetTotal));
   researchFleetCost.innerText = easyRead(nextResearchShip);
@@ -316,7 +316,7 @@ equipmentPicker.oninput = updateLaunchCost;
 
 function updateLaunchCost() {
   calcLaunchCost();
-  launchCostText.innerText = `${Math.ceil(launchCost)} \u023a`;
+  launchCostText.innerText = `${Math.ceil(launchCost).toLocaleString()} \u023a`;
   successRateText.innerText = successRate;
 }
 
@@ -365,7 +365,7 @@ function launchExpedition() {
   launchCost = launchCost * researchShips;
 
   balance -= launchCost * 360;
-  balanceText.innerText = Math.floor(balance);
+  balanceText.innerText = Math.floor(balance).toLocaleString();
   let currentShips = researchShips;
   let newResearchPoints = 0;
   let time = 50; 
@@ -473,7 +473,7 @@ if (localStorage.getItem("saveData") !== null) {
 
 // SAVING AND LOADING ----------------------
 function refresh() {
-  balanceText.innerText = Math.floor(balance);
+  balanceText.innerText = Math.floor(balance).toLocaleString();
   convertCurrency(balance);
   employeesCount.innerText = employees;
   employeeCost.innerText = easyRead(nextEmployee);
@@ -672,7 +672,7 @@ function startOver() {
 
 window.setInterval(function() {
   balance += ((empMult * employees) + (shopsRPS * shopsMult * shops) + (fleetRPS * fleetMult * ships) + (minesRPS * minesMult * mines)) * unrestPenalty;
-  balanceText.innerText = Math.floor(balance);
+  balanceText.innerText = Math.floor(balance).toLocaleString();
   manageResearch();
   convertCurrency(balance);
   checkButtons();
