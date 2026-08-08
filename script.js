@@ -218,9 +218,9 @@ function checkButtons() {
 
 function manageResearch() {
   for(let i=0; i < research.length; i++) {
-    if (research[i].trigger() && (research[i].uses > 0)) {
-      displayResearch(research[i]);
+    if (research[i].trigger() && (research[i].uses > 0) && !activeResearch.includes(research[i])) {
       research[i].uses -= 1;
+      displayResearch(research[i]);
       activeResearch.push(research[i]);
     }
   }
@@ -249,7 +249,7 @@ function displayResearch(project){
   var title = document.createTextNode(project.title);
   span.appendChild(title);
 
-  var cost = document.createTextNode(project.priceTag);
+  var cost = document.createTextNode(typeof project.priceTag === "function" ? project.priceTag() : project.priceTag);
   project.element.appendChild(cost);
 
   var div = document.createElement("div");
@@ -604,9 +604,7 @@ function save() {
     happiness: happiness,
     happinessPS: happinessPS,
     researchMult: researchMult,
-    taxes: taxes,
-    r59count: r59count,
-    r68count: r68count
+    taxes: taxes
     //prestige: prestige
   }
   localStorage.setItem("saveData",JSON.stringify(saveData));
@@ -644,8 +642,6 @@ function load() {
   if (typeof savegame.happinessPS !== "undefined") happinessPS = savegame.happinessPS;
   if (typeof savegame.researchMult !== "undefined") researchMult = savegame.researchMult;
   if (typeof savegame.taxes !== "undefined") taxes = savegame.taxes;
-  if (typeof savegame.r59count !== "undefined") r59count = savegame.r59count;
-  if (typeof savegame.r68count !== "undefined") r68count = savegame.r68count;
   //if (typeof savegame.prestige !== "undefined") prestige = savegame.prestige;
 
   // update research
