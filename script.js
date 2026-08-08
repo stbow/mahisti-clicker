@@ -398,6 +398,7 @@ function launchExpedition() {
       expeditionResultText.innerHTML = `Expedition failed. You lost ${lostShips} ships.`;
       updateLaunchCost();
     }
+    checkButtons();
     loadDelayTimer = setTimeout(() => {
       width = 1;
       expeditionProgressBar.style.width = "1%";
