@@ -6,13 +6,39 @@ Mahisti Clicker is an incremental clicker game inspired by [A Taste of Gold and 
 
 Visit [Mahisti Clicker](https://stbow.github.io/mahisti-clicker/).
 
-### Roadmap
+## Roadmap
 
 See Issues tagged as Enhancements.
 
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+### Project structure
+
+Current: it's a mess. Don't worry about it. 👍
+
+Future:
+
+```text
+mahisti-clicker/
+│
+├── assets/
+│    ├── fonts/
+│    └── images/
+├── docs/
+│    └── Research Map.md
+├── scripts/
+│    ├── globals.js
+│    ├── research.js
+│    └── script.js
+├── styles/
+│    ├── sass/
+│    └── styles.css
+├── .gitignore
+├── index.html
+└── README.md
+```
 
 ## License
 
