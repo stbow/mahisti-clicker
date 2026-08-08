@@ -8,11 +8,11 @@ var mines = 0;
 var nextEmployee = 10;
 var nextShop = 1080;
 var nextShip = 43200;
-var nextMine = 504000;
+var nextMine = 864000;
 
 var shopsRPS = 24;
 var fleetRPS = 252;
-var minesRPS = 3000;
+var minesRPS = 2100;
 
 var empMult = 1;
 var shopsMult = 1;
@@ -102,23 +102,7 @@ var successRate;
 
 var happiness = 50;
 var happinessPS = 0;
+var unrestPenalty = 1;
 var researchMult = 1;
 
-var loansList = [];
-
-var maxLoans = 5;
-var countryValue;
-var principalValue;
-var rateValue;
-var timeValue;
-
-var taxes1 = 0;
-var taxes2 = 0;
-var taxes3 = 0;
-var taxes4 = 0;
-var taxes5 = 0;
-var taxes6 = 0;
-var taxes7 = 0;
-var taxes8 = 0;
-var taxes9 = 0;
-var taxes10 = 0;
+var taxes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // index 0 = tax1 ... index 9 = tax10

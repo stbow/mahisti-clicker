@@ -8,7 +8,7 @@ var research1 = {
   title: "Hire employees",
   priceTag: "",
   description: "Automate your sales - each employee generates 1 kür per second",
-  trigger: function() {return balance >= 5},
+  trigger: function() {return balance >= 10},
   uses: 1,
   cost: function() {return true},
   flag: 0,
@@ -29,7 +29,7 @@ var research2 = {
   id: "researchButton2",
   title: "Employee training ",
   priceTag: "(7 \u024e / 210 \u20ad)",
-  description: "Employees generate 10% more revenue",
+  description: "Employees generate 15% more revenue",
   trigger: function() {return research1.flag === 1},
   uses: 1,
   cost: function() {return balance >= 210},
@@ -38,7 +38,7 @@ var research2 = {
   effect: function() {
     research2.flag = 1;
     balance -= 210;
-    empMult += 0.10;
+    empMult += 0.15;
     employeesRPSText.innerText = empMult;
     research2.element.parentNode.removeChild(research2.element);
     let index = activeResearch.indexOf(research2);
@@ -128,8 +128,8 @@ var research6 = {
     research6.flag = 1;
     currencyBaseAnnouncementDiv.classList.add('hidden');
     balance -= 2520;
-    empMult += 0.15;
-    shopsMult += 0.20;
+    empMult += 0.2;
+    shopsMult += 0.25;
     employeesRPSText.innerText = empMult;
     shopsRPSText.innerText = shopsMult * shopsRPS;
     research6.element.parentNode.removeChild(research6.element);
@@ -236,7 +236,7 @@ research.push(research9);
 var research10 = {
   id: "researchButton10",
   title: "Renovate shops ",
-  priceTag: "(10 \u023a per shop)",
+  priceTag: "(11 \u023a per shop)",
   description: "Shops generate 50% higher revenue",
   trigger: function() {return research8.flag === 1},
   uses: 1,
@@ -290,8 +290,8 @@ var research12 = {
   effect: function() {
     research12.flag = 1;
     balance -= 75600;
-    empMult += 0.10;
-    shopsMult += 0.20;
+    empMult += 0.20;
+    shopsMult += 0.30;
     fleetMult += 0.50;
     employeesRPSText.innerText = empMult;
     shopsRPSText.innerText = shopsMult * shopsRPS;
@@ -365,7 +365,7 @@ var research15 = {
     balance -= 208800;
     empMult += 0.10;
     shopsMult += 0.20;
-    fleetMult += 0.30;
+    fleetMult += 0.50;
     fleetRPSText.innerText = fleetMult * fleetRPS;
     employeesRPSText.innerText = empMult;
     shopsRPSText.innerText = shopsMult * shopsRPS;
@@ -456,10 +456,10 @@ var research19 = {
   effect: function() {
     research19.flag = 1;
     balance -= 3600000;
-    empMult += 0.10;
-    shopsMult += 0.20;
-    fleetMult += 0.30;
-    minesMult += 0.40;
+    empMult += 0.15;
+    shopsMult += 0.25;
+    fleetMult += 0.50;
+    minesMult += 0.50;
     employeesRPSText.innerText = empMult;
     shopsRPSText.innerText = shopsMult * shopsRPS;
     fleetRPSText.innerText = fleetMult * fleetRPS;
@@ -508,7 +508,7 @@ var research21 = {
   effect: function() {
     research21.flag = 1;
     balance -= 3348000;
-    minesMult += 0.20;
+    minesMult += 0.30;
     minesRPSText.innerText = minesMult * minesRPS;
     research21.element.parentNode.removeChild(research21.element);
     let index = activeResearch.indexOf(research21);
@@ -828,8 +828,8 @@ var research45 = {
     research45.flag = 1;
     discoveredSecretAnnouncementDiv.classList.remove("hidden");
     expeditionsDiv.classList.add("hidden");
-    fleetMult += 0.50;
-    minesMult += 0.50;
+    fleetMult += 0.80;
+    minesMult += 0.80;
     research45.element.parentNode.removeChild(research45.element);
     let index = activeResearch.indexOf(research45);
     activeResearch.splice(index, 1);
@@ -925,8 +925,8 @@ var research50 = {
     balance -= 32400000;
     happinessPS += 0.01;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
-    fleetMult += 0.1;
-    minesMult += 0.1;
+    fleetMult += 0.05;
+    minesMult += 0.20;
     research50.element.parentNode.removeChild(research50.element);
     let index = activeResearch.indexOf(research50);
     activeResearch.splice(index, 1);
@@ -962,7 +962,7 @@ var research52 = {
   id: "researchButton52",
   title: "Public bathhouses ",
   priceTag: "(320,000 \u023a)",
-  description: "Improve hygiene and morale. Increases happiness, but decreases revenue",
+  description: "Improve hygiene and morale. Increases happiness, but decreases profit",
   trigger: function() {return research51.flag === 1},
   uses: 1,
   cost: function() {return balance >= 115200000},
@@ -973,8 +973,8 @@ var research52 = {
     balance -= 115200000;
     happinessPS += 0.05;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
-    fleetMult -= 0.3;
-    minesMult -= 0.3;
+    fleetMult -= 0.08;
+    minesMult -= 0.08;
     research52.element.parentNode.removeChild(research52.element);
     let index = activeResearch.indexOf(research52);
     activeResearch.splice(index, 1);
@@ -998,10 +998,8 @@ var research53 = {
     balance -= 194400000;
     happinessPS += 0.01;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
-    empMult += 0.2;
-    shopsMult += 0.2;
-    fleetMult += 0.2;
-    minesMult += 0.2;
+    // fleetMult += 0.2;
+    minesMult += 0.20;
     research53.element.parentNode.removeChild(research53.element);
     let index = activeResearch.indexOf(research53);
     activeResearch.splice(index, 1);
@@ -1025,8 +1023,8 @@ var research54 = {
     balance -= 45000000
     happinessPS += 0.04;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
-    fleetMult -= 0.1;
-    minesMult -= 0.1;
+    fleetMult -= 0.03;
+    minesMult -= 0.03;
     research54.element.parentNode.removeChild(research54.element);
     let index = activeResearch.indexOf(research54);
     activeResearch.splice(index, 1);
@@ -1050,8 +1048,8 @@ var research55 = {
     balance -= 79200000;
     happinessPS += 0.05;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
-    fleetMult -= 0.2;
-    minesMult -= 0.2;
+    fleetMult -= 0.05;
+    minesMult -= 0.05;
     research55.element.parentNode.removeChild(research55.element);
     let index = activeResearch.indexOf(research55);
     activeResearch.splice(index, 1);
@@ -1075,8 +1073,8 @@ var research56 = {
     balance -= 126000000;
     happinessPS += 0.02;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
-    fleetMult -= 0.2;
-    minesMult -= 0.2;
+    fleetMult -= 0.05;
+    minesMult -= 0.05;
     research56.element.parentNode.removeChild(research56.element);
     let index = activeResearch.indexOf(research56);
     activeResearch.splice(index, 1);
@@ -1100,8 +1098,8 @@ var research57 = {
     balance -= 234000000;
     happinessPS += 0.03;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
-    fleetMult -= 0.4;
-    minesMult -= 0.4;
+    fleetMult -= 0.10;
+    minesMult -= 0.10;
     research57.element.parentNode.removeChild(research57.element);
     let index = activeResearch.indexOf(research57);
     activeResearch.splice(index, 1);
@@ -1125,8 +1123,8 @@ var research58 = {
     balance -= 450000000;
     happinessPS += 0.01;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
-    fleetMult -= 0.3;
-    minesMult -= 0.3;
+    fleetMult -= 0.08;
+    minesMult -= 0.08;
     research58.element.parentNode.removeChild(research58.element);
     let index = activeResearch.indexOf(research58);
     activeResearch.splice(index, 1);
@@ -1176,8 +1174,8 @@ var research60 = {
     balance -= 90000000;
     happinessPS += 0.05;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
-    fleetMult -= 0.2;
-    minesMult -= 0.2;
+    fleetMult -= 0.03;
+    minesMult -= 0.03;
     research60.element.parentNode.removeChild(research60.element);
     let index = activeResearch.indexOf(research60);
     activeResearch.splice(index, 1);
@@ -1201,8 +1199,8 @@ var research61 = {
     happiness -= 2;
     happinessPS += 0.02;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
-    fleetMult += 0.1;
-    minesMult += 0.1;
+    fleetMult += 0.10;
+    minesMult += 0.10;
     research61.element.parentNode.removeChild(research61.element);
     let index = activeResearch.indexOf(research61);
     activeResearch.splice(index, 1);
@@ -1224,8 +1222,8 @@ var research63 = {
   effect: function() {
     research63.flag = 1;
     balance -= 720000000
-    fleetMult += 0.3;
-    minesMult += 0.3;
+    fleetMult += 0.30;
+    minesMult += 0.30;
     research63.element.parentNode.removeChild(research63.element);
     let index = activeResearch.indexOf(research63);
     activeResearch.splice(index, 1);
@@ -1269,8 +1267,8 @@ var research65 = {
   effect: function() {
     research65.flag = 1;
     balance -= 108000000;
-    fleetMult += 0.2;
-    minesMult += 0.2;
+    fleetMult += 0.20;
+    minesMult += 0.20;
     researchMult *= 4;
     research65.element.parentNode.removeChild(research65.element);
     let index = activeResearch.indexOf(research65);
@@ -1293,8 +1291,8 @@ var research66 = {
   effect: function() {
     research66.flag = 1;
     balance -= 172800000;
-    fleetMult -= 0.2;
-    minesMult -= 0.2;
+    fleetMult -= 0.05;
+    minesMult -= 0.05;
     researchMult *= 3;
     research66.element.parentNode.removeChild(research66.element);
     let index = activeResearch.indexOf(research66);
@@ -1352,7 +1350,7 @@ var research68 = {
   
 research.push(research68);
 
-var research69 = {
+/* var research69 = {
   id: "researchButton69",
   title: "Issue loans to other countries ",
   priceTag: "(400 points)",
@@ -1373,7 +1371,7 @@ var research69 = {
   }
 }
   
-research.push(research69);
+research.push(research69); */
 
 var research70 = {
   id: "researchButton70",
@@ -1582,7 +1580,7 @@ var research78 = {
 
 research.push(research78);
 
-var research81 = {
+/* var research81 = {
   id: "researchButton81",
   title: "Increase loan capacity ",
   priceTag: "(700 points)",
@@ -1604,9 +1602,9 @@ var research81 = {
   }
 }
   
-research.push(research81);
+research.push(research81); */
 
-var research82 = {
+/* var research82 = {
   id: "researchButton82",
   title: "Increase loan capacity ",
   priceTag: "(2,000 points)",
@@ -1628,9 +1626,9 @@ var research82 = {
   }
 }
   
-research.push(research82);
+research.push(research82); */
 
-var research83 = {
+/* var research83 = {
   id: "researchButton83",
   title: "Increase loan capacity ",
   priceTag: "(3,400 points)",
@@ -1652,9 +1650,9 @@ var research83 = {
   }
 }
   
-research.push(research83);
+research.push(research83); */
 
-var research84 = {
+/* var research84 = {
   id: "researchButton84",
   title: "Increase loan capacity ",
   priceTag: "(5,000 points)",
@@ -1676,9 +1674,9 @@ var research84 = {
   }
 }
 
-research.push(research84);
+research.push(research84); */
 
-var research85 = {
+/* var research85 = {
   id: "researchButton85",
   title: "Increase loan capacity ",
   priceTag: "(6,500 points)",
@@ -1700,9 +1698,9 @@ var research85 = {
   }
 }
 
-research.push(research85);
+research.push(research85); */
 
-var research86 = {
+/* var research86 = {
   id: "researchButton86",
   title: "Loan to more countries ",
   priceTag: "(600 points)",
@@ -1725,9 +1723,9 @@ var research86 = {
   }
 }
 
-research.push(research86);
+research.push(research86); */
 
-var research87 = {
+/* var research87 = {
   id: "researchButton87",
   title: "Loan to more countries ",
   priceTag: "(2,600 points)",
@@ -1750,9 +1748,9 @@ var research87 = {
   }
 }
 
-research.push(research87);
+research.push(research87); */
 
-var research88 = {
+/* var research88 = {
   id: "researchButton88",
   title: "Loan to more countries ",
   priceTag: "(5,500 points)",
@@ -1775,9 +1773,9 @@ var research88 = {
   }
 }
 
-research.push(research88);
+research.push(research88); */
 
-var research89 = {
+/* var research89 = {
   id: "researchButton89",
   title: "Charge higher interest ",
   priceTag: "(1,000 points)",
@@ -1798,9 +1796,9 @@ var research89 = {
   }
 }
 
-research.push(research89);
+research.push(research89); */
 
-var research90 = {
+/* var research90 = {
   id: "researchButton90",
   title: "Charge even higher interest ",
   priceTag: "(3,000 points)",
@@ -1821,9 +1819,9 @@ var research90 = {
   }
 }
 
-research.push(research90);
+research.push(research90); */
 
-var research91 = {
+/* var research91 = {
   id: "researchButton91",
   title: "Loan for longer terms ",
   priceTag: "(1,400 points)",
@@ -1845,9 +1843,9 @@ var research91 = {
   }
 }
 
-research.push(research91);
+research.push(research91); */
 
-var research92 = {
+/* var research92 = {
   id: "researchButton92",
   title: "Loan for even longer terms ",
   priceTag: "(4,200 points)",
@@ -1869,7 +1867,7 @@ var research92 = {
   }
 }
 
-research.push(research92);
+research.push(research92); */
 
     /* var researchX = {
   id: "researchButtonX",

@@ -1,6 +1,6 @@
 @use '../utilities/index' as *;
 
-@include font-face(UnderWorld, 'UnderWorld');
+@include font-face('UnderWorld',"././UnderWorld");
 
 .balance {
   font-size: 1.5em;
