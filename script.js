@@ -503,14 +503,14 @@ function refresh() {
     if (research32.flag === 1) {
       var list = document.getElementById("type-picker");
       var el = document.createElement("option");
-      el.textContent = "Deep sea study";
+      el.textContent = "Deep sea study (1 min)";
       el.value = 30;
       list.appendChild(el);
     }
     if (research33.flag === 1) {
       var list = document.getElementById("type-picker");
       var el = document.createElement("option");
-      el.textContent = "Forbidden waters expedition";
+      el.textContent = "Forbidden waters expedition (5 min)";
       el.value = 10;
       list.appendChild(el);
     }
@@ -518,14 +518,14 @@ function refresh() {
     if (research35.flag === 1) {
       var list = document.getElementById("crew-picker");
       var el = document.createElement("option");
-      el.textContent = "Level 2";
+      el.textContent = "Level 2 crew";
       el.value = 15;
       list.appendChild(el);
     }
     if (research36.flag === 1) {
       var list = document.getElementById("crew-picker");
       var el = document.createElement("option");
-      el.textContent = "Level 3";
+      el.textContent = "Level 3 crew";
       el.value = 20;
       list.appendChild(el);
     }
@@ -533,7 +533,7 @@ function refresh() {
     if (research38.flag === 1) {
       var list = document.getElementById("equipment-picker");
       var el = document.createElement("option");
-      el.textContent = "Medium quality";
+      el.textContent = "Medium quality supplies";
       el.value = 15;
       list.appendChild(el);
     }

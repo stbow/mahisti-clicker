@@ -676,7 +676,7 @@ var research35 = {
     pointsCount.innerText = researchPoints;
     var list = document.getElementById("crew-picker");
     var el = document.createElement("option");
-    el.textContent = "Level 2";
+    el.textContent = "Level 2 crew";
     el.value = 15;
     list.appendChild(el);
     research35.element.parentNode.removeChild(research35.element);
@@ -703,7 +703,7 @@ var research36 = {
     pointsCount.innerText = researchPoints;
     var list = document.getElementById("crew-picker");
     var el = document.createElement("option");
-    el.textContent = "Level 3";
+    el.textContent = "Level 3 crew";
     el.value = 20;
     list.appendChild(el);
     research36.element.parentNode.removeChild(research36.element);
@@ -753,7 +753,7 @@ var research38 = {
     pointsCount.innerText = researchPoints;
     var list = document.getElementById("equipment-picker");
     var el = document.createElement("option");
-    el.textContent = "Medium quality";
+    el.textContent = "Medium quality supplies";
     el.value = 15;
     list.appendChild(el);
     research38.element.parentNode.removeChild(research38.element);
