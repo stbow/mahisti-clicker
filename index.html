@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mahisti Clicker</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="stylesheet" href="styles/styles.css" />
   </head>
   <body>
     <header>
@@ -16,6 +16,7 @@
       </div>
 		</header>
     <main>
+      <!-- column 1: game mechanics - purchasing, happiness-->
       <div id="col1">
         <p class="balance">Money: <span id="balance">0</span> &#8365;</p>
         <p id="currency" class="hidden"><span id="altinlar"></span> &#570;, <span id="yiralar"></span> &#590;, and <span id="kurler"></span> &#8365;</p>
@@ -58,11 +59,13 @@
         </div>
       </div>
       <div id="col2">
+        <!-- column 2: research items list-->
         <h3>Research</h3>
         <p id="points-p" class="hidden">Research points: <span id="points-count">0</span></p>
         <div id="research-list"></div>
       </div>
       <div id="col3">
+        <!-- column 3: announcements, expeditions management interface, taxes management interface -->
         <div id="announcements-list">
           <div id="currency-base-announcement" class="announcement-small hidden">
             <p id="currency-base-text">One yira (&#590;) is equivalent to 30 k&#252;rler (&#8365;).<br />One alt&#305;n (&#570;) is equivalent to 12 yiralar or 360 k&#252;rler.</p>
@@ -176,8 +179,8 @@
     <footer>
       <!-- <p><a href="https://github.com/stbow/mahisti-clicker" target="_blank">github</a></p> -->
     </footer>
-    <script src="./globals.js"></script>
-    <script src="./research.js"></script>
-    <script src="./script.js"></script>
+    <script src="scripts/globals.js"></script>
+    <script src="scripts/research.js"></script>
+    <script src="scripts/script.js"></script>
   </body>
 </html>
