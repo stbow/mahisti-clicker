@@ -829,6 +829,7 @@ var research45 = {
     research45.flag = 1;
     discoveredSecretAnnouncementDiv.classList.remove("hidden");
     expeditionsDiv.classList.add("hidden");
+    pointsP.classList.add("hidden");
     fleetMult += 0.80;
     minesMult += 0.80;
     research45.element.parentNode.removeChild(research45.element);
@@ -902,6 +903,7 @@ var research49 = {
     minesDiv.classList.add("hidden");
     discoveredSecretAnnouncementDiv.classList.add("hidden");
     pointsP.classList.remove("hidden");
+    // * NOTE after 49, researchPoints starts += researchMult every tick
     happinessDiv.classList.remove("hidden");
     research49.element.parentNode.removeChild(research49.element);
     let index = activeResearch.indexOf(research49);
@@ -999,7 +1001,6 @@ var research53 = {
     balance -= 194400000;
     happinessPS += 0.01;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
-    // fleetMult += 0.2;
     minesMult += 0.20;
     research53.element.parentNode.removeChild(research53.element);
     let index = activeResearch.indexOf(research53);
@@ -1138,7 +1139,7 @@ var research59 = {
   id: "researchButton59",
   title: "Host a cultural festival ",
   priceTag: function() { return (((-72000000 * research59.uses) + 324000000)/360).toLocaleString() + " \u023a"; },
-  description: "Promote unity through national events",
+  description: "Promote unity through national events", //TODO add happiness effect to description
   trigger: function() {return happiness <= 30},
   uses: 4,
   cost: function() {return balance >= (-72000000 * research59.uses) + 324000000},
