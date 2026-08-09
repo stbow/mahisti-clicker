@@ -574,6 +574,10 @@ if (localStorage.getItem("saveData") !== null) {
 }
 
 // SAVING AND LOADING ----------------------
+
+/**
+ * Updates DOM with current values
+ */
 function refresh() {
   balanceText.innerText = Math.floor(balance).toLocaleString();
   convertCurrency(balance);
