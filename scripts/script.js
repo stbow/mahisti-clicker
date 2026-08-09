@@ -95,12 +95,22 @@ startOverBtn.onclick = startOver;
 
 // PURCHASE FUNCTIONS ----------------------
 
+/**
+ * Produces item, adds 1 to balance (on click)
+ * @see convertCurrency
+ */
 function sellItem() {
   balance++;
   balanceText.innerText = Math.floor(balance).toLocaleString();
   convertCurrency(balance);
 }
 
+/**
+ * Adds employee, updates balance and employees count
+ * @see easyRead
+ * @see convertCurrency
+ * @see checkButtons
+ */
 function hireEmployee() {
   employees++;
   balance -= nextEmployee;
@@ -112,6 +122,12 @@ function hireEmployee() {
   checkButtons();
 }
 
+/**
+ * Add shop, updates balance and shops count
+ * @see easyRead
+ * @see convertCurrency
+ * @see checkButtons
+ */
 function newShop() {
   shops++;
   balance -= nextShop;
@@ -123,6 +139,12 @@ function newShop() {
   checkButtons();
 }
 
+/**
+ * Adds ship to fleet, updates balance and fleet count
+ * @see easyRead
+ * @see convertCurrency
+ * @see checkButtons
+ */
 function newShip() {
   ships++;
   balance -= nextShip;
@@ -134,6 +156,12 @@ function newShip() {
   checkButtons();
 }
 
+/**
+ * Adds mine, updates balance and mines count
+ * @see easyRead
+ * @see convertCurrency
+ * @see checkButtons
+ */
 function newMine() {
   mines++;
   balance -= nextMine;
@@ -147,12 +175,21 @@ function newMine() {
 
 // PAGE UPDATING --------------------------
 
+/**
+ * Converts balance to A/Y/K for display under balance
+ * @param {number} num - balance
+ */
 function convertCurrency(num) {
   altinlar.innerText = Math.floor(num / 360).toLocaleString();
   yiralar.innerText = Math.floor(num % 360 / 30);
   kurler.innerText = Math.floor(num % 360 % 30);
 }
 
+/**
+ * Displays value as only A/Y/K depending on amount
+ * @param {number} num - number
+ * @returns {string} Value of A/Y/K
+ */
 function easyRead(num) {
   let a = Math.ceil(num / 360).toLocaleString();
   let y = Math.ceil(num % 360 / 30);
@@ -166,6 +203,9 @@ function easyRead(num) {
   }
 }
 
+/**
+ * Calculates and displays revenue per second
+ */
 function revTracker() {
   let rps = (empMult * employees) + (shopsRPS * shopsMult * shops) + (fleetRPS * fleetMult * ships) + (minesRPS * minesMult * mines);
   let rpsText;
@@ -179,6 +219,9 @@ function revTracker() {
   revTrackerElement.innerText = rpsText;
 }
 
+/**
+ * Disables purchasing buttons if balance is too low
+ */
 function checkButtons() {
   if (balance < nextEmployee) {
     hire.disabled = true;
@@ -216,6 +259,10 @@ function checkButtons() {
   }
 }
 
+/**
+ * Adds new research items to active array, calls displayResearch to show the item
+ * @see displayResearch
+ */
 function manageResearch() {
   for(let i=0; i < research.length; i++) {
     if (research[i].trigger() && (research[i].uses > 0) && !activeResearch.includes(research[i])) {
@@ -233,6 +280,16 @@ function manageResearch() {
   }
 }
 
+/**
+ * Creates HTML for new research item
+ * @param {Object} project - the research item being displayed
+ * @param {?Element} project.element
+ * @param {string} project.id
+ * @param {Function} project.effect - actions the project does when fired
+ * @param {string} project.title
+ * @param {string} project.priceTag
+ * @param {string} project.description
+ */
 function displayResearch(project){
   project.element = document.createElement("button");
   project.element.setAttribute("id", project.id);
@@ -261,6 +318,13 @@ function displayResearch(project){
 
 // RESEARCH EXPEDITIONS --------------------
 
+/**
+ * Adds research ship, updates balance and expedition info
+ * @see easyRead
+ * @see updateLaunchCost
+ * @see convertCurrency
+ * @see checkButtons
+ */
 function newResearchShip() {
   researchShips++;
   researchFleetTotal++;
@@ -274,11 +338,20 @@ function newResearchShip() {
   checkButtons();
 }
 
+/**
+ * Calculates success or failure based on chance of success
+ * @param {number} prb - chance of success
+ * @returns {boolean}
+ */
 function calcProbability(prb) {
   if (Math.random() < prb) {return true}
   else {return false};
 }
 
+/**
+ * Finds probabilities and costs for expedition options; updates launchCost variable
+ * @see checkButtons
+ */
 function calcLaunchCost() {
   typeValue = parseInt(typePicker.value);
   crewValue = parseInt(crewPicker.value);
@@ -314,6 +387,10 @@ typePicker.oninput = updateLaunchCost;
 crewPicker.oninput = updateLaunchCost;
 equipmentPicker.oninput = updateLaunchCost;
 
+/**
+ * Displays launchCost and successRate on page
+ * @see calcLaunchCost
+ */
 function updateLaunchCost() {
   calcLaunchCost();
   launchCostText.innerText = `${Math.ceil(launchCost).toLocaleString()} \u023a`;
@@ -327,6 +404,14 @@ var progressDelay;
 var loadDelayTimer;
 var loadDelay = false;
 
+/**
+ * @summary Runs expedition
+ * @description Updates progress bar and expedition status, calculates total launch cost, starts countdown. After countdown, calculates result and updates display.
+ * @see progressBar
+ * @see checkButtons
+ * @see calcProbability
+ * @see updateLaunchCost
+ */
 function launchExpedition() {
   if (loadDelay) {
     clearTimeout(loadDelayTimer);
@@ -345,6 +430,7 @@ function launchExpedition() {
     successRate = 90 + escapePlansFlag;
   }
 
+  // why aren't we using the calculate function here?
   launchCost = 0;
 
   for (let i=0; i < 3; i++) { //look through TYPES
@@ -409,6 +495,10 @@ function launchExpedition() {
   }, (time * 100) + 500); //live = time * 100
 }
 
+/**
+ * Updates progress bar width in display
+ * @param {number} time - either 50, 600, or 3,000
+ */
 function progressBar(time) {
   if (progress === 0) {
     progress = 1;
@@ -426,6 +516,9 @@ function progressBar(time) {
 
 // HAPPINESS AND PHASE 3 RESEARCH ------------------
 
+/**
+ * Sets happiness display; calculates unrest penalty
+ */
 function updateHappiness() {
   if (happiness >= 100) {happiness = 100}
   else if (happiness <= 0) {happiness = 0}
@@ -435,12 +528,17 @@ function updateHappiness() {
   unrestPenalty = (happiness < 30) ? 0.5 : 1;
 }
 
+/** Closes rebellion announcement */
 function dismissRebellion() {
   rebellionAnnouncementDiv.classList.add("hidden");
 }
 
 // TAXES -------------------------------------
 
+/**
+ * Changes revenue and happiness generation when +/- tax
+ * @param {number} num 
+ */
 function updateTaxes(num) {
   fleetMult += num;
   minesMult += num;
@@ -449,6 +547,10 @@ function updateTaxes(num) {
 }
 
 // n is 1-indexed (matches the tax1...tax10 naming used in the HTML/IDs).
+/**
+ * 
+ * @param {number} n 
+ */
 function lowerTax(n) {
   const i = n - 1;
   if (taxes[i] <= 0) return;
@@ -472,6 +574,10 @@ if (localStorage.getItem("saveData") !== null) {
 }
 
 // SAVING AND LOADING ----------------------
+
+/**
+ * Updates DOM with current values
+ */
 function refresh() {
   balanceText.innerText = Math.floor(balance).toLocaleString();
   convertCurrency(balance);
