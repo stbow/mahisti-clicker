@@ -3,6 +3,20 @@ var activeResearch = [];
 
 //TODO scholar stipends and open orphanages / happiness per second text not updating when taxes update / too much money
 
+/**
+ * @typedef {Object} researchItem - research item
+ * @property {string} research1.id - DOM element id
+ * @property {string} research1.priceTag - displayed price
+ * @property {string} research1.description - displayed description
+ * @property {function(): boolean} research1.trigger - when to display
+ * @property {number} research1.uses
+ * @property {function(): boolean} research1.cost - whether user can afford
+ * @property {number} research1.flag - 0 if not used, 1 if used
+ * @property {?Element} research1.element
+ * @property {function(): void} research1.effect - what happens when purchased
+ */
+
+/** @type {researchItem} */
 var research1 = {
   id: "researchButton1",
   title: "Hire employees",
@@ -25,6 +39,7 @@ var research1 = {
 
 research.push(research1);
 
+/** @type {researchItem} */
 var research2 = {
   id: "researchButton2",
   title: "Employee training ",
@@ -48,6 +63,7 @@ var research2 = {
   
 research.push(research2);
 
+/** @type {researchItem} */
 var research3 = {
   id: "researchButton3",
   title: "Overtime contracts ",
@@ -71,6 +87,7 @@ var research3 = {
 
 research.push(research3);
 
+/** @type {researchItem} */
 var research4 = {
   id: "researchButton4",
   title: "Convert kürler to yiralar and alt\u0131nlar ",
@@ -93,6 +110,7 @@ var research4 = {
   
 research.push(research4);
 
+/** @type {researchItem} */
 var research5 = {
   id: "researchButton5",
   title: "Open shops",
@@ -114,6 +132,7 @@ var research5 = {
 
 research.push(research5);
 
+/** @type {researchItem} */
 var research6 = {
   id: "researchButton6",
   title: "Apprentice system ",
@@ -140,6 +159,7 @@ var research6 = {
   
 research.push(research6);
 
+/** @type {researchItem} */
 var research6b = {
   id: "researchButton6b",
   title: "Health care coverage ",
@@ -162,6 +182,7 @@ var research6b = {
 
 research.push(research6b);
 
+/** @type {researchItem} */
 var research7 = {
   id: "researchButton7",
   title: "Launch loyalty program ",
@@ -185,6 +206,7 @@ var research7 = {
   
 research.push(research7);
 
+/** @type {researchItem} */
 var research8 = {
   id: "researchButton8",
   title: "Improve marketing ",
@@ -208,6 +230,7 @@ var research8 = {
   
 research.push(research8);
 
+/** @type {researchItem} */
 var research9 = {
   id: "researchButton9",
   title: "Dynamic bartering ",
@@ -233,6 +256,7 @@ var research9 = {
   
 research.push(research9);
 
+/** @type {researchItem} */
 var research10 = {
   id: "researchButton10",
   title: "Renovate shops ",
@@ -256,6 +280,7 @@ var research10 = {
   
 research.push(research10);
 
+/** @type {researchItem} */
 var research11 = {
   id: "researchButton11",
   title: "Start a fleet",
@@ -277,6 +302,7 @@ var research11 = {
 
 research.push(research11);
 
+/** @type {researchItem} */
 var research12 = {
   id: "researchButton12",
   title: "Master craftsmen ",
@@ -304,6 +330,7 @@ var research12 = {
   
 research.push(research12);
 
+/** @type {researchItem} */
 var research13 = {
   id: "researchButton13",
   title: "New hull materials ",
@@ -327,6 +354,7 @@ var research13 = {
 
 research.push(research13);
 
+/** @type {researchItem} */
 var research14 = {
   id: "researchButton14",
   title: "Research fluid dynamics ",
@@ -350,6 +378,7 @@ var research14 = {
   
 research.push(research14);
 
+/** @type {researchItem} */
 var research15 = {
   id: "researchButton15",
   title: "Expand international market ",
@@ -377,6 +406,7 @@ var research15 = {
   
 research.push(research15);
 
+/** @type {researchItem} */
 var research16 = {
   id: "researchButton16",
   title: "Paint hulls ",
@@ -399,6 +429,7 @@ var research16 = {
   
 research.push(research16);
 
+/** @type {researchItem} */
 var research17 = {
   id: "researchButton17",
   title: "Open gold mines ",
@@ -420,6 +451,7 @@ var research17 = {
   
 research.push(research17);
 
+/** @type {researchItem} */
 var research18 = {
   id: "researchButton18",
   title: "Deeper drilling ",
@@ -443,6 +475,7 @@ var research18 = {
   
 research.push(research18);
 
+/** @type {researchItem} */
 var research19 = {
   id: "researchButton19",
   title: "Famed merchant dynasty ",
@@ -472,6 +505,7 @@ var research19 = {
   
 research.push(research19);
 
+/** @type {researchItem} */
 var research20 = {
   id: "researchButton20",
   title: "Gold purification ",
@@ -495,6 +529,7 @@ var research20 = {
   
 research.push(research20);
 
+/** @type {researchItem} */
 var research21 = {
   id: "researchButton21",
   title: "Underground tunnels ",
@@ -518,6 +553,7 @@ var research21 = {
   
 research.push(research21);
 
+/** @type {researchItem} */
 var research22 = {
   id: "researchButton22",
   title: "Revenue Tracker ",
@@ -539,6 +575,7 @@ var research22 = {
 
 research.push(research22);
 
+/** @type {researchItem} */
 var research30 = {
   id: "researchButton30",
   title: "Begin researching sea serpents ",
@@ -562,6 +599,7 @@ var research30 = {
   
 research.push(research30);
 
+/** @type {researchItem} */
 var research31 = {
   id: "researchButton31",
   title: "Shallow waters survey ",
@@ -583,6 +621,7 @@ var research31 = {
 
 research.push(research31);
 
+/** @type {researchItem} */
 var research32 = {
   id: "researchButton32",
   title: "Deep sea study ",
@@ -610,6 +649,7 @@ var research32 = {
 
 research.push(research32);
 
+/** @type {researchItem} */
 var research33 = {
   id: "researchButton33",
   title: "Forbidden waters expedition ",
@@ -637,6 +677,7 @@ var research33 = {
 
 research.push(research33);
 
+/** @type {researchItem} */
 var research34 = {
   id: "researchButton34",
   title: "Hire inexperienced crews ",
@@ -660,6 +701,7 @@ var research34 = {
 
 research.push(research34);
 
+/** @type {researchItem} */
 var research35 = {
   id: "researchButton35",
   title: "Hire more experienced crews ",
@@ -687,6 +729,7 @@ var research35 = {
 
 research.push(research35);
 
+/** @type {researchItem} */
 var research36 = {
   id: "researchButton36",
   title: "Hire very experienced crews ",
@@ -714,6 +757,7 @@ var research36 = {
 
 research.push(research36);
 
+/** @type {researchItem} */
 var research37 = {
   id: "researchButton37",
   title: "Low quality supplies ",
@@ -737,6 +781,7 @@ var research37 = {
 
 research.push(research37);
 
+/** @type {researchItem} */
 var research38 = {
   id: "researchButton38",
   title: "Medium quality supplies ",
@@ -764,6 +809,7 @@ var research38 = {
 
 research.push(research38);
 
+/** @type {researchItem} */
 var research39 = {
   id: "researchButton39",
   title: "High quality supplies ",
@@ -791,6 +837,7 @@ var research39 = {
 
 research.push(research39);
 
+/** @type {researchItem} */
 var research40 = {
   id: "researchButton40",
   title: "Advanced escape plans ",
@@ -815,6 +862,7 @@ var research40 = {
 
 research.push(research40);
 
+/** @type {researchItem} */
 var research45 = {
   id: "researchButton45",
   title: "Launch the \"Ocean's Light\" ",
@@ -839,6 +887,7 @@ var research45 = {
 
 research.push(research45);
 
+/** @type {researchItem} */
 var research46 = {
   id: "researchButton46",
   title: "Buy off the core guard",
@@ -860,6 +909,7 @@ var research46 = {
   
 research.push(research46);
 
+/** @type {researchItem} */
 var research47 = {
   id: "researchButton47",
   title: "Buy off the fringe guard",
@@ -881,6 +931,7 @@ var research47 = {
   
 research.push(research47);
 
+/** @type {researchItem} */
 var research49 = {
   id: "researchButton49",
   title: "Overthrow the Shahre and take over Ara\u015Ft ",
@@ -911,6 +962,7 @@ var research49 = {
   
 research.push(research49);
 
+/** @type {researchItem} */
 var research50 = {
   id: "researchButton50",
   title: "Basic roads ",
@@ -936,6 +988,7 @@ var research50 = {
   
 research.push(research50);
 
+/** @type {researchItem} */
 var research51 = {
   id: "researchButton51",
   title: "Aqueducts and wells ",
@@ -959,6 +1012,7 @@ var research51 = {
   
 research.push(research51);
 
+/** @type {researchItem} */
 var research52 = {
   id: "researchButton52",
   title: "Public bathhouses ",
@@ -984,6 +1038,7 @@ var research52 = {
   
 research.push(research52);
 
+/** @type {researchItem} */
 var research53 = {
   id: "researchButton53",
   title: "Upgrade roads ",
@@ -1009,6 +1064,7 @@ var research53 = {
 
 research.push(research53);
 
+/** @type {researchItem} */
 var research54 = {
   id: "researchButton54",
   title: "Universal education ",
@@ -1034,6 +1090,7 @@ var research54 = {
   
 research.push(research54);
 
+/** @type {researchItem} */
 var research55 = {
   id: "researchButton55",
   title: "Open orphanages ",
@@ -1059,6 +1116,7 @@ var research55 = {
 
 research.push(research55);
 
+/** @type {researchItem} */
 var research56 = {
   id: "researchButton56",
   title: "Open the cadet academy ",
@@ -1084,6 +1142,7 @@ var research56 = {
   
 research.push(research56);
 
+/** @type {researchItem} */
 var research57 = {
   id: "researchButton57",
   title: "Invest in fringe guard training",
@@ -1109,6 +1168,7 @@ var research57 = {
 
 research.push(research57);
 
+/** @type {researchItem} */
 var research58 = {
   id: "researchButton58",
   title: "Invest in core guard training ",
@@ -1134,6 +1194,7 @@ var research58 = {
   
 research.push(research58);
 
+/** @type {researchItem} */
 var research59 = {
   id: "researchButton59",
   title: "Host a cultural festival ",
@@ -1157,6 +1218,7 @@ var research59 = {
 
 research.push(research59);
 
+/** @type {researchItem} */
 var research60 = {
   id: "researchButton60",
   title: "Civic code reform ",
@@ -1182,6 +1244,7 @@ var research60 = {
   
 research.push(research60);
 
+/** @type {researchItem} */
 var research61 = {
   id: "researchButton61",
   title: "Grand census ",
@@ -1207,6 +1270,7 @@ var research61 = {
   
 research.push(research61);
 
+/** @type {researchItem} */
 var research63 = {
   id: "researchButton63",
   title: "Negotiate The Pact ",
@@ -1230,6 +1294,7 @@ var research63 = {
   
 research.push(research63);
 
+/** @type {researchItem} */
 var research64 = {
   id: "researchButton64",
   title: "Scholar stipends",
@@ -1252,6 +1317,7 @@ var research64 = {
 
 research.push(research64);
 
+/** @type {researchItem} */
 var research65 = {
   id: "researchButton65",
   title: "Invest in Ministry of Intelligence ",
@@ -1276,6 +1342,7 @@ var research65 = {
   
 research.push(research65);
 
+/** @type {researchItem} */
 var research66 = {
   id: "researchButton66",
   title: "Patronage of the Inventor's Guild ",
@@ -1300,6 +1367,7 @@ var research66 = {
 
 research.push(research66);
 
+/** @type {researchItem} */
 var research67 = {
   id: "researchButton67",
   title: "Establish a Royal Observatory ",
@@ -1322,6 +1390,7 @@ var research67 = {
   
 research.push(research67);
 
+/** @type {researchItem} */
 var research68 = {
   id: "researchButton68",
   title: "Inventor's Challenge ",
@@ -1368,6 +1437,7 @@ research.push(research68);
   
 research.push(research69); */
 
+/** @type {researchItem} */
 var research70 = {
   id: "researchButton70",
   title: "Charge taxes on basic industries ",
@@ -1391,6 +1461,7 @@ var research70 = {
   
 research.push(research70);
 
+/** @type {researchItem} */
 var research71 = {
   id: "researchButton71",
   title: "Tax textiles ",
@@ -1414,6 +1485,7 @@ var research71 = {
   
 research.push(research71);
 
+/** @type {researchItem} */
 var research72 = {
   id: "researchButton72",
   title: "Tax salt works ",
@@ -1437,6 +1509,7 @@ var research72 = {
   
 research.push(research72);
 
+/** @type {researchItem} */
 var research73 = {
   id: "researchButton73",
   title: "Tax tanneries and leatherworks ",
@@ -1460,6 +1533,7 @@ var research73 = {
   
 research.push(research73);
 
+/** @type {researchItem} */
 var research74 = {
   id: "researchButton74",
   title: "Tax olives and grapes ",
@@ -1483,6 +1557,7 @@ var research74 = {
   
 research.push(research74);
 
+/** @type {researchItem} */
 var research75 = {
   id: "researchButton75",
   title: "Tax pawn brokers and moneylenders ",
@@ -1506,6 +1581,7 @@ var research75 = {
 
 research.push(research75);
 
+/** @type {researchItem} */
 var research76 = {
   id: "researchButton76",
   title: "Tax courtesans ",
@@ -1529,6 +1605,7 @@ var research76 = {
 
 research.push(research76);
 
+/** @type {researchItem} */
 var research77 = {
   id: "researchButton77",
   title: "Tax pottery and ceramics ",
@@ -1552,6 +1629,7 @@ var research77 = {
 
 research.push(research77);
 
+/** @type {researchItem} */
 var research78 = {
   id: "researchButton78",
   title: "Tax spices and exotic goods ",
