@@ -1100,7 +1100,7 @@ var research50 = {
   effect: function() {
     research50.flag = 1;
     balance -= 32400000;
-    happinessPS += 0.01;
+    happinessPS += 0.10;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult += 0.05;
     minesMult += 0.20;
@@ -1129,7 +1129,7 @@ var research51 = {
   effect: function() {
     research51.flag = 1;
     balance -= 63000000;
-    happinessPS += 0.02;
+    happinessPS += 0.20;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     research51.element.parentNode.removeChild(research51.element);
     let index = activeResearch.indexOf(research51);
@@ -1156,7 +1156,7 @@ var research52 = {
   effect: function() {
     research52.flag = 1;
     balance -= 115200000;
-    happinessPS += 0.05;
+    happinessPS += 0.50;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult -= 0.08;
     minesMult -= 0.08;
@@ -1185,7 +1185,7 @@ var research53 = {
   effect: function() {
     research53.flag = 1;
     balance -= 194400000;
-    happinessPS += 0.01;
+    happinessPS += 0.10;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     minesMult += 0.20;
     research53.element.parentNode.removeChild(research53.element);
@@ -1213,7 +1213,7 @@ var research54 = {
   effect: function() {
     research54.flag = 1;
     balance -= 45000000
-    happinessPS += 0.04;
+    happinessPS += 0.40;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult -= 0.03;
     minesMult -= 0.03;
@@ -1242,7 +1242,7 @@ var research55 = {
   effect: function() {
     research55.flag = 1;
     balance -= 79200000;
-    happinessPS += 0.05;
+    happinessPS += 0.50;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult -= 0.05;
     minesMult -= 0.05;
@@ -1271,7 +1271,7 @@ var research56 = {
   effect: function() {
     research56.flag = 1;
     balance -= 126000000;
-    happinessPS += 0.02;
+    happinessPS += 0.20;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult -= 0.05;
     minesMult -= 0.05;
@@ -1300,7 +1300,7 @@ var research57 = {
   effect: function() {
     research57.flag = 1;
     balance -= 234000000;
-    happinessPS += 0.03;
+    happinessPS += 0.30;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult -= 0.10;
     minesMult -= 0.10;
@@ -1329,7 +1329,7 @@ var research58 = {
   effect: function() {
     research58.flag = 1;
     balance -= 450000000;
-    happinessPS += 0.01;
+    happinessPS += 0.10;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult -= 0.08;
     minesMult -= 0.08;
@@ -1385,7 +1385,7 @@ var research60 = {
   effect: function() {
     research60.flag = 1;
     balance -= 90000000;
-    happinessPS += 0.05;
+    happinessPS += 0.50;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult -= 0.03;
     minesMult -= 0.03;
@@ -1414,7 +1414,7 @@ var research61 = {
   effect: function() {
     research61.flag = 1;
     happiness -= 2;
-    happinessPS += 0.02;
+    happinessPS += 0.20;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult += 0.10;
     minesMult += 0.10;
