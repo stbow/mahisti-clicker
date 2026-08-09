@@ -96,8 +96,13 @@ startOverBtn.onclick = startOver;
 // PURCHASE FUNCTIONS ----------------------
 
 /**
+ * @namespace phase1Functions
+ */
+
+/**
  * Produces item, adds 1 to balance (on click)
  * @see convertCurrency
+ * @memberof phase1Functions
  */
 function sellItem() {
   balance++;
@@ -110,6 +115,7 @@ function sellItem() {
  * @see easyRead
  * @see convertCurrency
  * @see checkButtons
+ * @memberof phase1Functions
  */
 function hireEmployee() {
   employees++;
@@ -127,6 +133,7 @@ function hireEmployee() {
  * @see easyRead
  * @see convertCurrency
  * @see checkButtons
+ * @memberof phase1Functions
  */
 function newShop() {
   shops++;
@@ -144,6 +151,7 @@ function newShop() {
  * @see easyRead
  * @see convertCurrency
  * @see checkButtons
+ * @memberof phase1Functions
  */
 function newShip() {
   ships++;
@@ -161,6 +169,7 @@ function newShip() {
  * @see easyRead
  * @see convertCurrency
  * @see checkButtons
+ * @memberof phase1Functions
  */
 function newMine() {
   mines++;
@@ -176,8 +185,13 @@ function newMine() {
 // PAGE UPDATING --------------------------
 
 /**
+ * @namespace displayFunctions
+ */
+
+/**
  * Converts balance to A/Y/K for display under balance
  * @param {number} num - balance
+ * @memberof displayFunctions
  */
 function convertCurrency(num) {
   altinlar.innerText = Math.floor(num / 360).toLocaleString();
@@ -189,6 +203,7 @@ function convertCurrency(num) {
  * Displays value as only A/Y/K depending on amount
  * @param {number} num - number
  * @returns {string} Value of A/Y/K
+ * @memberof displayFunctions
  */
 function easyRead(num) {
   let a = Math.ceil(num / 360).toLocaleString();
@@ -205,6 +220,7 @@ function easyRead(num) {
 
 /**
  * Calculates and displays revenue per second
+ * @memberof displayFunctions
  */
 function revTracker() {
   let rps = (empMult * employees) + (shopsRPS * shopsMult * shops) + (fleetRPS * fleetMult * ships) + (minesRPS * minesMult * mines);
@@ -221,6 +237,7 @@ function revTracker() {
 
 /**
  * Disables purchasing buttons if balance is too low
+ * @memberof displayFunctions
  */
 function checkButtons() {
   if (balance < nextEmployee) {
@@ -262,6 +279,7 @@ function checkButtons() {
 /**
  * Adds new research items to active array, calls displayResearch to show the item
  * @see displayResearch
+ * @memberof displayFunctions
  */
 function manageResearch() {
   for(let i=0; i < research.length; i++) {
@@ -289,6 +307,7 @@ function manageResearch() {
  * @param {string} project.title
  * @param {string} project.priceTag
  * @param {string} project.description
+ * @memberof displayFunctions
  */
 function displayResearch(project){
   project.element = document.createElement("button");
@@ -319,11 +338,16 @@ function displayResearch(project){
 // RESEARCH EXPEDITIONS --------------------
 
 /**
+ * @namespace phase2Functions
+ */
+
+/**
  * Adds research ship, updates balance and expedition info
  * @see easyRead
  * @see updateLaunchCost
  * @see convertCurrency
  * @see checkButtons
+ * @memberof phase2Functions
  */
 function newResearchShip() {
   researchShips++;
@@ -351,6 +375,7 @@ function calcProbability(prb) {
 /**
  * Finds probabilities and costs for expedition options; updates launchCost variable
  * @see checkButtons
+ * @memberof phase2Functions
  */
 function calcLaunchCost() {
   typeValue = parseInt(typePicker.value);
@@ -390,6 +415,7 @@ equipmentPicker.oninput = updateLaunchCost;
 /**
  * Displays launchCost and successRate on page
  * @see calcLaunchCost
+ * @memberof phase2Functions
  */
 function updateLaunchCost() {
   calcLaunchCost();
@@ -411,6 +437,7 @@ var loadDelay = false;
  * @see checkButtons
  * @see calcProbability
  * @see updateLaunchCost
+ * @memberof phase2Functions
  */
 function launchExpedition() {
   if (loadDelay) {
@@ -430,7 +457,7 @@ function launchExpedition() {
     successRate = 90 + escapePlansFlag;
   }
 
-  // why aren't we using the calculate function here?
+  // TODO why aren't we using the calculate function here?
   launchCost = 0;
 
   for (let i=0; i < 3; i++) { //look through TYPES
@@ -498,6 +525,7 @@ function launchExpedition() {
 /**
  * Updates progress bar width in display
  * @param {number} time - either 50, 600, or 3,000
+ * @memberof phase2Functions
  */
 function progressBar(time) {
   if (progress === 0) {
@@ -517,7 +545,12 @@ function progressBar(time) {
 // HAPPINESS AND PHASE 3 RESEARCH ------------------
 
 /**
+ * @namespace phase3Functions
+ */
+
+/**
  * Sets happiness display; calculates unrest penalty
+ * @memberof phase3Functions
  */
 function updateHappiness() {
   if (happiness >= 100) {happiness = 100}
@@ -538,6 +571,7 @@ function dismissRebellion() {
 /**
  * Changes revenue and happiness generation when +/- tax
  * @param {number} num 
+ * @memberof phase3Functions
  */
 function updateTaxes(num) {
   fleetMult += num;
@@ -548,8 +582,10 @@ function updateTaxes(num) {
 
 // n is 1-indexed (matches the tax1...tax10 naming used in the HTML/IDs).
 /**
- * 
- * @param {number} n 
+ * Reduce tax
+ * @param {number} n - tax ID
+ * @see updateTaxes
+ * @memberof phase3Functions
  */
 function lowerTax(n) {
   const i = n - 1;
@@ -559,6 +595,12 @@ function lowerTax(n) {
   taxDisplays[i].innerText = taxes[i];
 }
 
+/**
+ * Raise tax
+ * @param {number} n - tax ID
+ * @see updateTaxes
+ * @memberof phase3Functions
+ */
 function raiseTax(n) {
   const i = n - 1;
   if (taxes[i] >= 9) return;
@@ -577,6 +619,7 @@ if (localStorage.getItem("saveData") !== null) {
 
 /**
  * Updates DOM with current values
+ * @memberof displayFunctions
  */
 function refresh() {
   balanceText.innerText = Math.floor(balance).toLocaleString();
@@ -673,6 +716,10 @@ function refresh() {
   if (research78.flag === 1) tax10Div.classList.remove("hidden");
 }
 
+/**
+ * Store research statuses and variables in browser storage
+ * @memberof displayFunctions
+ */
 function save() {
   var researchUses = [];
   var researchFlags = [];
@@ -723,6 +770,11 @@ function deleteSave() {
   localStorage.removeItem("saveData");
 }
 
+/**
+ * Pull data from localStorage and parse into variables
+ * @see refresh
+ * @memberof displayFunctions
+ */
 function load() {
   savegame = JSON.parse(localStorage.getItem("saveData"));
   if (typeof savegame.balance !== "undefined") balance = savegame.balance;
@@ -748,7 +800,6 @@ function load() {
   if (typeof savegame.happinessPS !== "undefined") happinessPS = savegame.happinessPS;
   if (typeof savegame.researchMult !== "undefined") researchMult = savegame.researchMult;
   if (typeof savegame.taxes !== "undefined") taxes = savegame.taxes;
-  //if (typeof savegame.prestige !== "undefined") prestige = savegame.prestige;
 
   // update research
   var loadResearchUses = JSON.parse(localStorage.getItem("saveResearchUses"));
@@ -769,6 +820,11 @@ function load() {
   refresh();
 }
 
+/**
+ * For use at end of game
+ * @see deleteSave
+ * @memberof displayFunctions
+ */
 function startOver() {
   deleteSave();
   location.reload();
@@ -776,6 +832,10 @@ function startOver() {
 
 // TIMERS ------------------------------------
 
+/**
+ * @summary Main game engine
+ * @description Fires every 1 second (1,000 ms). Updates DOM elements. 
+ */
 window.setInterval(function() {
   balance += ((empMult * employees) + (shopsRPS * shopsMult * shops) + (fleetRPS * fleetMult * ships) + (minesRPS * minesMult * mines)) * unrestPenalty;
   balanceText.innerText = Math.floor(balance).toLocaleString();

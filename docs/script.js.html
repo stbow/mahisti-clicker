@@ -124,8 +124,13 @@ startOverBtn.onclick = startOver;
 // PURCHASE FUNCTIONS ----------------------
 
 /**
+ * @namespace phase1Functions
+ */
+
+/**
  * Produces item, adds 1 to balance (on click)
  * @see convertCurrency
+ * @memberof phase1Functions
  */
 function sellItem() {
   balance++;
@@ -138,6 +143,7 @@ function sellItem() {
  * @see easyRead
  * @see convertCurrency
  * @see checkButtons
+ * @memberof phase1Functions
  */
 function hireEmployee() {
   employees++;
@@ -155,6 +161,7 @@ function hireEmployee() {
  * @see easyRead
  * @see convertCurrency
  * @see checkButtons
+ * @memberof phase1Functions
  */
 function newShop() {
   shops++;
@@ -172,6 +179,7 @@ function newShop() {
  * @see easyRead
  * @see convertCurrency
  * @see checkButtons
+ * @memberof phase1Functions
  */
 function newShip() {
   ships++;
@@ -189,6 +197,7 @@ function newShip() {
  * @see easyRead
  * @see convertCurrency
  * @see checkButtons
+ * @memberof phase1Functions
  */
 function newMine() {
   mines++;
@@ -204,8 +213,13 @@ function newMine() {
 // PAGE UPDATING --------------------------
 
 /**
+ * @namespace displayFunctions
+ */
+
+/**
  * Converts balance to A/Y/K for display under balance
  * @param {number} num - balance
+ * @memberof displayFunctions
  */
 function convertCurrency(num) {
   altinlar.innerText = Math.floor(num / 360).toLocaleString();
@@ -217,6 +231,7 @@ function convertCurrency(num) {
  * Displays value as only A/Y/K depending on amount
  * @param {number} num - number
  * @returns {string} Value of A/Y/K
+ * @memberof displayFunctions
  */
 function easyRead(num) {
   let a = Math.ceil(num / 360).toLocaleString();
@@ -233,6 +248,7 @@ function easyRead(num) {
 
 /**
  * Calculates and displays revenue per second
+ * @memberof displayFunctions
  */
 function revTracker() {
   let rps = (empMult * employees) + (shopsRPS * shopsMult * shops) + (fleetRPS * fleetMult * ships) + (minesRPS * minesMult * mines);
@@ -249,6 +265,7 @@ function revTracker() {
 
 /**
  * Disables purchasing buttons if balance is too low
+ * @memberof displayFunctions
  */
 function checkButtons() {
   if (balance &lt; nextEmployee) {
@@ -290,6 +307,7 @@ function checkButtons() {
 /**
  * Adds new research items to active array, calls displayResearch to show the item
  * @see displayResearch
+ * @memberof displayFunctions
  */
 function manageResearch() {
   for(let i=0; i &lt; research.length; i++) {
@@ -317,6 +335,7 @@ function manageResearch() {
  * @param {string} project.title
  * @param {string} project.priceTag
  * @param {string} project.description
+ * @memberof displayFunctions
  */
 function displayResearch(project){
   project.element = document.createElement("button");
@@ -347,11 +366,16 @@ function displayResearch(project){
 // RESEARCH EXPEDITIONS --------------------
 
 /**
+ * @namespace phase2Functions
+ */
+
+/**
  * Adds research ship, updates balance and expedition info
  * @see easyRead
  * @see updateLaunchCost
  * @see convertCurrency
  * @see checkButtons
+ * @memberof phase2Functions
  */
 function newResearchShip() {
   researchShips++;
@@ -379,6 +403,7 @@ function calcProbability(prb) {
 /**
  * Finds probabilities and costs for expedition options; updates launchCost variable
  * @see checkButtons
+ * @memberof phase2Functions
  */
 function calcLaunchCost() {
   typeValue = parseInt(typePicker.value);
@@ -418,6 +443,7 @@ equipmentPicker.oninput = updateLaunchCost;
 /**
  * Displays launchCost and successRate on page
  * @see calcLaunchCost
+ * @memberof phase2Functions
  */
 function updateLaunchCost() {
   calcLaunchCost();
@@ -439,6 +465,7 @@ var loadDelay = false;
  * @see checkButtons
  * @see calcProbability
  * @see updateLaunchCost
+ * @memberof phase2Functions
  */
 function launchExpedition() {
   if (loadDelay) {
@@ -458,7 +485,7 @@ function launchExpedition() {
     successRate = 90 + escapePlansFlag;
   }
 
-  // why aren't we using the calculate function here?
+  // TODO why aren't we using the calculate function here?
   launchCost = 0;
 
   for (let i=0; i &lt; 3; i++) { //look through TYPES
@@ -526,6 +553,7 @@ function launchExpedition() {
 /**
  * Updates progress bar width in display
  * @param {number} time - either 50, 600, or 3,000
+ * @memberof phase2Functions
  */
 function progressBar(time) {
   if (progress === 0) {
@@ -545,7 +573,12 @@ function progressBar(time) {
 // HAPPINESS AND PHASE 3 RESEARCH ------------------
 
 /**
+ * @namespace phase3Functions
+ */
+
+/**
  * Sets happiness display; calculates unrest penalty
+ * @memberof phase3Functions
  */
 function updateHappiness() {
   if (happiness >= 100) {happiness = 100}
@@ -566,6 +599,7 @@ function dismissRebellion() {
 /**
  * Changes revenue and happiness generation when +/- tax
  * @param {number} num 
+ * @memberof phase3Functions
  */
 function updateTaxes(num) {
   fleetMult += num;
@@ -576,8 +610,10 @@ function updateTaxes(num) {
 
 // n is 1-indexed (matches the tax1...tax10 naming used in the HTML/IDs).
 /**
- * 
- * @param {number} n 
+ * Reduce tax
+ * @param {number} n - tax ID
+ * @see updateTaxes
+ * @memberof phase3Functions
  */
 function lowerTax(n) {
   const i = n - 1;
@@ -587,6 +623,12 @@ function lowerTax(n) {
   taxDisplays[i].innerText = taxes[i];
 }
 
+/**
+ * Raise tax
+ * @param {number} n - tax ID
+ * @see updateTaxes
+ * @memberof phase3Functions
+ */
 function raiseTax(n) {
   const i = n - 1;
   if (taxes[i] >= 9) return;
@@ -602,6 +644,11 @@ if (localStorage.getItem("saveData") !== null) {
 }
 
 // SAVING AND LOADING ----------------------
+
+/**
+ * Updates DOM with current values
+ * @memberof displayFunctions
+ */
 function refresh() {
   balanceText.innerText = Math.floor(balance).toLocaleString();
   convertCurrency(balance);
@@ -697,6 +744,10 @@ function refresh() {
   if (research78.flag === 1) tax10Div.classList.remove("hidden");
 }
 
+/**
+ * Store research statuses and variables in browser storage
+ * @memberof displayFunctions
+ */
 function save() {
   var researchUses = [];
   var researchFlags = [];
@@ -747,6 +798,11 @@ function deleteSave() {
   localStorage.removeItem("saveData");
 }
 
+/**
+ * Pull data from localStorage and parse into variables
+ * @see refresh
+ * @memberof displayFunctions
+ */
 function load() {
   savegame = JSON.parse(localStorage.getItem("saveData"));
   if (typeof savegame.balance !== "undefined") balance = savegame.balance;
@@ -772,7 +828,6 @@ function load() {
   if (typeof savegame.happinessPS !== "undefined") happinessPS = savegame.happinessPS;
   if (typeof savegame.researchMult !== "undefined") researchMult = savegame.researchMult;
   if (typeof savegame.taxes !== "undefined") taxes = savegame.taxes;
-  //if (typeof savegame.prestige !== "undefined") prestige = savegame.prestige;
 
   // update research
   var loadResearchUses = JSON.parse(localStorage.getItem("saveResearchUses"));
@@ -793,6 +848,11 @@ function load() {
   refresh();
 }
 
+/**
+ * For use at end of game
+ * @see deleteSave
+ * @memberof displayFunctions
+ */
 function startOver() {
   deleteSave();
   location.reload();
@@ -800,6 +860,10 @@ function startOver() {
 
 // TIMERS ------------------------------------
 
+/**
+ * @summary Main game engine
+ * @description Fires every 1 second (1,000 ms). Updates DOM elements. 
+ */
 window.setInterval(function() {
   balance += ((empMult * employees) + (shopsRPS * shopsMult * shops) + (fleetRPS * fleetMult * ships) + (minesRPS * minesMult * mines)) * unrestPenalty;
   balanceText.innerText = Math.floor(balance).toLocaleString();
@@ -836,13 +900,13 @@ window.setInterval(function() {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#calcLaunchCost">calcLaunchCost</a></li><li><a href="global.html#calcProbability">calcProbability</a></li><li><a href="global.html#checkButtons">checkButtons</a></li><li><a href="global.html#convertCurrency">convertCurrency</a></li><li><a href="global.html#dismissRebellion">dismissRebellion</a></li><li><a href="global.html#displayResearch">displayResearch</a></li><li><a href="global.html#easyRead">easyRead</a></li><li><a href="global.html#hireEmployee">hireEmployee</a></li><li><a href="global.html#launchExpedition">launchExpedition</a></li><li><a href="global.html#lowerTax">lowerTax</a></li><li><a href="global.html#manageResearch">manageResearch</a></li><li><a href="global.html#newMine">newMine</a></li><li><a href="global.html#newResearchShip">newResearchShip</a></li><li><a href="global.html#newShip">newShip</a></li><li><a href="global.html#newShop">newShop</a></li><li><a href="global.html#progressBar">progressBar</a></li><li><a href="global.html#research1">research1</a></li><li><a href="global.html#research10">research10</a></li><li><a href="global.html#research11">research11</a></li><li><a href="global.html#research12">research12</a></li><li><a href="global.html#research13">research13</a></li><li><a href="global.html#research14">research14</a></li><li><a href="global.html#research15">research15</a></li><li><a href="global.html#research16">research16</a></li><li><a href="global.html#research17">research17</a></li><li><a href="global.html#research18">research18</a></li><li><a href="global.html#research19">research19</a></li><li><a href="global.html#research2">research2</a></li><li><a href="global.html#research20">research20</a></li><li><a href="global.html#research21">research21</a></li><li><a href="global.html#research22">research22</a></li><li><a href="global.html#research3">research3</a></li><li><a href="global.html#research30">research30</a></li><li><a href="global.html#research31">research31</a></li><li><a href="global.html#research32">research32</a></li><li><a href="global.html#research33">research33</a></li><li><a href="global.html#research34">research34</a></li><li><a href="global.html#research35">research35</a></li><li><a href="global.html#research36">research36</a></li><li><a href="global.html#research37">research37</a></li><li><a href="global.html#research38">research38</a></li><li><a href="global.html#research39">research39</a></li><li><a href="global.html#research4">research4</a></li><li><a href="global.html#research40">research40</a></li><li><a href="global.html#research45">research45</a></li><li><a href="global.html#research46">research46</a></li><li><a href="global.html#research47">research47</a></li><li><a href="global.html#research49">research49</a></li><li><a href="global.html#research5">research5</a></li><li><a href="global.html#research50">research50</a></li><li><a href="global.html#research51">research51</a></li><li><a href="global.html#research52">research52</a></li><li><a href="global.html#research53">research53</a></li><li><a href="global.html#research54">research54</a></li><li><a href="global.html#research55">research55</a></li><li><a href="global.html#research56">research56</a></li><li><a href="global.html#research57">research57</a></li><li><a href="global.html#research58">research58</a></li><li><a href="global.html#research59">research59</a></li><li><a href="global.html#research6">research6</a></li><li><a href="global.html#research60">research60</a></li><li><a href="global.html#research61">research61</a></li><li><a href="global.html#research63">research63</a></li><li><a href="global.html#research64">research64</a></li><li><a href="global.html#research65">research65</a></li><li><a href="global.html#research66">research66</a></li><li><a href="global.html#research67">research67</a></li><li><a href="global.html#research68">research68</a></li><li><a href="global.html#research6b">research6b</a></li><li><a href="global.html#research7">research7</a></li><li><a href="global.html#research70">research70</a></li><li><a href="global.html#research71">research71</a></li><li><a href="global.html#research72">research72</a></li><li><a href="global.html#research73">research73</a></li><li><a href="global.html#research74">research74</a></li><li><a href="global.html#research75">research75</a></li><li><a href="global.html#research76">research76</a></li><li><a href="global.html#research77">research77</a></li><li><a href="global.html#research78">research78</a></li><li><a href="global.html#research8">research8</a></li><li><a href="global.html#research9">research9</a></li><li><a href="global.html#revTracker">revTracker</a></li><li><a href="global.html#sellItem">sellItem</a></li><li><a href="global.html#siteName">siteName</a></li><li><a href="global.html#updateHappiness">updateHappiness</a></li><li><a href="global.html#updateLaunchCost">updateLaunchCost</a></li><li><a href="global.html#updateTaxes">updateTaxes</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="displayFunctions.html">displayFunctions</a></li><li><a href="phase1Functions.html">phase1Functions</a></li><li><a href="phase2Functions.html">phase2Functions</a></li><li><a href="phase3Functions.html">phase3Functions</a></li><li><a href="researchItems.html">researchItems</a></li></ul><h3>Global</h3><ul><li><a href="global.html#calcProbability">calcProbability</a></li><li><a href="global.html#dismissRebellion">dismissRebellion</a></li><li><a href="global.html#siteName">siteName</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Sat Aug 08 2026 17:45:03 GMT-0700 (Mountain Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Sun Aug 09 2026 15:24:20 GMT-0700 (Mountain Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
