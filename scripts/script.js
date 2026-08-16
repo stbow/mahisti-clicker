@@ -510,7 +510,7 @@ function launchExpedition() {
     }, 1500);
     launching = 0;
     loadDelay = true;
-  }, (time * 10) + 500); //live = time * 100 XXX test=time*10
+  }, (time * 100) + 500); //live = time * 100 XXX test=time*10
 }
 
 /**
@@ -529,7 +529,7 @@ function progressBar(time) {
         width++;
         expeditionProgressBar.style.width = width + "%";
       }
-    }, time/10); // testing = time/10 XXX live = time
+    }, time); // testing = time/10 XXX live = time
   }
 }
 
@@ -848,7 +848,7 @@ window.setInterval(function() {
     researchPoints += researchMult;
     pointsCount.innerText = researchPoints;
   }
-}, 100); //NOTE LIVE is 1000 XXX test = 100
+}, 1000); //NOTE LIVE is 1000 XXX test = 100
 
 window.setInterval(function() {
   save();  
