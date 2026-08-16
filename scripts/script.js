@@ -677,7 +677,7 @@ function refresh() {
       el.value = 15;
       list.appendChild(el);
     }
-    if (research39.flag === 5) {
+    if (research39.flag === 1) {
       var list = document.getElementById("equipment-picker");
       var el = document.createElement("option");
       el.textContent = "High quality supplies";
