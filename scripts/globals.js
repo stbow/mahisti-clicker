@@ -95,11 +95,6 @@ const expeditionOptionsList = [
   }
 ]
 
-var typeValue;
-var crewValue;
-var equipmentValue;
-var successRate;
-
 var happiness = 50;
 var happinessPS = 0;
 var unrestPenalty = 1;

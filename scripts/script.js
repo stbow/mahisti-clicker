@@ -265,7 +265,7 @@ function checkButtons() {
   } else {
     buyResearchShip.disabled = false;
   }
-  if (researchShips === 0 || balance < (launchCost * researchShips) || typePicker.value === "0" || launching === 1) {
+  if (researchShips === 0 || balance < (launchCost * 360) || typePicker.value === "0" || launching === 1) {
     launchBtn.disabled = true;
   } else {
     launchBtn.disabled = false;
@@ -373,39 +373,42 @@ function calcProbability(prb) {
 }
 
 /**
- * Finds probabilities and costs for expedition options; updates launchCost variable
- * @see checkButtons
+ * Finds probabilities and costs for expedition options; returns the cost for the expedition and the success rate
+ * @param {num} typeVal 
+ * @param {num} crewVal
+ * @param {num} equipVal
+ * @param {num} ships
  * @memberof phase2Functions
  */
-function calcLaunchCost() {
-  typeValue = parseInt(typePicker.value);
-  crewValue = parseInt(crewPicker.value);
-  equipmentValue = parseInt(equipmentPicker.value);
-  if ((typeValue + crewValue + equipmentValue + researchShips) <= 90 ) {
-    successRate = typeValue + crewValue + equipmentValue + escapePlansFlag + researchShips;
+function calcLaunchCost(typeVal, crewVal, equipVal, ships) {
+  console.log("running calcLaunchCost");
+  let rate;
+  if ((typeVal + crewVal + equipVal + ships) <= 90 ) {
+    rate = typeVal + crewVal + equipVal + escapePlansFlag + ships;
   } else {
-    successRate = 90 + escapePlansFlag;
+    rate = 90 + escapePlansFlag;
   }
 
-  launchCost = 0;
+  let tempLaunchCost = 0;
 
   for (let i=0; i < 3; i++) { //look through TYPES
-    if (typeValue === expeditionOptionsList[i].value) {
-      launchCost += expeditionOptionsList[i].cost;
+    if (typeVal === expeditionOptionsList[i].value) {
+      tempLaunchCost += expeditionOptionsList[i].cost;
     }
   }
   for (let i=3; i < 6; i++) { //look through CREWS
-    if (crewValue === expeditionOptionsList[i].value) {
-      launchCost += expeditionOptionsList[i].cost;
+    if (crewVal === expeditionOptionsList[i].value) {
+      tempLaunchCost += expeditionOptionsList[i].cost;
     }
   }
   for (let i=6; i < expeditionOptionsList.length; i++) { //look through EQUIPS
-    if (equipmentValue === expeditionOptionsList[i].value) {
-      launchCost += expeditionOptionsList[i].cost;
+    if (equipVal === expeditionOptionsList[i].value) {
+      tempLaunchCost += expeditionOptionsList[i].cost;
     }
   }
-  launchCost = launchCost * researchShips;
-  checkButtons();
+  tempLaunchCost *= ships;
+  console.log(`returning ${tempLaunchCost} as tempLaunchCost and ${rate} as rate`);
+  return { cost: tempLaunchCost, rate };
 }
 
 typePicker.oninput = updateLaunchCost;
@@ -415,12 +418,23 @@ equipmentPicker.oninput = updateLaunchCost;
 /**
  * Displays launchCost and successRate on page
  * @see calcLaunchCost
+ * @see checkButtons
  * @memberof phase2Functions
  */
 function updateLaunchCost() {
-  calcLaunchCost();
+  console.log("running updateLaunchCost");
+  const typeValue = parseInt(typePicker.value);
+  const crewValue = parseInt(crewPicker.value);
+  const equipmentValue = parseInt(equipmentPicker.value);
+  
+  const { cost, rate } = calcLaunchCost(typeValue, crewValue, equipmentValue, researchShips);
+  launchCost = cost;
+  console.log(`calcLaunchCost returned ${cost} as the cost and ${rate} as the rate. launchCost is now set to ${launchCost}`);
+
   launchCostText.innerText = `${Math.ceil(launchCost).toLocaleString()} \u023a`;
-  successRateText.innerText = successRate;
+  successRateText.innerText = rate;
+
+  checkButtons();
 }
 
 var progress = 0;
@@ -440,6 +454,19 @@ var loadDelay = false;
  * @memberof phase2Functions
  */
 function launchExpedition() {
+  console.log("running launchExpedition");
+  const typeValueTemp = parseInt(typePicker.value);
+  const crewValueTemp = parseInt(crewPicker.value);
+  const equipmentValueTemp = parseInt(equipmentPicker.value);
+  const currentShips = researchShips;
+
+  const { cost: thisLaunchCost, rate: thisSuccessRate } = calcLaunchCost(typeValueTemp, crewValueTemp, equipmentValueTemp, currentShips);
+  console.log(`calcLaunchCost is returning ${thisLaunchCost} for thisLaunchCost and ${thisSuccessRate} for thisSuccessRate`);
+
+  if (currentShips === 0 || balance < thisLaunchCost * 360 || typePicker.value === "0" || launching === 1) {
+    return;
+  }
+
   if (loadDelay) {
     clearTimeout(loadDelayTimer);
     width = 1;
@@ -447,42 +474,12 @@ function launchExpedition() {
   };
   launching = 1;
   expeditionResultText.innerHTML = `Expedition in progress...`;
-  
-  let typeValueTemp = parseInt(typePicker.value);
-  let crewValueTemp = parseInt(crewPicker.value);
-  let equipmentValueTemp = parseInt(equipmentPicker.value);
-  if ((typeValueTemp + crewValueTemp + equipmentValueTemp + researchShips) <= 90 ) {
-    successRate = typeValueTemp + crewValueTemp + equipmentValueTemp + escapePlansFlag + researchShips;
-  } else {
-    successRate = 90 + escapePlansFlag;
-  }
 
-  // TODO why aren't we using the calculate function here?
-  launchCost = 0;
-
-  for (let i=0; i < 3; i++) { //look through TYPES
-    if (typeValueTemp === expeditionOptionsList[i].value) {
-      launchCost += expeditionOptionsList[i].cost;
-    }
-  }
-  for (let i=3; i < 6; i++) { //look through CREWS
-    if (crewValueTemp === expeditionOptionsList[i].value) {
-      launchCost += expeditionOptionsList[i].cost;
-    }
-  }
-  for (let i=6; i < expeditionOptionsList.length; i++) { //look through EQUIPS
-    if (equipmentValueTemp === expeditionOptionsList[i].value) {
-      launchCost += expeditionOptionsList[i].cost;
-    }
-  }
-  launchCost = launchCost * researchShips;
-
-  balance -= launchCost * 360;
+  balance -= thisLaunchCost * 360;
   balanceText.innerText = Math.floor(balance).toLocaleString();
-  let currentShips = researchShips;
+  
   let newResearchPoints = 0;
   let time = 50; 
-
   if (typeValueTemp === 30) {
     time = 600;
   } else if (typeValueTemp === 10) {
@@ -494,7 +491,7 @@ function launchExpedition() {
 
   progressDelay = setTimeout(() => { // wait for progress to finish
 
-    if (calcProbability(successRate/100)) { //success!
+    if (calcProbability(thisSuccessRate/100)) { //success!
       for (let i=0; i < 3; i++) { //look through TYPES
         if (typeValueTemp === expeditionOptionsList[i].value) {
           newResearchPoints = expeditionOptionsList[i].result;
@@ -519,7 +516,7 @@ function launchExpedition() {
     }, 1500);
     launching = 0;
     loadDelay = true;
-  }, (time * 100) + 500); //live = time * 100
+  }, (time * 10) + 500); //live = time * 100 XXX test=time*10
 }
 
 /**
@@ -538,7 +535,7 @@ function progressBar(time) {
         width++;
         expeditionProgressBar.style.width = width + "%";
       }
-    }, time); // testing = time/10
+    }, time/10); // testing = time/10 XXX live = time
   }
 }
 
@@ -857,7 +854,7 @@ window.setInterval(function() {
     researchPoints += researchMult;
     pointsCount.innerText = researchPoints;
   }
-}, 1000); //NOTE LIVE is 1000
+}, 100); //NOTE LIVE is 1000 XXX test = 100
 
 window.setInterval(function() {
   save();  
