@@ -1782,23 +1782,22 @@ research.push(research75);
 var research76 = {
   id: "researchButton76",
   title: "Tax courtesans ",
-  priceTag: "(3,800 points)",
+  priceTag: "(3,200 points)",
   description: "Lucrative and appreciated",
   trigger: function() {return research75.flag === 1},
   uses: 1,
-  cost: function() {return researchPoints >= 3800},
+  cost: function() {return researchPoints >= 3200},
   flag: 0,
   element: null,
   effect: function() {
     research76.flag = 1;
-    researchPoints -= 3800;
+    researchPoints -= 3200;
     pointsCount.innerText = researchPoints;
     tax8Div.classList.remove("hidden");
     research76.element.parentNode.removeChild(research76.element);
     let index = activeResearch.indexOf(research76);
     activeResearch.splice(index, 1);
   }
-  //TODO this is weirdly high - change to ~3000-3300
 }
 
 research.push(research76);
@@ -1810,16 +1809,16 @@ research.push(research76);
 var research77 = {
   id: "researchButton77",
   title: "Tax pottery and ceramics ",
-  priceTag: "(4,600 points)",
+  priceTag: "(4,400 points)",
   description: "Common trade goods.	Minor income boost, aesthetically popular",
   trigger: function() {return research76.flag === 1},
   uses: 1,
-  cost: function() {return researchPoints >= 4600},
+  cost: function() {return researchPoints >= 4400},
   flag: 0,
   element: null,
   effect: function() {
     research77.flag = 1;
-    researchPoints -= 4600;
+    researchPoints -= 4400;
     pointsCount.innerText = researchPoints;
     tax9Div.classList.remove("hidden");
     research77.element.parentNode.removeChild(research77.element);
