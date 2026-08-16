@@ -58,7 +58,7 @@ var research1 = {
   title: "Hire employees",
   priceTag: "",
   description: "Automate your sales - each employee generates 1 kür per second",
-  trigger: function() {return balance >= 10},
+  trigger: function() {return balance >= 8},
   uses: 1,
   cost: function() {return true},
   flag: 0,
@@ -1128,7 +1128,7 @@ var research50 = {
   effect: function() {
     research50.flag = 1;
     balance -= 32400000;
-    happinessPS += 0.01;
+    happinessPS += 0.10;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult += 0.05;
     minesMult += 0.20;
@@ -1157,7 +1157,7 @@ var research51 = {
   effect: function() {
     research51.flag = 1;
     balance -= 63000000;
-    happinessPS += 0.02;
+    happinessPS += 0.20;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     research51.element.parentNode.removeChild(research51.element);
     let index = activeResearch.indexOf(research51);
@@ -1184,7 +1184,7 @@ var research52 = {
   effect: function() {
     research52.flag = 1;
     balance -= 115200000;
-    happinessPS += 0.05;
+    happinessPS += 0.50;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult -= 0.08;
     minesMult -= 0.08;
@@ -1213,7 +1213,7 @@ var research53 = {
   effect: function() {
     research53.flag = 1;
     balance -= 194400000;
-    happinessPS += 0.01;
+    happinessPS += 0.10;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     minesMult += 0.20;
     research53.element.parentNode.removeChild(research53.element);
@@ -1241,7 +1241,7 @@ var research54 = {
   effect: function() {
     research54.flag = 1;
     balance -= 45000000
-    happinessPS += 0.04;
+    happinessPS += 0.40;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult -= 0.03;
     minesMult -= 0.03;
@@ -1270,7 +1270,7 @@ var research55 = {
   effect: function() {
     research55.flag = 1;
     balance -= 79200000;
-    happinessPS += 0.05;
+    happinessPS += 0.50;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult -= 0.05;
     minesMult -= 0.05;
@@ -1299,7 +1299,7 @@ var research56 = {
   effect: function() {
     research56.flag = 1;
     balance -= 126000000;
-    happinessPS += 0.02;
+    happinessPS += 0.20;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult -= 0.05;
     minesMult -= 0.05;
@@ -1328,7 +1328,7 @@ var research57 = {
   effect: function() {
     research57.flag = 1;
     balance -= 234000000;
-    happinessPS += 0.03;
+    happinessPS += 0.30;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult -= 0.10;
     minesMult -= 0.10;
@@ -1357,7 +1357,7 @@ var research58 = {
   effect: function() {
     research58.flag = 1;
     balance -= 450000000;
-    happinessPS += 0.01;
+    happinessPS += 0.10;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult -= 0.08;
     minesMult -= 0.08;
@@ -1377,7 +1377,7 @@ var research59 = {
   id: "researchButton59",
   title: "Host a cultural festival ",
   priceTag: function() { return (((-72000000 * research59.uses) + 324000000)/360).toLocaleString() + " \u023a"; },
-  description: "Promote unity through national events", //TODO add happiness effect to description
+  description: "Promote unity through national events (one-time happiness boost)", //TODO add happiness effect to description
   trigger: function() {return happiness &lt;= 30},
   uses: 4,
   cost: function() {return balance >= (-72000000 * research59.uses) + 324000000},
@@ -1413,7 +1413,7 @@ var research60 = {
   effect: function() {
     research60.flag = 1;
     balance -= 90000000;
-    happinessPS += 0.05;
+    happinessPS += 0.50;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult -= 0.03;
     minesMult -= 0.03;
@@ -1442,7 +1442,7 @@ var research61 = {
   effect: function() {
     research61.flag = 1;
     happiness -= 2;
-    happinessPS += 0.02;
+    happinessPS += 0.20;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult += 0.10;
     minesMult += 0.10;
@@ -1596,17 +1596,19 @@ research.push(research67);
 var research68 = {
   id: "researchButton68",
   title: "Inventor's Challenge ",
-  priceTag: function() { return (((-72000000 * research68.uses) + 720000000)/360).toLocaleString() + " \u023a"},
-  description: "Hold an empire-wide competition for the best new invention, idea, or process",
-  trigger: function() {return research67.flag === 1 &amp;&amp; balance >= 360000000 &amp;&amp; researchPoints &lt;= 1000},
+  priceTag: function() { return ((-500 * research68.uses) + 2500).toLocaleString() + " research points"},
+  description: "Sell breakthroughs from the empire's inventors to foreign buyers",
+  trigger: function() {return research53.flag === 1 &amp;&amp; balance &lt;= 300000000 &amp;&amp; researchPoints >= 500},
   uses: 4,
-  cost: function() {return balance >= ((-72000000 * research68.uses) + 720000000)},
+  cost: function() {return researchPoints >= ((-500 * research68.uses) + 2500)},
   flag: 0,
   element: null,
   effect: function() {
     research68.flag = 1;
-    balance -= (-72000000 * research68.uses) + 720000000;
-    researchPoints += (-500 * research68.uses) + 2500
+    balance += (-72000000 * research68.uses) + 720000000;
+    // first use = 432mil, goes UP by 72mil each time
+    researchPoints -= (-500 * research68.uses) + 2500;
+    // first use = 500 points, goes UP by 500 each time
     pointsCount.innerText = researchPoints;
     research68.element.parentNode.removeChild(research68.element);
     let index = activeResearch.indexOf(research68);
@@ -1648,7 +1650,7 @@ var research70 = {
   title: "Charge taxes on basic industries ",
   priceTag: "(300 points)",
   description: "Raising taxes generates income, but also makes people unhappy",
-  trigger: function() {return research60.flag === 1},
+  trigger: function() {return research50.flag === 1},
   uses: 1,
   cost: function() {return true},
   flag: 0,
@@ -1808,16 +1810,16 @@ research.push(research75);
 var research76 = {
   id: "researchButton76",
   title: "Tax courtesans ",
-  priceTag: "(3,800 points)",
+  priceTag: "(3,200 points)",
   description: "Lucrative and appreciated",
   trigger: function() {return research75.flag === 1},
   uses: 1,
-  cost: function() {return researchPoints >= 3800},
+  cost: function() {return researchPoints >= 3200},
   flag: 0,
   element: null,
   effect: function() {
     research76.flag = 1;
-    researchPoints -= 3800;
+    researchPoints -= 3200;
     pointsCount.innerText = researchPoints;
     tax8Div.classList.remove("hidden");
     research76.element.parentNode.removeChild(research76.element);
@@ -1835,16 +1837,16 @@ research.push(research76);
 var research77 = {
   id: "researchButton77",
   title: "Tax pottery and ceramics ",
-  priceTag: "(4,600 points)",
+  priceTag: "(4,400 points)",
   description: "Common trade goods.	Minor income boost, aesthetically popular",
   trigger: function() {return research76.flag === 1},
   uses: 1,
-  cost: function() {return researchPoints >= 4600},
+  cost: function() {return researchPoints >= 4400},
   flag: 0,
   element: null,
   effect: function() {
     research77.flag = 1;
-    researchPoints -= 4600;
+    researchPoints -= 4400;
     pointsCount.innerText = researchPoints;
     tax9Div.classList.remove("hidden");
     research77.element.parentNode.removeChild(research77.element);
@@ -2212,7 +2214,7 @@ research.push(researchX);
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Sun Aug 09 2026 15:24:20 GMT-0700 (Mountain Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Sun Aug 16 2026 15:10:08 GMT-0700 (Mountain Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
