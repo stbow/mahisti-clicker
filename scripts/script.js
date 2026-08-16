@@ -223,7 +223,7 @@ function easyRead(num) {
  * @memberof displayFunctions
  */
 function revTracker() {
-  let rps = (empMult * employees) + (shopsRPS * shopsMult * shops) + (fleetRPS * fleetMult * ships) + (minesRPS * minesMult * mines);
+  let rps = ((empMult * employees) + (shopsRPS * shopsMult * shops) + (fleetRPS * fleetMult * ships) + (minesRPS * minesMult * mines)) * unrestPenalty;
   let rpsText;
   if (rps >= 331) {
     rpsText = `${(rps / 360).toFixed(2).toLocaleString()} \u023a`;
