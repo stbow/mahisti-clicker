@@ -1,4 +1,32 @@
-const saveBtn = document.getElementById("save-btn");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: script.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: script.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const saveBtn = document.getElementById("save-btn");
 const deleteBtn = document.getElementById("delete-btn");
 const balanceText = document.getElementById("balance");
 const col1 = document.getElementById("col1");
@@ -71,7 +99,7 @@ const launchBtn = document.getElementById("launch-btn");
 const taxDisplays = [];
 const lowerTaxBtns = [];
 const raiseTaxBtns = [];
-for (let i = 1; i <= 10; i++) {
+for (let i = 1; i &lt;= 10; i++) {
   taxDisplays.push(document.getElementById(`tax${i}-display`));
   lowerTaxBtns.push(document.getElementById(`btn-lower-tax${i}`));
   raiseTaxBtns.push(document.getElementById(`btn-raise-tax${i}`));
@@ -223,7 +251,7 @@ function easyRead(num) {
  * @memberof displayFunctions
  */
 function revTracker() {
-  let rps = ((empMult * employees) + (shopsRPS * shopsMult * shops) + (fleetRPS * fleetMult * ships) + (minesRPS * minesMult * mines)) * unrestPenalty;
+  let rps = (empMult * employees) + (shopsRPS * shopsMult * shops) + (fleetRPS * fleetMult * ships) + (minesRPS * minesMult * mines);
   let rpsText;
   if (rps >= 331) {
     rpsText = `${(rps / 360).toFixed(2).toLocaleString()} \u023a`;
@@ -240,38 +268,38 @@ function revTracker() {
  * @memberof displayFunctions
  */
 function checkButtons() {
-  if (balance < nextEmployee) {
+  if (balance &lt; nextEmployee) {
     hire.disabled = true;
   } else {
     hire.disabled = false;
   }
-  if (balance < nextShop) {
+  if (balance &lt; nextShop) {
     buyShop.disabled = true;
   } else {
     buyShop.disabled = false;
   }
-  if (balance < nextShip) {
+  if (balance &lt; nextShip) {
     buyShip.disabled = true;
   } else {
     buyShip.disabled = false;
   }
-  if (balance < nextMine) {
+  if (balance &lt; nextMine) {
     buyMine.disabled = true;
   } else {
     buyMine.disabled = false;
   }
-  if (balance < nextResearchShip) {
+  if (balance &lt; nextResearchShip) {
     buyResearchShip.disabled = true;
   } else {
     buyResearchShip.disabled = false;
   }
-  if (researchShips === 0 || balance < (launchCost * 360) || typePicker.value === "0" || launching === 1) {
+  if (researchShips === 0 || balance &lt; (launchCost * researchShips) || typePicker.value === "0" || launching === 1) {
     launchBtn.disabled = true;
   } else {
     launchBtn.disabled = false;
   }
-  for (let i = 0; i < 10; i++) {
-    lowerTaxBtns[i].disabled = taxes[i] <= 0;
+  for (let i = 0; i &lt; 10; i++) {
+    lowerTaxBtns[i].disabled = taxes[i] &lt;= 0;
     raiseTaxBtns[i].disabled = taxes[i] >= 9;
   }
 }
@@ -282,14 +310,14 @@ function checkButtons() {
  * @memberof displayFunctions
  */
 function manageResearch() {
-  for(let i=0; i < research.length; i++) {
-    if (research[i].trigger() && (research[i].uses > 0) && !activeResearch.includes(research[i])) {
+  for(let i=0; i &lt; research.length; i++) {
+    if (research[i].trigger() &amp;&amp; (research[i].uses > 0) &amp;&amp; !activeResearch.includes(research[i])) {
       research[i].uses -= 1;
       displayResearch(research[i]);
       activeResearch.push(research[i]);
     }
   }
-  for(var i = 0; i < activeResearch.length; i++){
+  for(var i = 0; i &lt; activeResearch.length; i++){
     if (activeResearch[i].cost()){
         activeResearch[i].element.disabled = false;
     } else {
@@ -368,45 +396,44 @@ function newResearchShip() {
  * @returns {boolean}
  */
 function calcProbability(prb) {
-  if (Math.random() < prb) {return true}
+  if (Math.random() &lt; prb) {return true}
   else {return false};
 }
 
 /**
- * Finds probabilities and costs for expedition options; returns the cost for the expedition and the success rate
- * @param {num} typeVal 
- * @param {num} crewVal
- * @param {num} equipVal
- * @param {num} ships
+ * Finds probabilities and costs for expedition options; updates launchCost variable
+ * @see checkButtons
  * @memberof phase2Functions
  */
-function calcLaunchCost(typeVal, crewVal, equipVal, ships) {
-  let rate;
-  if ((typeVal + crewVal + equipVal + ships) <= 90 ) {
-    rate = typeVal + crewVal + equipVal + escapePlansFlag + ships;
+function calcLaunchCost() {
+  typeValue = parseInt(typePicker.value);
+  crewValue = parseInt(crewPicker.value);
+  equipmentValue = parseInt(equipmentPicker.value);
+  if ((typeValue + crewValue + equipmentValue + researchShips) &lt;= 90 ) {
+    successRate = typeValue + crewValue + equipmentValue + escapePlansFlag + researchShips;
   } else {
-    rate = 90 + escapePlansFlag;
+    successRate = 90 + escapePlansFlag;
   }
 
-  let tempLaunchCost = 0;
+  launchCost = 0;
 
-  for (let i=0; i < 3; i++) { //look through TYPES
-    if (typeVal === expeditionOptionsList[i].value) {
-      tempLaunchCost += expeditionOptionsList[i].cost;
+  for (let i=0; i &lt; 3; i++) { //look through TYPES
+    if (typeValue === expeditionOptionsList[i].value) {
+      launchCost += expeditionOptionsList[i].cost;
     }
   }
-  for (let i=3; i < 6; i++) { //look through CREWS
-    if (crewVal === expeditionOptionsList[i].value) {
-      tempLaunchCost += expeditionOptionsList[i].cost;
+  for (let i=3; i &lt; 6; i++) { //look through CREWS
+    if (crewValue === expeditionOptionsList[i].value) {
+      launchCost += expeditionOptionsList[i].cost;
     }
   }
-  for (let i=6; i < expeditionOptionsList.length; i++) { //look through EQUIPS
-    if (equipVal === expeditionOptionsList[i].value) {
-      tempLaunchCost += expeditionOptionsList[i].cost;
+  for (let i=6; i &lt; expeditionOptionsList.length; i++) { //look through EQUIPS
+    if (equipmentValue === expeditionOptionsList[i].value) {
+      launchCost += expeditionOptionsList[i].cost;
     }
   }
-  tempLaunchCost *= ships;
-  return { cost: tempLaunchCost, rate };
+  launchCost = launchCost * researchShips;
+  checkButtons();
 }
 
 typePicker.oninput = updateLaunchCost;
@@ -416,21 +443,12 @@ equipmentPicker.oninput = updateLaunchCost;
 /**
  * Displays launchCost and successRate on page
  * @see calcLaunchCost
- * @see checkButtons
  * @memberof phase2Functions
  */
 function updateLaunchCost() {
-  const typeValue = parseInt(typePicker.value);
-  const crewValue = parseInt(crewPicker.value);
-  const equipmentValue = parseInt(equipmentPicker.value);
-  
-  const { cost, rate } = calcLaunchCost(typeValue, crewValue, equipmentValue, researchShips);
-  launchCost = cost;
-
+  calcLaunchCost();
   launchCostText.innerText = `${Math.ceil(launchCost).toLocaleString()} \u023a`;
-  successRateText.innerText = rate;
-
-  checkButtons();
+  successRateText.innerText = successRate;
 }
 
 var progress = 0;
@@ -450,17 +468,6 @@ var loadDelay = false;
  * @memberof phase2Functions
  */
 function launchExpedition() {
-  const typeValueTemp = parseInt(typePicker.value);
-  const crewValueTemp = parseInt(crewPicker.value);
-  const equipmentValueTemp = parseInt(equipmentPicker.value);
-  const currentShips = researchShips;
-
-  const { cost: thisLaunchCost, rate: thisSuccessRate } = calcLaunchCost(typeValueTemp, crewValueTemp, equipmentValueTemp, currentShips);
-
-  if (currentShips === 0 || balance < thisLaunchCost * 360 || typePicker.value === "0" || launching === 1) {
-    return;
-  }
-
   if (loadDelay) {
     clearTimeout(loadDelayTimer);
     width = 1;
@@ -468,12 +475,42 @@ function launchExpedition() {
   };
   launching = 1;
   expeditionResultText.innerHTML = `Expedition in progress...`;
-
-  balance -= thisLaunchCost * 360;
-  balanceText.innerText = Math.floor(balance).toLocaleString();
   
+  let typeValueTemp = parseInt(typePicker.value);
+  let crewValueTemp = parseInt(crewPicker.value);
+  let equipmentValueTemp = parseInt(equipmentPicker.value);
+  if ((typeValueTemp + crewValueTemp + equipmentValueTemp + researchShips) &lt;= 90 ) {
+    successRate = typeValueTemp + crewValueTemp + equipmentValueTemp + escapePlansFlag + researchShips;
+  } else {
+    successRate = 90 + escapePlansFlag;
+  }
+
+  // TODO why aren't we using the calculate function here?
+  launchCost = 0;
+
+  for (let i=0; i &lt; 3; i++) { //look through TYPES
+    if (typeValueTemp === expeditionOptionsList[i].value) {
+      launchCost += expeditionOptionsList[i].cost;
+    }
+  }
+  for (let i=3; i &lt; 6; i++) { //look through CREWS
+    if (crewValueTemp === expeditionOptionsList[i].value) {
+      launchCost += expeditionOptionsList[i].cost;
+    }
+  }
+  for (let i=6; i &lt; expeditionOptionsList.length; i++) { //look through EQUIPS
+    if (equipmentValueTemp === expeditionOptionsList[i].value) {
+      launchCost += expeditionOptionsList[i].cost;
+    }
+  }
+  launchCost = launchCost * researchShips;
+
+  balance -= launchCost * 360;
+  balanceText.innerText = Math.floor(balance).toLocaleString();
+  let currentShips = researchShips;
   let newResearchPoints = 0;
   let time = 50; 
+
   if (typeValueTemp === 30) {
     time = 600;
   } else if (typeValueTemp === 10) {
@@ -485,8 +522,8 @@ function launchExpedition() {
 
   progressDelay = setTimeout(() => { // wait for progress to finish
 
-    if (calcProbability(thisSuccessRate/100)) { //success!
-      for (let i=0; i < 3; i++) { //look through TYPES
+    if (calcProbability(successRate/100)) { //success!
+      for (let i=0; i &lt; 3; i++) { //look through TYPES
         if (typeValueTemp === expeditionOptionsList[i].value) {
           newResearchPoints = expeditionOptionsList[i].result;
           researchPoints += newResearchPoints;
@@ -510,7 +547,7 @@ function launchExpedition() {
     }, 1500);
     launching = 0;
     loadDelay = true;
-  }, (time * 10) + 500); //live = time * 100 XXX test=time*10
+  }, (time * 100) + 500); //live = time * 100
 }
 
 /**
@@ -529,7 +566,7 @@ function progressBar(time) {
         width++;
         expeditionProgressBar.style.width = width + "%";
       }
-    }, time/10); // testing = time/10 XXX live = time
+    }, time); // testing = time/10
   }
 }
 
@@ -545,11 +582,11 @@ function progressBar(time) {
  */
 function updateHappiness() {
   if (happiness >= 100) {happiness = 100}
-  else if (happiness <= 0) {happiness = 0}
+  else if (happiness &lt;= 0) {happiness = 0}
   happinessBar.style.width = happiness + "%";
   happinessLevel.innerText = Math.floor(happiness);
   happinessLevel.style.marginLeft = (happiness - 1) + "%";
-  unrestPenalty = (happiness < 30) ? 0.5 : 1;
+  unrestPenalty = (happiness &lt; 30) ? 0.5 : 1;
 }
 
 /** Closes rebellion announcement */
@@ -567,8 +604,8 @@ function dismissRebellion() {
 function updateTaxes(num) {
   fleetMult += num;
   minesMult += num;
-  happinessPS -= Math.round((happinessPS - num) * 100 ) / 100;
-  happinessPSElem.innerText = happinessPS;
+  happinessPS -= num;
+  happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
 }
 
 // n is 1-indexed (matches the tax1...tax10 naming used in the HTML/IDs).
@@ -580,7 +617,7 @@ function updateTaxes(num) {
  */
 function lowerTax(n) {
   const i = n - 1;
-  if (taxes[i] <= 0) return;
+  if (taxes[i] &lt;= 0) return;
   updateTaxes(-0.1);
   taxes[i]--;
   taxDisplays[i].innerText = taxes[i];
@@ -626,7 +663,7 @@ function refresh() {
   pointsCount.innerText = researchPoints;
   researchFleetCost.innerText = easyRead(nextResearchShip);
   researchFleetCount.innerText = researchShips;
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i &lt; 10; i++) {
     taxDisplays[i].innerText = taxes[i];
   }
 
@@ -636,7 +673,7 @@ function refresh() {
   if (research11.flag === 1) fleetDiv.classList.remove("hidden");
   if (research17.flag === 1) minesDiv.classList.remove("hidden");
   if (research22.flag === 1) revTrackDiv.classList.remove("hidden");
-  if (research30.flag === 1 && research45.flag === 0) {
+  if (research30.flag === 1 &amp;&amp; research45.flag === 0) {
     expeditionsDiv.classList.remove("hidden");
     pointsP.classList.remove("hidden");
     if (research31.flag === 1) typePicker.classList.remove("hidden");
@@ -677,7 +714,7 @@ function refresh() {
       el.value = 15;
       list.appendChild(el);
     }
-    if (research39.flag === 1) {
+    if (research39.flag === 5) {
       var list = document.getElementById("equipment-picker");
       var el = document.createElement("option");
       el.textContent = "High quality supplies";
@@ -685,7 +722,7 @@ function refresh() {
       list.appendChild(el);
     }
     if (research40.flag === 1) escapePlans.classList.remove("hidden");
-  } else if (research45.flag === 1 && research49.flag === 0) {
+  } else if (research45.flag === 1 &amp;&amp; research49.flag === 0) {
     discoveredSecretAnnouncementDiv.classList.remove("hidden");
   } else if (research49.flag === 1) {
     employeesDiv.classList.add("hidden");
@@ -716,12 +753,12 @@ function save() {
   var researchFlags = [];
   var researchActive = [];
     
-  for(var i=0; i < research.length; i++){
+  for(var i=0; i &lt; research.length; i++){
     researchUses[i] = research[i].uses;
     researchFlags[i] = research[i].flag;
   }
     
-  for(var i=0; i < activeResearch.length; i++){
+  for(var i=0; i &lt; activeResearch.length; i++){
     researchActive[i] = activeResearch[i].id;
   } 
 
@@ -797,12 +834,12 @@ function load() {
   var loadResearchFlags = JSON.parse(localStorage.getItem("saveResearchFlags"));
   var loadResearchActive = JSON.parse(localStorage.getItem("saveResearchActive"));
 
-  for(var i=0; i < research.length; i++){
+  for(var i=0; i &lt; research.length; i++){
     research[i].uses = loadResearchUses[i];
     research[i].flag = loadResearchFlags[i];       
   }
     
-  for(var i=0; i < research.length; i++){
+  for(var i=0; i &lt; research.length; i++){
     if (loadResearchActive.indexOf(research[i].id)>=0){
       displayResearch(research[i]);
       activeResearch.push(research[i]);
@@ -838,7 +875,7 @@ window.setInterval(function() {
   //TODO write winning vs losing win conditions
   if (research49.flag === 1) {
     happiness += happinessPS; //TODO need to rewrite so happiness trends toward 50 rather than increasing/decreasing indefinitely??
-    if (happiness <= 0) {
+    if (happiness &lt;= 0) {
       ships -= Math.floor(ships * 0.2);
       mines -= Math.floor(mines * 0.2);
       happiness = 50;
@@ -848,8 +885,31 @@ window.setInterval(function() {
     researchPoints += researchMult;
     pointsCount.innerText = researchPoints;
   }
-}, 100); //NOTE LIVE is 1000 XXX test = 100
+}, 1000); //NOTE LIVE is 1000
 
 window.setInterval(function() {
   save();  
 }, 60000);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="displayFunctions.html">displayFunctions</a></li><li><a href="phase1Functions.html">phase1Functions</a></li><li><a href="phase2Functions.html">phase2Functions</a></li><li><a href="phase3Functions.html">phase3Functions</a></li><li><a href="researchItems.html">researchItems</a></li></ul><h3>Global</h3><ul><li><a href="global.html#calcProbability">calcProbability</a></li><li><a href="global.html#dismissRebellion">dismissRebellion</a></li><li><a href="global.html#siteName">siteName</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Sun Aug 09 2026 15:24:20 GMT-0700 (Mountain Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

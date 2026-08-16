@@ -1,4 +1,32 @@
-var research = [];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: research.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: research.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>var research = [];
 var activeResearch = [];
 
 //TODO happiness per second text not updating when taxes update
@@ -30,7 +58,7 @@ var research1 = {
   title: "Hire employees",
   priceTag: "",
   description: "Automate your sales - each employee generates 1 kür per second",
-  trigger: function() {return balance >= 8},
+  trigger: function() {return balance >= 10},
   uses: 1,
   cost: function() {return true},
   flag: 0,
@@ -161,7 +189,7 @@ var research6 = {
   title: "Apprentice system ",
   priceTag: "(7 alt\u0131nlar)",
   description: "Trains young workers, increasing long-term efficiency",
-  trigger: function() {return research4.flag === 1 && shops >= 1},
+  trigger: function() {return research4.flag === 1 &amp;&amp; shops >= 1},
   uses: 1,
   cost: function() {return balance >= 2520},
   flag: 0,
@@ -271,7 +299,7 @@ var research9 = {
   title: "Dynamic bartering ",
   priceTag: "(48 alt\u0131nlar)",
   description: "Skilled negotiators improve trade deals, raising earnings",
-  trigger: function() {return research6.flag === 1 && shops >= 5},
+  trigger: function() {return research6.flag === 1 &amp;&amp; shops >= 5},
   uses: 1,
   cost: function() {return balance >= 17280},
   flag: 0,
@@ -352,7 +380,7 @@ var research12 = {
   title: "Master craftsmen ",
   priceTag: "(210 alt\u0131nlar)",
   description: "Hire expert artisans to refine goods, boosting value",
-  trigger: function() {return research9.flag === 1 && ships >= 1},
+  trigger: function() {return research9.flag === 1 &amp;&amp; ships >= 1},
   uses: 1,
   cost: function() {return balance >= 75600},
   flag: 0,
@@ -383,7 +411,7 @@ var research13 = {
   title: "New hull materials ",
   priceTag: "(275 alt\u0131nlar)",
   description: "Improves speed and durability of ships; increases revenue by 30%",
-  trigger: function() {return research11.flag === 1 && ships >= 3},
+  trigger: function() {return research11.flag === 1 &amp;&amp; ships >= 3},
   uses: 1,
   cost: function() {return balance >= 99000},
   flag: 0,
@@ -437,7 +465,7 @@ var research15 = {
   title: "Expand international market ",
   priceTag: "(580 alt\u0131nlar)",
   description: "Expands international trade, increasing all profits",
-  trigger: function() {return research12.flag === 1 && ships >= 1},
+  trigger: function() {return research12.flag === 1 &amp;&amp; ships >= 1},
   uses: 1,
   cost: function() {return balance >= 208800},
   flag: 0,
@@ -546,7 +574,7 @@ var research19 = {
   title: "Famed merchant dynasty ",
   priceTag: "(10,000 alt\u0131nlar)",
   description: "The Mahisti name carries weight, increasing all trade profits",
-  trigger: function() {return balance >= 3000000 && mines >= 1},
+  trigger: function() {return balance >= 3000000 &amp;&amp; mines >= 1},
   uses: 1,
   cost: function() {return balance >= 3600000},
   flag: 0,
@@ -861,7 +889,7 @@ var research37 = {
   title: "Low quality supplies ",
   priceTag: "(20 points)",
   description: "Supply your research fleet with supplies and equipment",
-  trigger: function() {return research31.flag === 1 && researchPoints >= 30},
+  trigger: function() {return research31.flag === 1 &amp;&amp; researchPoints >= 30},
   uses: 1,
   cost: function() {return researchPoints >= 20},
   flag: 0,
@@ -950,9 +978,9 @@ var research40 = {
   title: "Advanced escape plans ",
   priceTag: "(50,000 \u023a + 500 pts)",
   description: "Invest in diversion tactics to improve expedition success rates",
-  trigger: function() {return balance >= 10000000 && research33.flag === 1},
+  trigger: function() {return balance >= 10000000 &amp;&amp; research33.flag === 1},
   uses: 1,
-  cost: function() {return balance >= 18000000 && researchPoints >= 500},
+  cost: function() {return balance >= 18000000 &amp;&amp; researchPoints >= 500},
   flag: 0,
   element: null,
   effect: function() {
@@ -978,7 +1006,7 @@ var research45 = {
   title: "Launch the \"Ocean's Light\" ",
   priceTag: "(1,000 points)",
   description: "Make the maiden voyage from Ara\u015ft to Amariyan",
-  trigger: function() {return research39.flag === 1 && researchPoints > 500},
+  trigger: function() {return research39.flag === 1 &amp;&amp; researchPoints > 500},
   uses: 1,
   cost: function() {return researchPoints >= 1000},
   flag: 0,
@@ -1100,7 +1128,7 @@ var research50 = {
   effect: function() {
     research50.flag = 1;
     balance -= 32400000;
-    happinessPS += 0.10;
+    happinessPS += 0.01;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult += 0.05;
     minesMult += 0.20;
@@ -1129,7 +1157,7 @@ var research51 = {
   effect: function() {
     research51.flag = 1;
     balance -= 63000000;
-    happinessPS += 0.20;
+    happinessPS += 0.02;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     research51.element.parentNode.removeChild(research51.element);
     let index = activeResearch.indexOf(research51);
@@ -1156,7 +1184,7 @@ var research52 = {
   effect: function() {
     research52.flag = 1;
     balance -= 115200000;
-    happinessPS += 0.50;
+    happinessPS += 0.05;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult -= 0.08;
     minesMult -= 0.08;
@@ -1185,7 +1213,7 @@ var research53 = {
   effect: function() {
     research53.flag = 1;
     balance -= 194400000;
-    happinessPS += 0.10;
+    happinessPS += 0.01;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     minesMult += 0.20;
     research53.element.parentNode.removeChild(research53.element);
@@ -1205,7 +1233,7 @@ var research54 = {
   title: "Universal education ",
   priceTag: "(125,000 \u023a)",
   description: "Open local schools in all townships",
-  trigger: function() {return research50.flag === 1 && balance >= 37800000},
+  trigger: function() {return research50.flag === 1 &amp;&amp; balance >= 37800000},
   uses: 1,
   cost: function() {return balance >= 45000000},
   flag: 0,
@@ -1213,7 +1241,7 @@ var research54 = {
   effect: function() {
     research54.flag = 1;
     balance -= 45000000
-    happinessPS += 0.40;
+    happinessPS += 0.04;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult -= 0.03;
     minesMult -= 0.03;
@@ -1242,7 +1270,7 @@ var research55 = {
   effect: function() {
     research55.flag = 1;
     balance -= 79200000;
-    happinessPS += 0.50;
+    happinessPS += 0.05;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult -= 0.05;
     minesMult -= 0.05;
@@ -1271,7 +1299,7 @@ var research56 = {
   effect: function() {
     research56.flag = 1;
     balance -= 126000000;
-    happinessPS += 0.20;
+    happinessPS += 0.02;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult -= 0.05;
     minesMult -= 0.05;
@@ -1300,7 +1328,7 @@ var research57 = {
   effect: function() {
     research57.flag = 1;
     balance -= 234000000;
-    happinessPS += 0.30;
+    happinessPS += 0.03;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult -= 0.10;
     minesMult -= 0.10;
@@ -1329,7 +1357,7 @@ var research58 = {
   effect: function() {
     research58.flag = 1;
     balance -= 450000000;
-    happinessPS += 0.10;
+    happinessPS += 0.01;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult -= 0.08;
     minesMult -= 0.08;
@@ -1349,8 +1377,8 @@ var research59 = {
   id: "researchButton59",
   title: "Host a cultural festival ",
   priceTag: function() { return (((-72000000 * research59.uses) + 324000000)/360).toLocaleString() + " \u023a"; },
-  description: "Promote unity through national events (one-time happiness boost)", //TODO add happiness effect to description
-  trigger: function() {return happiness <= 30},
+  description: "Promote unity through national events", //TODO add happiness effect to description
+  trigger: function() {return happiness &lt;= 30},
   uses: 4,
   cost: function() {return balance >= (-72000000 * research59.uses) + 324000000},
   flag: 0,
@@ -1385,7 +1413,7 @@ var research60 = {
   effect: function() {
     research60.flag = 1;
     balance -= 90000000;
-    happinessPS += 0.50;
+    happinessPS += 0.05;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult -= 0.03;
     minesMult -= 0.03;
@@ -1414,7 +1442,7 @@ var research61 = {
   effect: function() {
     research61.flag = 1;
     happiness -= 2;
-    happinessPS += 0.20;
+    happinessPS += 0.02;
     happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
     fleetMult += 0.10;
     minesMult += 0.10;
@@ -1462,7 +1490,7 @@ var research64 = {
   title: "Scholar stipends",
   priceTag: "(160,000 \u023a)",
   description: "Research points generate twice as fast",
-  trigger: function() {return research50.flag === 1 && balance >= 46800000},
+  trigger: function() {return research50.flag === 1 &amp;&amp; balance >= 46800000},
   uses: 1,
   cost: function() {return balance >= 57600000},
   flag: 0,
@@ -1568,19 +1596,17 @@ research.push(research67);
 var research68 = {
   id: "researchButton68",
   title: "Inventor's Challenge ",
-  priceTag: function() { return ((-500 * research68.uses) + 2500).toLocaleString() + " research points"},
-  description: "Sell breakthroughs from the empire's inventors to foreign buyers",
-  trigger: function() {return research53.flag === 1 && balance <= 300000000 && researchPoints >= 500},
+  priceTag: function() { return (((-72000000 * research68.uses) + 720000000)/360).toLocaleString() + " \u023a"},
+  description: "Hold an empire-wide competition for the best new invention, idea, or process",
+  trigger: function() {return research67.flag === 1 &amp;&amp; balance >= 360000000 &amp;&amp; researchPoints &lt;= 1000},
   uses: 4,
-  cost: function() {return researchPoints >= ((-500 * research68.uses) + 2500)},
+  cost: function() {return balance >= ((-72000000 * research68.uses) + 720000000)},
   flag: 0,
   element: null,
   effect: function() {
     research68.flag = 1;
-    balance += (-72000000 * research68.uses) + 720000000;
-    // first use = 432mil, goes UP by 72mil each time
-    researchPoints -= (-500 * research68.uses) + 2500;
-    // first use = 500 points, goes UP by 500 each time
+    balance -= (-72000000 * research68.uses) + 720000000;
+    researchPoints += (-500 * research68.uses) + 2500
     pointsCount.innerText = researchPoints;
     research68.element.parentNode.removeChild(research68.element);
     let index = activeResearch.indexOf(research68);
@@ -1622,7 +1648,7 @@ var research70 = {
   title: "Charge taxes on basic industries ",
   priceTag: "(300 points)",
   description: "Raising taxes generates income, but also makes people unhappy",
-  trigger: function() {return research50.flag === 1},
+  trigger: function() {return research60.flag === 1},
   uses: 1,
   cost: function() {return true},
   flag: 0,
@@ -1782,16 +1808,16 @@ research.push(research75);
 var research76 = {
   id: "researchButton76",
   title: "Tax courtesans ",
-  priceTag: "(3,200 points)",
+  priceTag: "(3,800 points)",
   description: "Lucrative and appreciated",
   trigger: function() {return research75.flag === 1},
   uses: 1,
-  cost: function() {return researchPoints >= 3200},
+  cost: function() {return researchPoints >= 3800},
   flag: 0,
   element: null,
   effect: function() {
     research76.flag = 1;
-    researchPoints -= 3200;
+    researchPoints -= 3800;
     pointsCount.innerText = researchPoints;
     tax8Div.classList.remove("hidden");
     research76.element.parentNode.removeChild(research76.element);
@@ -1809,16 +1835,16 @@ research.push(research76);
 var research77 = {
   id: "researchButton77",
   title: "Tax pottery and ceramics ",
-  priceTag: "(4,400 points)",
+  priceTag: "(4,600 points)",
   description: "Common trade goods.	Minor income boost, aesthetically popular",
   trigger: function() {return research76.flag === 1},
   uses: 1,
-  cost: function() {return researchPoints >= 4400},
+  cost: function() {return researchPoints >= 4600},
   flag: 0,
   element: null,
   effect: function() {
     research77.flag = 1;
-    researchPoints -= 4400;
+    researchPoints -= 4600;
     pointsCount.innerText = researchPoints;
     tax9Div.classList.remove("hidden");
     research77.element.parentNode.removeChild(research77.element);
@@ -1861,7 +1887,7 @@ research.push(research78);
   title: "Increase loan capacity ",
   priceTag: "(700 points)",
   description: "Unlock an additional loan slot",
-  trigger: function() {return research69.flag === 1 && research70.flag === 1},
+  trigger: function() {return research69.flag === 1 &amp;&amp; research70.flag === 1},
   uses: 1,
   cost: function() {return researchPoints >= 700},
   flag: 0,
@@ -2170,3 +2196,26 @@ research.push(research92); */
   
 research.push(researchX);
 */
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="displayFunctions.html">displayFunctions</a></li><li><a href="phase1Functions.html">phase1Functions</a></li><li><a href="phase2Functions.html">phase2Functions</a></li><li><a href="phase3Functions.html">phase3Functions</a></li><li><a href="researchItems.html">researchItems</a></li></ul><h3>Global</h3><ul><li><a href="global.html#calcProbability">calcProbability</a></li><li><a href="global.html#dismissRebellion">dismissRebellion</a></li><li><a href="global.html#siteName">siteName</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Sun Aug 09 2026 15:24:20 GMT-0700 (Mountain Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
