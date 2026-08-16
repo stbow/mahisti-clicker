@@ -573,8 +573,8 @@ function dismissRebellion() {
 function updateTaxes(num) {
   fleetMult += num;
   minesMult += num;
-  happinessPS -= num;
-  happinessPSElem.innerText = Math.floor(happinessPS * 100) / 100;
+  happinessPS -= Math.round((happinessPS - num) * 100 ) / 100;
+  happinessPSElem.innerText = happinessPS;
 }
 
 // n is 1-indexed (matches the tax1...tax10 naming used in the HTML/IDs).
