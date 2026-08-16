@@ -1620,7 +1620,7 @@ var research70 = {
   title: "Charge taxes on basic industries ",
   priceTag: "(300 points)",
   description: "Raising taxes generates income, but also makes people unhappy",
-  trigger: function() {return research60.flag === 1},
+  trigger: function() {return research50.flag === 1},
   uses: 1,
   cost: function() {return true},
   flag: 0,
