@@ -30,7 +30,7 @@ var research1 = {
   title: "Hire employees",
   priceTag: "",
   description: "Automate your sales - each employee generates 1 kür per second",
-  trigger: function() {return balance >= 10},
+  trigger: function() {return balance >= 8},
   uses: 1,
   cost: function() {return true},
   flag: 0,
@@ -1349,7 +1349,7 @@ var research59 = {
   id: "researchButton59",
   title: "Host a cultural festival ",
   priceTag: function() { return (((-72000000 * research59.uses) + 324000000)/360).toLocaleString() + " \u023a"; },
-  description: "Promote unity through national events", //TODO add happiness effect to description
+  description: "Promote unity through national events (one-time happiness boost)", //TODO add happiness effect to description
   trigger: function() {return happiness <= 30},
   uses: 4,
   cost: function() {return balance >= (-72000000 * research59.uses) + 324000000},
@@ -1568,17 +1568,19 @@ research.push(research67);
 var research68 = {
   id: "researchButton68",
   title: "Inventor's Challenge ",
-  priceTag: function() { return (((-72000000 * research68.uses) + 720000000)/360).toLocaleString() + " \u023a"},
-  description: "Hold an empire-wide competition for the best new invention, idea, or process",
-  trigger: function() {return research67.flag === 1 && balance >= 360000000 && researchPoints <= 1000},
+  priceTag: function() { return ((-500 * research68.uses) + 2500).toLocaleString() + " research points"},
+  description: "Sell breakthroughs from the empire's inventors to foreign buyers",
+  trigger: function() {return research53.flag === 1 && balance <= 300000000 && researchPoints >= 500},
   uses: 4,
-  cost: function() {return balance >= ((-72000000 * research68.uses) + 720000000)},
+  cost: function() {return researchPoints >= ((-500 * research68.uses) + 2500)},
   flag: 0,
   element: null,
   effect: function() {
     research68.flag = 1;
-    balance -= (-72000000 * research68.uses) + 720000000;
-    researchPoints += (-500 * research68.uses) + 2500
+    balance += (-72000000 * research68.uses) + 720000000;
+    // first use = 432mil, goes UP by 72mil each time
+    researchPoints -= (-500 * research68.uses) + 2500;
+    // first use = 500 points, goes UP by 500 each time
     pointsCount.innerText = researchPoints;
     research68.element.parentNode.removeChild(research68.element);
     let index = activeResearch.indexOf(research68);
@@ -1796,6 +1798,7 @@ var research76 = {
     let index = activeResearch.indexOf(research76);
     activeResearch.splice(index, 1);
   }
+  //TODO this is weirdly high - change to ~3000-3300
 }
 
 research.push(research76);
