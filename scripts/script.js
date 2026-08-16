@@ -381,7 +381,6 @@ function calcProbability(prb) {
  * @memberof phase2Functions
  */
 function calcLaunchCost(typeVal, crewVal, equipVal, ships) {
-  console.log("running calcLaunchCost");
   let rate;
   if ((typeVal + crewVal + equipVal + ships) <= 90 ) {
     rate = typeVal + crewVal + equipVal + escapePlansFlag + ships;
@@ -407,7 +406,6 @@ function calcLaunchCost(typeVal, crewVal, equipVal, ships) {
     }
   }
   tempLaunchCost *= ships;
-  console.log(`returning ${tempLaunchCost} as tempLaunchCost and ${rate} as rate`);
   return { cost: tempLaunchCost, rate };
 }
 
@@ -422,14 +420,12 @@ equipmentPicker.oninput = updateLaunchCost;
  * @memberof phase2Functions
  */
 function updateLaunchCost() {
-  console.log("running updateLaunchCost");
   const typeValue = parseInt(typePicker.value);
   const crewValue = parseInt(crewPicker.value);
   const equipmentValue = parseInt(equipmentPicker.value);
   
   const { cost, rate } = calcLaunchCost(typeValue, crewValue, equipmentValue, researchShips);
   launchCost = cost;
-  console.log(`calcLaunchCost returned ${cost} as the cost and ${rate} as the rate. launchCost is now set to ${launchCost}`);
 
   launchCostText.innerText = `${Math.ceil(launchCost).toLocaleString()} \u023a`;
   successRateText.innerText = rate;
@@ -454,14 +450,12 @@ var loadDelay = false;
  * @memberof phase2Functions
  */
 function launchExpedition() {
-  console.log("running launchExpedition");
   const typeValueTemp = parseInt(typePicker.value);
   const crewValueTemp = parseInt(crewPicker.value);
   const equipmentValueTemp = parseInt(equipmentPicker.value);
   const currentShips = researchShips;
 
   const { cost: thisLaunchCost, rate: thisSuccessRate } = calcLaunchCost(typeValueTemp, crewValueTemp, equipmentValueTemp, currentShips);
-  console.log(`calcLaunchCost is returning ${thisLaunchCost} for thisLaunchCost and ${thisSuccessRate} for thisSuccessRate`);
 
   if (currentShips === 0 || balance < thisLaunchCost * 360 || typePicker.value === "0" || launching === 1) {
     return;
